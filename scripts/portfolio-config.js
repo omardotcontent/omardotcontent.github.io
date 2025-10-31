@@ -79,7 +79,17 @@ const PORTFOLIO_CONFIG = {
       fullDescription: "A technical exercise and passion project recreating the startup animations of various Microsoft Windows versions. This entire project was uniquely crafted and animated within PowerPoint, pushing the software to its creative limits.",
       tags: ["Motion Graphics", "PowerPoint"],
       image: "images/windows.png",
-      youtubeId: "5onPPYjIoRc", // <-- PLEASE REPLACE THIS ID
+      youtubeId: "5onPPYjIoRc",
+      links: []
+    },
+    {
+      id: "mc-animation",
+      title: "Demons [MC | FNAF]",
+      shortDescription: "A FNAF-inspired Minecraft animation using Mine-Imator.",
+      fullDescription: "An old project made in 2022 using Mine-Imator, inspired by the Five Nights at Freddy's franchise. This animation features a animated music video using 'Demons | Imagine Dragons'.",
+      tags: ["Minecraft", "Animation", "FNAF"],
+      image: "images/demonspic.png",
+      youtubeId: "pyReY80-Pd4",
       links: []
     }
   ],
