@@ -68,7 +68,7 @@ const PORTFOLIO_CONFIG = {
       shortDescription: "A dynamic, command-line themed logo animation designed for the Meraki Studios brand identity.",
       fullDescription: "A dynamic, command-line themed logo animation designed for the Meraki Studios brand identity. This project showcases motion graphics and kinetic typography to create a memorable and impactful introduction.",
       tags: ["Logo Animation", "Motion Graphics"],
-      image: "images/Logo.png", 
+      image: "images/logo.png", 
       youtubeId: "lQrCyVOHZhk", // <-- Video ID Added
       links: []
     },

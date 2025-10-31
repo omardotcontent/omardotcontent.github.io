@@ -14,11 +14,12 @@
     let lastFrameTime = 0;
 
     // Configuration for better performance
-    const NUM_SITES = 15; // Reduced from 30
-    const PIXEL_STEP = 4; // Increased from 2 for better performance
-    const TARGET_FPS = 30; // Target 30 FPS instead of 60
+    const isMobile = window.innerWidth <= 768;
+    const NUM_SITES = isMobile ? 8 : 15; // Even fewer sites on mobile
+    const PIXEL_STEP = isMobile ? 6 : 4; // Larger step on mobile
+    const TARGET_FPS = isMobile ? 20 : 30; // Lower FPS on mobile
     const FRAME_INTERVAL = 1000 / TARGET_FPS;
-    const BORDER_THRESHOLD = 3; // Slightly increased for thicker borders
+    const BORDER_THRESHOLD = isMobile ? 4 : 3; // Thicker borders on mobile for visibility
 
     // Initialize sites with random positions and velocities
     function initSites() {
@@ -112,8 +113,9 @@
       width = rect.width;
       height = rect.height;
       
-      // Use lower resolution for better performance
-      const scale = 0.75; // Render at 75% resolution
+      // Use even lower resolution on mobile for better performance
+      const isMobile = window.innerWidth <= 768;
+      const scale = isMobile ? 0.5 : 0.75; // 50% resolution on mobile, 75% on desktop
       canvas.width = width * scale;
       canvas.height = height * scale;
       canvas.style.width = width + 'px';

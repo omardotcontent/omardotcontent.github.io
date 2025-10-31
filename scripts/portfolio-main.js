@@ -155,12 +155,15 @@
 
   function setupMobileNav(toggle, nav) {
     if (!toggle || !nav) return;
+    const navLinks = nav.querySelectorAll('.nav-links a');
+    
     const closeNav = () => {
         nav.setAttribute('data-visible', 'false');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.querySelector('i').className = 'fa-solid fa-bars';
-        document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
     };
+    
     toggle.addEventListener('click', () => {
       const isVisible = nav.getAttribute('data-visible') === 'true';
       if (isVisible) {
@@ -169,7 +172,10 @@
         nav.setAttribute('data-visible', 'true');
         toggle.setAttribute('aria-expanded', 'true');
         toggle.querySelector('i').className = 'fa-solid fa-xmark';
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('nav-open');
+        
+        // Clear all active states when opening mobile nav
+        navLinks.forEach(link => link.classList.remove('active'));
       }
     });
     nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') closeNav(); });
@@ -182,6 +188,9 @@
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Don't update active states when mobile nav is open
+          if (document.body.classList.contains('nav-open')) return;
+          
           const id = entry.target.getAttribute("id");
           navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
         }
