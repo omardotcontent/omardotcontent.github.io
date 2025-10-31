@@ -27,6 +27,9 @@
             window.MerakiAnimations.scroll.observe('.animate-on-scroll');
         }
     }, 200);
+    
+    // Set up scroll progress indicator
+    setupScrollProgress();
   });
 
   // Functions that need to run immediately for above-the-fold content
@@ -54,7 +57,7 @@
     if (!container) return;
     const h = PORTFOLIO_CONFIG.hero;
     container.innerHTML = `
-        <img src="${h.profilePic}" alt="${h.name}" class="hero-profile-pic animate-on-scroll" />
+        <img src="${h.profilePic}" alt="${h.name}" class="hero-profile-pic animate-on-scroll" loading="eager" fetchpriority="high" />
         <div class="hero-text">
             <h1 class="animate-on-scroll" style="--delay: 100ms">${h.name}</h1>
             <h3 class="animate-on-scroll" style="--delay: 200ms">${h.title}</h3>
@@ -185,6 +188,7 @@
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("header nav .nav-links a[href^='#']");
     if (!sections.length || !navLinks.length) return;
+    
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -192,11 +196,71 @@
           if (document.body.classList.contains('nav-open')) return;
           
           const id = entry.target.getAttribute("id");
-          navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("active", isActive);
+          });
         }
       });
-    }, { rootMargin: "-50% 0px -50% 0px" });
+    }, { 
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0.1 
+    });
+    
     sections.forEach(s => observer.observe(s));
+    
+    // Add smooth scroll behavior to nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+  
+  function setupScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) return;
+    
+    let ticking = false;
+    let lastScrollY = 0;
+    
+    function updateScrollProgress() {
+      const scrollTop = window.pageYOffset;
+      
+      // Only update if scroll changed significantly
+      if (Math.abs(scrollTop - lastScrollY) < 5) {
+        ticking = false;
+        return;
+      }
+      
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+      lastScrollY = scrollTop;
+      ticking = false;
+    }
+    
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollProgress);
+        ticking = true;
+      }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   function setupProjectModal(modal, container) {

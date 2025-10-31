@@ -13,13 +13,15 @@
     let animationId;
     let lastFrameTime = 0;
 
-    // Configuration for better performance
+    // Configuration for maximum performance
     const isMobile = window.innerWidth <= 768;
-    const NUM_SITES = isMobile ? 8 : 15; // Even fewer sites on mobile
-    const PIXEL_STEP = isMobile ? 6 : 4; // Larger step on mobile
-    const TARGET_FPS = isMobile ? 20 : 30; // Lower FPS on mobile
+    const isLowPower = navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
+    
+    const NUM_SITES = isMobile ? (isLowPower ? 4 : 6) : (isLowPower ? 6 : 10);
+    const PIXEL_STEP = isMobile ? (isLowPower ? 10 : 8) : (isLowPower ? 8 : 6);
+    const TARGET_FPS = isMobile ? (isLowPower ? 10 : 15) : (isLowPower ? 15 : 20);
     const FRAME_INTERVAL = 1000 / TARGET_FPS;
-    const BORDER_THRESHOLD = isMobile ? 4 : 3; // Thicker borders on mobile for visibility
+    const BORDER_THRESHOLD = isMobile ? 5 : 4;
 
     // Initialize sites with random positions and velocities
     function initSites() {
@@ -113,9 +115,21 @@
       width = rect.width;
       height = rect.height;
       
-      // Use even lower resolution on mobile for better performance
+      // Use very low resolution for maximum performance
       const isMobile = window.innerWidth <= 768;
-      const scale = isMobile ? 0.5 : 0.75; // 50% resolution on mobile, 75% on desktop
+      const isLowPower = navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
+      
+      let scale;
+      if (isMobile && isLowPower) {
+        scale = 0.3; // 30% resolution on low-power mobile
+      } else if (isMobile) {
+        scale = 0.4; // 40% resolution on mobile
+      } else if (isLowPower) {
+        scale = 0.4; // 40% resolution on low-power desktop
+      } else {
+        scale = 0.5; // 50% resolution on desktop
+      }
+      
       canvas.width = width * scale;
       canvas.height = height * scale;
       canvas.style.width = width + 'px';

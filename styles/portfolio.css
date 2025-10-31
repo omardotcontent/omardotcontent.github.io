@@ -11,9 +11,47 @@
 }
 
 /* GENERAL STYLES & SCROLLBAR */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--accent-glow) transparent; }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+  scrollbar-width: thin; 
+  scrollbar-color: var(--accent-glow) transparent; 
+}
+
 *:focus-visible { outline: 2px solid var(--accent-glow); outline-offset: 2px; }
+
+/* Enhanced smooth scrolling for better UX */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Simplified hardware acceleration - only for critical animations */
+.hero-profile-pic,
+.hero-text h1,
+.hero-text h3,
+.hero-text p {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change from other elements to reduce GPU load */
+.animate-on-scroll,
+.project-card,
+.skill-card {
+  transform: translateZ(0);
+}
 
 /* MODIFIED: Custom Text Selection Highlight */
 ::selection {
@@ -89,6 +127,17 @@ header {
   background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   opacity: 0; transform: translateY(-100%); animation: slideDown 0.6s ease-out 0.2s forwards;
+}
+
+.scroll-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent-glow);
+  width: 0%;
+  transition: none;
+  z-index: 1;
 }
 @keyframes slideDown { to { opacity: 1; transform: translateY(0); } }
 .header-left, .header-right { display: flex; align-items: center; gap: 1rem; }
@@ -193,6 +242,13 @@ nav .nav-links a:hover, nav .nav-links a.active {
     background: var(--bg-card); padding: 2rem; border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 .skill-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
 .skill-card ul { list-style: none; }
@@ -215,13 +271,14 @@ nav .nav-links a:hover, nav .nav-links a.active {
   overflow: hidden; position: relative;
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   width: 100%; max-width: 420px;
 }
+
 .project-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-  border-color: var(--accent-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 .project-card-link {
     text-decoration: none;
@@ -239,9 +296,15 @@ nav .nav-links a:hover, nav .nav-links a.active {
 .project-btn {
   display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 8px;
   font-weight: 600; text-align: center; background-color: var(--primary-color);
-  color: var(--bg-dark); transition: all 0.3s ease; border: 1px solid var(--primary-color);
+  color: var(--bg-dark); transition: all 0.2s ease; 
+  border: 1px solid var(--primary-color);
 }
-.project-btn:hover { background-color: transparent; color: var(--primary-color); }
+
+.project-btn:hover { 
+  background-color: transparent; 
+  color: var(--primary-color); 
+  transform: translateY(-1px);
+}
 
 .project-tags { 
     display: flex; 
@@ -258,7 +321,8 @@ nav .nav-links a:hover, nav .nav-links a.active {
   font-size: 0.8rem;
   font-weight: 400;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  cursor: default;
 }
 .project-tag:hover {
   background: var(--primary-color);
