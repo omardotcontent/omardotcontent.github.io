@@ -189,22 +189,30 @@
     const navLinks = document.querySelectorAll("header nav .nav-links a[href^='#']");
     if (!sections.length || !navLinks.length) return;
     
+    // Use a center-band detection: when section crosses the middle of viewport
+    // Note: with -50%/-50% margins the observable area would be 0px tall; use threshold 0.
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Don't update active states when mobile nav is open
-          if (document.body.classList.contains('nav-open')) return;
-          
-          const id = entry.target.getAttribute("id");
-          navLinks.forEach(link => {
-            const isActive = link.getAttribute("href") === `#${id}`;
-            link.classList.toggle("active", isActive);
-          });
+      // Don't update active states when mobile nav is open
+      if (document.body.classList.contains('nav-open')) return;
+
+      // Pick the entry closest to center (largest intersection ratio)
+      let bestEntry = null;
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
+          bestEntry = entry;
         }
+      }
+      if (!bestEntry) return;
+
+      const id = bestEntry.target.getAttribute("id");
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute("href") === `#${id}`;
+        link.classList.toggle("active", isActive);
       });
-    }, { 
-      rootMargin: "-50% 0px -50% 0px",
-      threshold: 0.1 
+    }, {
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0
     });
     
     sections.forEach(s => observer.observe(s));
@@ -224,8 +232,26 @@
             top: targetPosition,
             behavior: 'smooth'
           });
+
+          // Provide immediate visual feedback while smooth scrolling
+          navLinks.forEach(l => l.classList.toggle('active', l === link));
         }
       });
+    });
+
+    // Initialize active state on load (e.g., refresh at mid-page)
+    requestAnimationFrame(() => {
+      let current = sections[0];
+      const viewportCenter = window.innerHeight / 2;
+      let bestDist = Infinity;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        const secCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(secCenter - viewportCenter);
+        if (dist < bestDist) { bestDist = dist; current = sec; }
+      });
+      const id = current.getAttribute('id');
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
     });
   }
   
