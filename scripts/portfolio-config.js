@@ -39,8 +39,20 @@ const PORTFOLIO_CONFIG = {
   // Projects
   projects: [
     {
+      id: "interactivestuff",
+      title: "InteractiveStuff",
+      shortDescription: "A Minecraft Mod that makes Items Interact within your First-Person View!",
+      fullDescription: "This mod adds fun little interactive behaviors to certain items and blocks while you're holding them. It’s all about giving your first-person gameplay that extra bit of immersion and personality.",
+      tags: ["Minecraft", "Java", "Fun", "Immersion"],
+      image: "images/ISImage.png",
+      youtubeId: "yPfkLl6xFms", // <-- Video ID Added
+      links: [
+        { text: "View on Modrinth", url: "https://modrinth.com/mod/interactivestuff" }
+      ]
+    },
+    {
       id: "worldchatter",
-      title: "WorldChatter Plugin",
+      title: "WorldChatter",
       shortDescription: "A powerful, all-in-one chat overhaul plugin for Minecraft servers, featuring custom channels, anti-swear, and MiniMessage support.",
       fullDescription: "A powerful, all-in-one chat overhaul plugin for Minecraft servers. WorldChatter enhances the in-game chat experience with anti-swear filters, ad-blocking, and fully customizable channels with advanced MiniMessage formatting.",
       tags: ["Minecraft", "Java", "Tool"],
