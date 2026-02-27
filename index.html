@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omar Mohamed | Portfolio</title>
+
+    <link rel="icon" href="images/icon.png" type="image/png" />
+    <meta
+      name="description"
+      content="The personal portfolio of Omar Mohamed, Founder of Meraki Studios, Motion Designer, and a Java Developer."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/portfolio.css" />
+  </head>
+  <body>
+    <!-- Voronoi Background -->
+    <div id="shape-grid">
+      <canvas id="voronoi-canvas"></canvas>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--accent-glow); z-index: 9999; transition: width 0.1s ease-out;"></div>
+
+    <!-- Desktop Header -->
+    <header class="desktop-header">
+      <div class="header-container">
+        <a href="index.html" class="header-logo-link">
+          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo" />
+        </a>
+        
+        <nav class="desktop-nav">
+          <div class="nav-links">
+            <a href="#main" class="nav-btn active">About</a>
+            <a href="#projects" class="nav-btn">Projects</a>
+            <a href="#experience" class="nav-btn">Experience</a>
+          </div>
+          
+          <div class="vertical-divider"></div>
+          
+          <div class="social-group">
+            <!-- Social links will be rendered by JavaScript -->
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+      <div class="nav-links">
+        <a href="#main" class="nav-btn active">
+          <i class="fa-solid fa-user"></i>
+          <span>About</span>
+        </a>
+        <a href="#projects" class="nav-btn">
+          <i class="fa-solid fa-code"></i>
+          <span>Projects</span>
+        </a>
+        <a href="#experience" class="nav-btn">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Experience</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile Top Header -->
+    <header class="mobile-top-header">
+      <div class="header-container">
+        <a href="index.html" class="header-logo-link">
+          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo" />
+        </a>
+        <div class="social-group">
+          <!-- Social links will be rendered by JavaScript -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <section id="main">
+      <div class="hero-container">
+        <!-- Hero content will be rendered by JavaScript -->
+      </div>
+
+      <!-- About Me Section -->
+      <div class="about-me-section">
+        <h2 class="animate-on-scroll">ABOUT ME</h2>
+        <div
+          class="about-me-content"
+          style="
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 0 1rem;
+          "
+        >
+          <!-- About me text will be rendered by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Skills within About Section -->
+      <div class="about-skills-section">
+        <h2 class="animate-on-scroll">SKILLS & TOOLS</h2>
+        <div class="skills-container">
+          <!-- Skills will be rendered by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Meraki Studios Section -->
+      <div class="meraki-studios-section">
+        <div class="meraki-content" style="max-width: 800px; margin: 4rem auto 0; padding: 0 2rem; text-align: center;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- GitHub Stats Section -->
+      <div class="github-stats-section" style="margin-top: 5rem;">
+        <h2 class="animate-on-scroll">GITHUB STATS</h2>
+        <div class="github-stats-container" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center; padding: 0 1rem;">
+          <div class="stats-row animate-on-scroll" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+            <div class="github-stat-card">
+              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" alt="GitHub Stats" height="180" style="display: block;" />
+            </div>
+            <div class="github-stat-card">
+              <img src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" alt="GitHub Streak" height="180" style="display: block;" />
+            </div>
+          </div>
+          <div class="stats-row animate-on-scroll" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+            <div class="github-stat-card">
+              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" alt="Top Languages" height="180" style="display: block;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="animate-on-scroll">PROJECTS</h2>
+      <div class="projects-container">
+        <!-- Projects will be rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="animate-on-scroll">EXPERIENCE</h2>
+      <div class="experience-timeline">
+        <!-- Experience will be rendered by JavaScript -->
+      </div>
+
+      <!-- Education within Experience Section -->
+      <div class="experience-education-section">
+        <h2 class="animate-on-scroll">EDUCATION & CERTIFICATES</h2>
+        <div class="education-container">
+          <!-- Education and Certs will be rendered by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-compact" id="contact">
+        <div class="center-slot footer-section contact-info">
+          <!-- Contact info will be rendered by JavaScript -->
+        </div>
+      </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal">
+      <div class="modal-content">
+        <button class="modal-close-btn">&times;</button>
+        <h2 id="modal-project-title"></h2>
+        <div id="modal-project-video"></div>
+        <p id="modal-project-description"></p>
+        <div id="modal-project-links"></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/portfolio-config.js" defer></script>
+    <script src="scripts/animations.js" defer></script>
+    <script src="scripts/voronoi.js" defer></script>
+    <script src="scripts/portfolio-main.js" defer></script>
+  </body>
+</html>
