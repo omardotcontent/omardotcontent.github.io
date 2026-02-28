@@ -92,7 +92,7 @@ const PORTFOLIO_CONFIG = {
     {
       id: "hultproject",
       title: "hultProject",
-      description: "Collaborative academic/university project.",
+      description: "Assignment Project for Hult Prize SAMS' Java Course",
       primaryUrl: "",
       githubUrl: "https://github.com/omardotcontent/hultProject",
       tags: ["Java"]
@@ -124,10 +124,10 @@ const PORTFOLIO_CONFIG = {
     {
       id: "ffaplus",
       title: "FFaPlus",
-      description: "FFA+ Minecraft Plugin",
+      description: "A Fork of FFA Plugin",
       primaryUrl: "",
       githubUrl: "https://github.com/omardotcontent/FFaPlus",
-      tags: ["Java", "Contributor"]
+      tags: ["Java", "Forked"]
     },
     {
       id: "vyn",
