@@ -10,7 +10,7 @@
       merakiContent: document.querySelector(".meraki-content"),
       socialGroups: document.querySelectorAll(".social-group"), // targets both desktop and mobile top header
       skillsContainer: document.querySelector(".skills-container"),
-      projectsContainer: document.querySelector(".projects-container"),
+      projectsContainer: document.querySelector("#projects-wrapper"),
       experienceTimeline: document.querySelector(".experience-timeline"),
       educationContainer: document.querySelector(".education-container"),
       contactInfo: document.querySelector(".contact-info"),
@@ -117,7 +117,12 @@
         <div class="skill-card animate-on-scroll">
             <h3>${skillCategory.title}</h3>
             <ul>
-                ${skillCategory.list.map((skill) => `<li><i class="${skill.icon}"></i>${skill.name}</li>`).join("")}
+                ${skillCategory.list.map((skill) => {
+                    if (skill.iconImg) {
+                        return `<li><img src="${skill.iconImg}" alt="${skill.name} icon" style="width: 25px; height: 25px; object-fit: contain;" />${skill.name}</li>`;
+                    }
+                    return `<li><i class="${skill.icon}"></i>${skill.name}</li>`;
+                }).join("")}
             </ul>
         </div>
     `,
@@ -132,44 +137,118 @@
     container.innerHTML = ''; 
     const frag = document.createDocumentFragment();
     
-    PORTFOLIO_CONFIG.projects.forEach(project => {
-      const div = document.createElement("div");
-      div.className = "project-card animate-on-scroll is-visible";
-      div.dataset.id = project.id;
+    PORTFOLIO_CONFIG.projects.forEach(categoryData => {
+      // Don't render empty categories
+      if (!categoryData.list || categoryData.list.length === 0) return;
+
+      // Category Header
+      const header = document.createElement("h3");
+      header.className = "animate-on-scroll is-visible";
+      header.style.textAlign = "center";
+      header.style.marginBottom = "2rem";
+      header.style.marginTop = "3rem";
+      header.style.fontSize = "2.2rem";
+      header.style.color = "var(--primary-color)";
+      header.textContent = categoryData.category;
+      frag.appendChild(header);
+
+      const grid = document.createElement("div");
       
-      const tags = project.tags || [];
-
-      // Extract hostname to get favicon using Google's Favicon service
-      let faviconUrl = '';
-      if (project.primaryUrl) {
-          try {
-              const urlObj = new URL(project.primaryUrl);
-              faviconUrl = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`;
-          } catch(e) {
-              console.error("Invalid URL provided for project:", project.primaryUrl);
-          }
+      if (categoryData.layout === "compact") {
+        grid.className = "projects-container compact animate-on-scroll is-visible";
+      } else {
+        grid.className = "projects-container animate-on-scroll is-visible";
       }
+      
+      categoryData.list.forEach(project => {
+        const div = document.createElement("div");
+        div.className = categoryData.layout === "compact" ? "project-card compact" : "project-card";
+        div.dataset.id = project.id;
+        
+        const tags = project.tags || [];
 
-      // Build the header with favicon, title, and optional github badge
-      div.innerHTML = `
-        <a href="${project.primaryUrl || '#'}" target="_blank" class="project-card-link" aria-label="View details for ${project.title}">
-            <div class="project-content" style="padding-top: 2rem;">
-              <h3 style="display: flex; align-items: center; gap: 0.75rem;">
-                 ${faviconUrl ? `<img src="${faviconUrl}" alt="Icon" style="width: 24px; height: 24px; border-radius: 4px;" onerror="this.style.display='none'">` : ''}
-                 ${project.title}
-              </h3>
-              <p>${project.description}</p>
-              <div class="project-tags">
-                ${tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
-              </div>
+        // Extract hostname to get favicon using Google's Favicon service
+        let faviconUrl = '';
+        if (project.primaryUrl) {
+            try {
+                const urlObj = new URL(project.primaryUrl);
+                faviconUrl = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`;
+            } catch(e) {
+                console.error("Invalid URL provided for project:", project.primaryUrl);
+            }
+        }
+
+        // Generate video preview HTML
+        let videoHTML = "";
+        if (project.youtubeId) {
+          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000;">
+            <iframe style="width: 100%; height: 100%; aspect-ratio: 16/9; border: none; pointer-events: none;" 
+                    src="https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&rel=0" 
+                    allow="autoplay; encrypted-media" loading="lazy">
+            </iframe>
+          </div>`;
+        } else if (project.youtubeShortId) {
+          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000;">
+            <iframe style="width: 100%; height: 100%; aspect-ratio: 9/16; max-height: 400px; border: none; pointer-events: none;" 
+                    src="https://www.youtube.com/embed/${project.youtubeShortId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeShortId}&controls=0&showinfo=0&rel=0" 
+                    allow="autoplay; encrypted-media" loading="lazy">
+            </iframe>
+          </div>`;
+        } else if (project.instagramId) {
+          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <iframe style="width: 100%; height: 100%; aspect-ratio: 9/16; max-height: 400px; border: none; pointer-events: none; border-radius: 8px;" 
+                    src="https://www.instagram.com/reel/${project.instagramId}/embed" 
+                    scrolling="no" allowtransparency="true" loading="lazy">
+            </iframe>
+          </div>`;
+        } else if (project.imageUrl) {
+          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000; overflow: hidden;">
+            <img src="${project.imageUrl}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          </div>`;
+        } else if (project.spotifyTrackId) {
+          videoHTML = `<div class="project-image-container" style="padding: 1.5rem; background: transparent; height: auto; display: flex; align-items: center; justify-content: center;">
+            <iframe style="border-radius:12px; border: none; width: 100%; height: 152px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>`;
+        }
+
+        // For compact layouts, simplify the card internally
+        if (categoryData.layout === "compact") {
+          div.innerHTML = `
+            <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
+                ${videoHTML}
+                <div class="project-content" style="padding: 1rem;">
+                  <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; margin: 0;">
+                     ${faviconUrl ? `<img src="${faviconUrl}" alt="Icon" style="width: 16px; height: 16px; border-radius: 4px;" onerror="this.style.display='none'">` : ''}
+                     ${project.title}
+                  </h3>
+                </div>
+            </a>
+          `;
+        } else {
+          div.innerHTML = `
+            <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
+                ${videoHTML}
+                <div class="project-content" style="${videoHTML ? 'padding-top: 1.5rem;' : 'padding-top: 2rem;'}">
+                  <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                     ${faviconUrl ? `<img src="${faviconUrl}" alt="Icon" style="width: 24px; height: 24px; border-radius: 4px;" onerror="this.style.display='none'">` : ''}
+                     ${project.title}
+                  </h3>
+                  <p>${project.description}</p>
+                  <div class="project-tags">
+                    ${tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+                  </div>
+                </div>
+            </a>
+            <div class="project-links" style="gap: 1rem;">
+                ${project.primaryUrl ? `<a href="${project.primaryUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center;"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 8px;"></i> Visit</a>` : ''}
+                ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--text-muted); color: var(--text-color);"><i class="fa-brands fa-github" style="margin-right: 8px;"></i> Source</a>` : ''}
             </div>
-        </a>
-        <div class="project-links" style="gap: 1rem;">
-            ${project.primaryUrl ? `<a href="${project.primaryUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center;"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 8px;"></i> Visit</a>` : ''}
-            ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--text-muted); color: var(--text-color);"><i class="fa-brands fa-github" style="margin-right: 8px;"></i> Source</a>` : ''}
-        </div>
-      `;
-      frag.appendChild(div);
+          `;
+        }
+        grid.appendChild(div);
+      });
+      
+      frag.appendChild(grid);
     });
     
     container.appendChild(frag);
@@ -177,6 +256,7 @@
     setTimeout(() => {
         if (window.MerakiAnimations && typeof window.MerakiAnimations.scroll.observe === 'function') {
             window.MerakiAnimations.scroll.observe('.project-card');
+            window.MerakiAnimations.scroll.observe('#projects-wrapper h3');
         }
     }, 100);
   }
@@ -352,17 +432,41 @@
     const openModal = (project) => {
       if (!project) return;
       m.title.textContent = project.title;
-      m.desc.textContent = project.fullDescription;
-      m.links.innerHTML = project.links
+      m.desc.textContent = project.fullDescription || project.description;
+      
+      const links = project.links || [];
+      if (project.primaryUrl && !links.find(l => l.url === project.primaryUrl)) {
+          links.push({text: "Visit", url: project.primaryUrl});
+      }
+      if (project.githubUrl && !links.find(l => l.url === project.githubUrl)) {
+          links.push({text: "Source", url: project.githubUrl});
+      }
+      m.links.innerHTML = links
         .map(
           (l) =>
             `<a href="${l.url}" target="_blank" class="project-btn">${l.text}</a>`,
         )
         .join("");
+        
       m.video.innerHTML = "";
       if (project.youtubeId && project.youtubeId !== "YOUR_YOUTUBE_ID_HERE") {
         m.video.style.display = "block";
-        m.video.innerHTML = `<iframe src="https://www.youtube.com/embed/${project.youtubeId}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+        m.video.innerHTML = `<iframe style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeId}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+      } else if (project.youtubeShortId) {
+        m.video.style.display = "flex";
+        m.video.style.justifyContent = "center";
+        m.video.innerHTML = `<iframe style="aspect-ratio: 9/16; height: 75vh; max-height: 800px; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeShortId}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+      } else if (project.instagramId) {
+        m.video.style.display = "flex";
+        m.video.style.justifyContent = "center";
+        m.video.innerHTML = `<iframe style="aspect-ratio: 9/16; height: 75vh; max-height: 800px; border-radius: 8px; border: none;" src="https://www.instagram.com/reel/${project.instagramId}/embed" scrolling="no" allowtransparency="true" loading="lazy"></iframe>`;
+      } else if (project.imageUrl) {
+        m.video.style.display = "flex";
+        m.video.style.justifyContent = "center";
+        m.video.innerHTML = `<img src="${project.imageUrl}" style="width: 100%; border-radius: 8px; max-height: 80vh; object-fit: contain;">`;
+      } else if (project.spotifyTrackId) {
+        m.video.style.display = "block";
+        m.video.innerHTML = `<iframe style="border-radius:12px; border: none; width: 100%; height: 352px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
       } else {
         m.video.style.display = "none";
       }
@@ -379,9 +483,11 @@
       if (trigger) {
         e.preventDefault();
         const projectId = trigger.dataset.modalTrigger;
-        const project = PORTFOLIO_CONFIG.projects.find(
-          (p) => p.id === projectId,
-        );
+        let project = null;
+        for (const cat of PORTFOLIO_CONFIG.projects) {
+          project = cat.list.find((p) => p.id === projectId);
+          if (project) break;
+        }
         openModal(project);
       }
     });

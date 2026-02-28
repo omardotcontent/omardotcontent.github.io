@@ -46,6 +46,7 @@ const PORTFOLIO_CONFIG = {
         { name: "C++", icon: "fa-solid fa-c" },
         { name: "Python", icon: "fa-brands fa-python" },
         { name: "HTML / CSS", icon: "fa-brands fa-html5" },
+        { name: "Vyn", iconImg: "images/vyn_logo.png" },
       ]
     }
   ],
@@ -66,108 +67,390 @@ const PORTFOLIO_CONFIG = {
   // Projects Collection
   projects: [
     {
-      id: "interactivestuff",
-      title: "InteractiveStuff",
-      description: "Items Interact within your First-Person View!",
-      primaryUrl: "https://modrinth.com/mod/interactivestuff",
-      githubUrl: "https://github.com/omardotcontent/InteractiveStuff",
-      tags: ["Java", "Minecraft"]
+      category: "Software & Development",
+      list: [
+        {
+          id: "interactivestuff",
+          title: "InteractiveStuff",
+          description: "Items Interact within your First-Person View!",
+          primaryUrl: "https://modrinth.com/mod/interactivestuff",
+          githubUrl: "https://github.com/omardotcontent/InteractiveStuff",
+          tags: ["Java", "Minecraft"]
+        },
+        {
+          id: "worldchatter",
+          title: "WorldChatter",
+          description: "Enhance your chatting experience.",
+          primaryUrl: "https://modrinth.com/plugin/worldchatter",
+          githubUrl: "https://github.com/omardotcontent/WorldChatter",
+          tags: ["Java", "Minecraft"]
+        },
+        {
+          id: "worldcaster",
+          title: "WorldCaster",
+          description: "Standalone Broadcast Add-on for WorldChatter!",
+          primaryUrl: "https://modrinth.com/plugin/worldcaster",
+          githubUrl: "https://github.com/omardotcontent/WorldCaster",
+          tags: ["Java", "Minecraft"]
+        },
+        {
+          id: "simpletodo",
+          title: "SimpleToDO",
+          description: "A Simple TO-DO JavaFX Desktop Application",
+          primaryUrl: "",
+          githubUrl: "https://github.com/omardotcontent/SimpleToDO",
+          tags: ["Java"]
+        },
+        {
+          id: "meraki-studios",
+          title: "meraki-studios",
+          description: "The Official Organization where a bunch of Nerds create limitless projects.",
+          primaryUrl: "",
+          githubUrl: "https://github.com/MerakiDotStudios/meraki-studios",
+          tags: ["JavaScript", "Contributor"]
+        },
+        {
+          id: "sync",
+          title: "Sync",
+          description: "A Simple Utilities Discord Bot made with JDA ",
+          primaryUrl: "",
+          githubUrl: "https://github.com/omardotcontent/sync",
+          tags: ["Java"]
+        },
+        {
+          id: "astudioapp",
+          title: "AStudioApp",
+          description: "A Fully Working JavaFX Social Media App but with not that many features",
+          primaryUrl: "",
+          githubUrl: "https://github.com/omardotcontent/AStudioApp",
+          tags: ["Java"]
+        },
+        {
+          id: "appstudioserverlistener",
+          title: "AppStudioServerListener",
+          description: "The Server Backend for the Studio App ",
+          primaryUrl: "",
+          githubUrl: "https://github.com/omardotcontent/AppStudioServerListener",
+          tags: ["Java"]
+        },
+        {
+          id: "muscleprototype",
+          title: "MusclePrototype",
+          description: "A JavaFX Simulation Project for an Old Competition",
+          primaryUrl: "",
+          githubUrl: "https://github.com/omardotcontent/MusclePrototype",
+          tags: ["Java"]
+        }
+      ]
     },
     {
-      id: "worldchatter",
-      title: "WorldChatter",
-      description: "Enhance your chatting experience.",
-      primaryUrl: "https://modrinth.com/plugin/worldchatter",
-      githubUrl: "https://github.com/omardotcontent/WorldChatter",
-      tags: ["Java", "Minecraft"]
+      category: "Content & Media",
+      list: [
+        {
+          id: "yt-video-1",
+          title: "[MC/FNAF] Demons",
+          description: "Video content created for YouTube.",
+          primaryUrl: "https://www.youtube.com/watch?v=pyReY80-Pd4",
+          youtubeId: "pyReY80-Pd4",
+          tags: ["YouTube", "Video", "Animation"]
+        },
+        {
+          id: "yt-video-2",
+          title: "[MI/MC] Lighting Test",
+          description: "Video content created for YouTube.",
+          primaryUrl: "https://youtu.be/tdlf_Lt6fJQ",
+          youtubeId: "tdlf_Lt6fJQ",
+          tags: ["YouTube", "Video", "Animation"]
+        },
+        {
+          id: "yt-video-3",
+          title: "I'M AT SOUP",
+          description: "Video content created for YouTube.",
+          primaryUrl: "https://youtu.be/chCtnrT1MZ0",
+          youtubeId: "chCtnrT1MZ0",
+          tags: ["YouTube", "Video", "Animation"]
+        },
+        {
+          id: "yt-video-4",
+          title: "Mathematical Questions.",
+          description: "Video content created for YouTube.",
+          primaryUrl: "https://youtu.be/-2PuvoV-jX0",
+          youtubeId: "-2PuvoV-jX0",
+          tags: ["YouTube", "Video", "Animation"]
+        },
+        {
+          id: "yt-edit-1",
+          title: "Meraki Studios - GeminiCraft",
+          description: "Video Edit for GeminiCraft",
+          primaryUrl: "https://youtu.be/F-xHKUArMv4",
+          youtubeId: "F-xHKUArMv4",
+          tags: ["YouTube", "Edit"]
+        },
+        {
+          id: "yt-short-1",
+          title: "Nitro-ify Short",
+          description: "Short-form video content created for Nitro-ify.",
+          primaryUrl: "https://www.youtube.com/shorts/QecSNWdMtEA",
+          youtubeShortId: "QecSNWdMtEA",
+          tags: ["YouTube", "Shorts", "Edit"]
+        },
+        {
+          id: "yt-short-2",
+          title: "Nitro-ify Short",
+          description: "Short-form video content created for Nitro-ify.",
+          primaryUrl: "https://youtube.com/shorts/Z6OwqV8kn2M",
+          youtubeShortId: "Z6OwqV8kn2M",
+          tags: ["YouTube", "Shorts", "Edit"]
+        },
+        {
+          id: "yt-short-3",
+          title: "Nitro-ify Short",
+          description: "Short-form video content created for Nitro-ify.",
+          primaryUrl: "https://youtube.com/shorts/E__UR37Avn8",
+          youtubeShortId: "E__UR37Avn8",
+          tags: ["YouTube", "Shorts", "Edit"]
+        }
+      ]
     },
     {
-      id: "worldcaster",
-      title: "WorldCaster",
-      description: "Standalone Broadcast Add-on for WorldChatter!",
-      primaryUrl: "https://modrinth.com/plugin/worldcaster",
-      githubUrl: "https://github.com/omardotcontent/WorldCaster",
-      tags: ["Java", "Minecraft"]
+      category: "AKCallers Videos",
+      layout: "compact",
+      list: [
+        {
+          id: "ig-akcallers-1",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/DChgDNyMi1W/",
+          instagramId: "DChgDNyMi1W",
+          tags: ["Instagram", "AKCallers"]
+        },
+        {
+          id: "ig-akcallers-2",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/DCEp7HFNaaR/",
+          instagramId: "DCEp7HFNaaR",
+          tags: ["Instagram", "AKCallers"]
+        },
+        {
+          id: "ig-akcallers-3",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/C-tJaZfAtDt/",
+          instagramId: "C-tJaZfAtDt",
+          tags: ["Instagram", "AKCallers"]
+        },
+        {
+          id: "ig-akcallers-4",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/C-5u6eTOcVp/",
+          instagramId: "C-5u6eTOcVp",
+          tags: ["Instagram", "AKCallers"]
+        },
+        {
+          id: "ig-akcallers-5",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/C-JMoSPO5kq/",
+          instagramId: "C-JMoSPO5kq",
+          tags: ["Instagram", "AKCallers"]
+        },
+        {
+          id: "ig-akcallers-6",
+          title: "AKCallers Reel",
+          description: "Promotional content created for AKCallers.",
+          primaryUrl: "https://www.instagram.com/reel/C8LADDxNBoJ/",
+          instagramId: "C8LADDxNBoJ",
+          tags: ["Instagram", "AKCallers"]
+        }
+      ]
     },
     {
-      id: "hultproject",
-      title: "hultProject",
-      description: "Assignment Project for Hult Prize SAMS' Java Course",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/hultProject",
-      tags: ["Java"]
+      category: "ZumraFood Videos",
+      layout: "compact",
+      list: [
+        {
+          id: "ig-zumra-1",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/Cz52N_Uy_lu/",
+          instagramId: "Cz52N_Uy_lu",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-2",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CzVsvrmynUu/",
+          instagramId: "CzVsvrmynUu",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-3",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CzI1H2QymP8/",
+          instagramId: "CzI1H2QymP8",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-4",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CyfiNYbyvg8/",
+          instagramId: "CyfiNYbyvg8",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-5",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/",
+          instagramId: "Cy0HccJBWr9",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-6",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/",
+          instagramId: "CxZ_uU7IP_o",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-7",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/",
+          instagramId: "CwhWLAyoc2B",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-8",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/Cvb0pp9okVl/",
+          instagramId: "Cvb0pp9okVl",
+          tags: ["Instagram", "ZumraFood"]
+        },
+        {
+          id: "ig-zumra-9",
+          title: "ZumraFood Reel",
+          description: "Animated visual content for ZumraFood.",
+          primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/",
+          instagramId: "CwR5ggbIclS",
+          tags: ["Instagram", "ZumraFood"]
+        }
+      ]
     },
     {
-      id: "numberguessinggame",
-      title: "NumberGuessingGame",
-      description: "I'm just having fun with the number guessing",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/NumberGuessingGame",
-      tags: ["Java", "Forked"]
+      category: "Music & Audio",
+      list: [
+        {
+          id: "spotify-1",
+          title: "Avenoir",
+          description: "Y'all like jazz?",
+          spotifyTrackId: "5WyWet5iP1Pky2LtRZUMBY",
+          tags: ["Music", "Spotify"]
+        },
+        {
+          id: "spotify-2",
+          title: "Obsidiana",
+          description: "Calm vibes.",
+          spotifyTrackId: "0ZC7l1MCYRbJW27JjkS72K",
+          tags: ["Music", "Spotify"]
+        }
+      ]
     },
     {
-      id: "simpletodo",
-      title: "SimpleToDO",
-      description: "A Simple TO-DO JavaFX Desktop Application",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/SimpleToDO",
-      tags: ["Java"]
+      category: "Design & Art",
+      list: [
+        // Add design & art projects here
+      ]
     },
     {
-      id: "meraki-studios",
-      title: "meraki-studios",
-      description: "The Official Organization where a bunch of Nerds create limitless projects.",
-      primaryUrl: "",
-      githubUrl: "https://github.com/MerakiDotStudios/meraki-studios",
-      tags: ["JavaScript", "Contributor"]
-    },
-    {
-      id: "ffaplus",
-      title: "FFaPlus",
-      description: "A Fork of FFA Plugin",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/FFaPlus",
-      tags: ["Java", "Forked"]
-    },
-    {
-      id: "vyn",
-      title: "Vyn",
-      description: "A statement-driven scripting language with a focus on readability, blueprints, and concurrency.",
-      primaryUrl: "",
-      githubUrl: "https://github.com/Abdelaziz1586/Vyn",
-      tags: ["Java", "Contributor"]
-    },
-    {
-      id: "sync",
-      title: "Sync",
-      description: "A Simple Utilities Discord Bot made with JDA ",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/sync",
-      tags: ["Java"]
-    },
-    {
-      id: "akcallersstudioapp",
-      title: "AKCallersStudioApp",
-      description: "A Fully Working JavaFX Social Media App but with not that many features",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/AKCallersStudioApp",
-      tags: ["Java"]
-    },
-    {
-      id: "akcallersstudioserverlistener",
-      title: "AKCallersStudioServerListener",
-      description: "The Server Backend for the AKCallers Studio App ",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/AKCallersStudioServerListener",
-      tags: ["Java"]
-    },
-    {
-      id: "muscleprototype",
-      title: "MusclePrototype",
-      description: "A JavaFX Simulation Project for an Old Competition",
-      primaryUrl: "",
-      githubUrl: "https://github.com/omardotcontent/MusclePrototype",
-      tags: ["Java"]
+      category: "Renders & Graphics",
+      layout: "compact",
+      list: [
+        {
+          id: "render-1",
+          title: "1v1",
+          description: "Made in Mine-Imator + Paint.NET.",
+          imageUrl: "images/renders/1v1.png",
+          tags: ["Render", "Minecraft"]
+        },
+        {
+          id: "render-2",
+          title: "Herobrine Alpha",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/HerobrineAlpha.png",
+          tags: ["Render", "Minecraft"]
+        },
+        {
+          id: "render-3",
+          title: "Spring Fab",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/SpringFab.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-4",
+          title: "Steve in Nether",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/SteveinNether.png",
+          tags: ["Render", "Minecraft"]
+        },
+        {
+          id: "render-5",
+          title: "Fireball",
+          description: "Made in Mine-Imator + Paint.NET.",
+          imageUrl: "images/renders/Test.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-6",
+          title: "Breaking Bad",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/breaking bad.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-7",
+          title: "Car",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/car.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-8",
+          title: "Old Banner",
+          description: "Made in Mine-Imator.",
+          imageUrl: "images/renders/fnaf2.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-9",
+          title: "New Banner",
+          description: "Made in Mine-Imator + Paint.NET.",
+          imageUrl: "images/renders/iconbanner.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-10",
+          title: "Lines",
+          description: "Made in Mine-Imator + Paint.NET.",
+          imageUrl: "images/renders/render.png",
+          tags: ["Render", "Design"]
+        },
+        {
+          id: "render-11",
+          title: "Starweevil",
+          description: "Made in Mine-Imator + Paint.NET.",
+          imageUrl: "images/renders/starfinal.png",
+          tags: ["Render", "Design"]
+        }
+      ]
     }
   ],
 
