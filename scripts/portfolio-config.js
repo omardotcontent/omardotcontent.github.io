@@ -136,6 +136,38 @@ const PORTFOLIO_CONFIG = {
       primaryUrl: "",
       githubUrl: "https://github.com/Abdelaziz1586/Vyn",
       tags: ["Java", "Contributor"]
+    },
+    {
+      id: "sync",
+      title: "Sync",
+      description: "A Simple Utilities Discord Bot made with JDA ",
+      primaryUrl: "",
+      githubUrl: "https://github.com/omardotcontent/sync",
+      tags: ["Java"]
+    },
+    {
+      id: "akcallersstudioapp",
+      title: "AKCallersStudioApp",
+      description: "A Fully Working JavaFX Social Media App but with not that many features",
+      primaryUrl: "",
+      githubUrl: "https://github.com/omardotcontent/AKCallersStudioApp",
+      tags: ["Java"]
+    },
+    {
+      id: "akcallersstudioserverlistener",
+      title: "AKCallersStudioServerListener",
+      description: "The Server Backend for the AKCallers Studio App ",
+      primaryUrl: "",
+      githubUrl: "https://github.com/omardotcontent/AKCallersStudioServerListener",
+      tags: ["Java"]
+    },
+    {
+      id: "muscleprototype",
+      title: "MusclePrototype",
+      description: "A JavaFX Simulation Project for an Old Competition",
+      primaryUrl: "",
+      githubUrl: "https://github.com/omardotcontent/MusclePrototype",
+      tags: ["Java"]
     }
   ],
 
