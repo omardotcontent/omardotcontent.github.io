@@ -121,7 +121,7 @@ const PORTFOLIO_CONFIG = {
         {
           id: "astudioapp",
           title: "AStudioApp",
-          description: "A Fully Working JavaFX Social Media App but with not that many features",
+          description: "A Fully Working JavaFX Social Media App with basic features",
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/AStudioApp",
           tags: ["Java"]
