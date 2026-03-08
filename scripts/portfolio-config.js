@@ -21,6 +21,7 @@ const PORTFOLIO_CONFIG = {
 
   // Header Social Links
   headerSocial: [
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
     { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" },
     { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
     { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
@@ -377,77 +378,77 @@ const PORTFOLIO_CONFIG = {
           id: "render-1",
           title: "1v1",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/1v1.png",
+          imageUrl: "images/renders/1v1.webp",
           tags: ["Render", "Minecraft"]
         },
         {
           id: "render-2",
           title: "Herobrine Alpha",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/HerobrineAlpha.png",
+          imageUrl: "images/renders/HerobrineAlpha.webp",
           tags: ["Render", "Minecraft"]
         },
         {
           id: "render-3",
           title: "Spring Fab",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/SpringFab.png",
+          imageUrl: "images/renders/SpringFab.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-4",
           title: "Steve in Nether",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/SteveinNether.png",
+          imageUrl: "images/renders/SteveinNether.webp",
           tags: ["Render", "Minecraft"]
         },
         {
           id: "render-5",
           title: "Fireball",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/Test.png",
+          imageUrl: "images/renders/Test.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-6",
           title: "Breaking Bad",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/breaking bad.png",
+          imageUrl: "images/renders/breaking bad.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-7",
           title: "Car",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/car.png",
+          imageUrl: "images/renders/car.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-8",
           title: "Old Banner",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/fnaf2.png",
+          imageUrl: "images/renders/fnaf2.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-9",
           title: "New Banner",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/iconbanner.png",
+          imageUrl: "images/renders/iconbanner.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-10",
           title: "Lines",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/render.png",
+          imageUrl: "images/renders/render.webp",
           tags: ["Render", "Design"]
         },
         {
           id: "render-11",
           title: "Starweevil",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/starfinal.png",
+          imageUrl: "images/renders/starfinal.webp",
           tags: ["Render", "Design"]
         }
       ]

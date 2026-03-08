@@ -133,132 +133,130 @@
   function renderProjects(container) {
     if (!container) return;
     
-    // Clear out any previous content (like "Loading...")
-    container.innerHTML = ''; 
-    const frag = document.createDocumentFragment();
-    
-    PORTFOLIO_CONFIG.projects.forEach(categoryData => {
-      // Don't render empty categories
-      if (!categoryData.list || categoryData.list.length === 0) return;
+    // Show skeleton loading placeholders
+    container.innerHTML = '<div class="projects-container animate-on-scroll is-visible">' +
+      Array(6).fill('').map(() => `
+        <div class="skeleton-card">
+          <div class="skeleton-media"></div>
+          <div class="skeleton-text">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      `).join('') + '</div>';
 
-      // Category Header
-      const header = document.createElement("h3");
-      header.className = "animate-on-scroll is-visible";
-      header.style.textAlign = "center";
-      header.style.marginBottom = "2rem";
-      header.style.marginTop = "3rem";
-      header.style.fontSize = "2.2rem";
-      header.style.color = "var(--primary-color)";
-      header.textContent = categoryData.category;
-      frag.appendChild(header);
+    // Small delay so skeleton is visible before real content replaces it
+    requestAnimationFrame(() => {
+      container.innerHTML = '';
+      const frag = document.createDocumentFragment();
 
-      const grid = document.createElement("div");
-      
-      if (categoryData.layout === "compact") {
-        grid.className = "projects-container compact animate-on-scroll is-visible";
-      } else {
-        grid.className = "projects-container animate-on-scroll is-visible";
-      }
-      
-      categoryData.list.forEach(project => {
-        const div = document.createElement("div");
-        div.className = categoryData.layout === "compact" ? "project-card compact" : "project-card";
-        div.dataset.id = project.id;
+      PORTFOLIO_CONFIG.projects.forEach(categoryData => {
+        if (!categoryData.list || categoryData.list.length === 0) return;
+
+        // Category Header
+        const header = document.createElement("h3");
+        header.className = "category-header animate-on-scroll is-visible";
+        header.textContent = categoryData.category;
+        frag.appendChild(header);
+
+        const grid = document.createElement("div");
+        grid.className = categoryData.layout === "compact" 
+          ? "projects-container compact animate-on-scroll is-visible"
+          : "projects-container animate-on-scroll is-visible";
         
-        const tags = project.tags || [];
+        categoryData.list.forEach(project => {
+          const div = document.createElement("div");
+          div.className = categoryData.layout === "compact" ? "project-card compact" : "project-card";
+          div.dataset.id = project.id;
+          
+          const tags = project.tags || [];
 
-        // Extract hostname to get favicon using Google's Favicon service
-        let faviconUrl = '';
-        if (project.primaryUrl) {
+          // Favicon
+          let faviconUrl = '';
+          if (project.primaryUrl) {
             try {
-                const urlObj = new URL(project.primaryUrl);
-                faviconUrl = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`;
-            } catch(e) {
-                console.error("Invalid URL provided for project:", project.primaryUrl);
-            }
-        }
+              const urlObj = new URL(project.primaryUrl);
+              faviconUrl = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`;
+            } catch(e) {}
+          }
 
-        // Generate video preview HTML
-        let videoHTML = "";
-        if (project.youtubeId) {
-          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000;">
-            <iframe style="width: 100%; height: 100%; aspect-ratio: 16/9; border: none; pointer-events: none;" 
-                    src="https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&rel=0" 
-                    allow="autoplay; encrypted-media" loading="lazy">
-            </iframe>
-          </div>`;
-        } else if (project.youtubeShortId) {
-          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000;">
-            <iframe style="width: 100%; height: 100%; aspect-ratio: 9/16; max-height: 400px; border: none; pointer-events: none;" 
-                    src="https://www.youtube.com/embed/${project.youtubeShortId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeShortId}&controls=0&showinfo=0&rel=0" 
-                    allow="autoplay; encrypted-media" loading="lazy">
-            </iframe>
-          </div>`;
-        } else if (project.instagramId) {
-          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            <iframe style="width: 100%; height: 100%; aspect-ratio: 9/16; max-height: 400px; border: none; pointer-events: none; border-radius: 8px;" 
-                    src="https://www.instagram.com/reel/${project.instagramId}/embed" 
-                    scrolling="no" allowtransparency="true" loading="lazy">
-            </iframe>
-          </div>`;
-        } else if (project.imageUrl) {
-          videoHTML = `<div class="project-image-container" style="padding: 0; background: #000; overflow: hidden;">
-            <img src="${project.imageUrl}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-          </div>`;
-        } else if (project.spotifyTrackId) {
-          videoHTML = `<div class="project-image-container" style="padding: 1.5rem; background: transparent; height: auto; display: flex; align-items: center; justify-content: center;">
-            <iframe style="border-radius:12px; border: none; width: 100%; height: 152px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          </div>`;
-        }
 
-        // For compact layouts, simplify the card internally
-        if (categoryData.layout === "compact") {
-          div.innerHTML = `
-            <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
-                ${videoHTML}
-                <div class="project-content" style="padding: 1rem;">
-                  <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; margin: 0;">
-                     ${faviconUrl ? `<img src="${faviconUrl}" alt="Icon" style="width: 16px; height: 16px; border-radius: 4px;" onerror="this.style.display='none'">` : ''}
-                     ${project.title}
-                  </h3>
+
+          // Generate media preview HTML
+          let mediaHTML = "";
+          if (project.youtubeId) {
+            const thumbUrl = `https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`;
+            mediaHTML = `<div class="project-image-container project-embed-container video-thumbnail" data-yt-id="${project.youtubeId}" data-yt-aspect="16/9">
+              <img src="${thumbUrl}" alt="${project.title} – YouTube thumbnail" loading="lazy" decoding="async">
+              <div class="play-button-overlay"></div>
+            </div>`;
+          } else if (project.youtubeShortId) {
+            const thumbUrl = `https://img.youtube.com/vi/${project.youtubeShortId}/hqdefault.jpg`;
+            mediaHTML = `<div class="project-image-container project-embed-container video-thumbnail" data-yt-id="${project.youtubeShortId}" data-yt-aspect="9/16">
+              <img src="${thumbUrl}" alt="${project.title} – YouTube Short thumbnail" loading="lazy" decoding="async">
+              <div class="play-button-overlay"></div>
+            </div>`;
+          } else if (project.instagramId) {
+            mediaHTML = `<div class="project-image-container ig-placeholder" data-ig-url="${project.primaryUrl}">
+              <i class="fa-brands fa-instagram"></i>
+              <span>View on Instagram</span>
+            </div>`;
+          } else if (project.imageUrl) {
+            mediaHTML = `<div class="project-image-container render-image-container">
+              <img src="${project.imageUrl}" alt="${project.title}" loading="lazy" decoding="async">
+            </div>`;
+          } else if (project.spotifyTrackId) {
+            mediaHTML = `<div class="project-image-container spotify-embed-container">
+              <iframe title="${project.title} on Spotify" style="border-radius:12px; border: none; width: 100%; height: 152px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>`;
+          }
+
+          const faviconHTML = faviconUrl 
+            ? `<img src="${faviconUrl}" alt="${project.title} icon" class="${categoryData.layout === 'compact' ? 'project-favicon' : 'project-favicon--large'}" onerror="this.style.display='none'">`
+            : '';
+
+          if (categoryData.layout === "compact") {
+            div.innerHTML = `
+              <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
+                ${mediaHTML}
+                <div class="project-content-compact">
+                  <h3>${faviconHTML}${project.title}</h3>
                 </div>
-            </a>
-          `;
-        } else {
-          div.innerHTML = `
-            <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
-                ${videoHTML}
-                <div class="project-content" style="${videoHTML ? 'padding-top: 1.5rem;' : 'padding-top: 2rem;'}">
-                  <h3 style="display: flex; align-items: center; gap: 0.75rem;">
-                     ${faviconUrl ? `<img src="${faviconUrl}" alt="Icon" style="width: 24px; height: 24px; border-radius: 4px;" onerror="this.style.display='none'">` : ''}
-                     ${project.title}
-                  </h3>
+              </a>`;
+          } else {
+            div.innerHTML = `
+              <a href="#" class="project-card-link" aria-label="View details for ${project.title}" data-modal-trigger="${project.id}">
+                ${mediaHTML}
+                <div class="project-content${mediaHTML ? ' project-content--with-media' : ''}">
+                  <h3>${faviconHTML}${project.title}</h3>
                   <p>${project.description}</p>
                   <div class="project-tags">
                     ${tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
                   </div>
                 </div>
-            </a>
-            <div class="project-links" style="gap: 1rem;">
-                ${project.primaryUrl ? `<a href="${project.primaryUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center;"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 8px;"></i> Visit</a>` : ''}
-                ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-btn" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--text-muted); color: var(--text-color);"><i class="fa-brands fa-github" style="margin-right: 8px;"></i> Source</a>` : ''}
-            </div>
-          `;
-        }
-        grid.appendChild(div);
+              </a>
+              <div class="project-links">
+                ${project.primaryUrl ? `<a href="${project.primaryUrl}" target="_blank" rel="noopener" class="project-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i>Visit</a>` : ''}
+                ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener" class="project-btn project-btn--outline"><i class="fa-brands fa-github"></i>Source</a>` : ''}
+              </div>`;
+          }
+          grid.appendChild(div);
+        });
+        
+        frag.appendChild(grid);
       });
       
-      frag.appendChild(grid);
-    });
-    
-    container.appendChild(frag);
-    
-    setTimeout(() => {
+      container.appendChild(frag);
+      
+      setTimeout(() => {
         if (window.MerakiAnimations && typeof window.MerakiAnimations.scroll.observe === 'function') {
-            window.MerakiAnimations.scroll.observe('.project-card');
-            window.MerakiAnimations.scroll.observe('#projects-wrapper h3');
+          window.MerakiAnimations.scroll.observe('.project-card');
+          window.MerakiAnimations.scroll.observe('#projects-wrapper h3');
         }
-    }, 100);
+      }, 100);
+
+    });
   }
 
   function renderExperience(container) {
@@ -444,29 +442,31 @@
       m.links.innerHTML = links
         .map(
           (l) =>
-            `<a href="${l.url}" target="_blank" class="project-btn">${l.text}</a>`,
+            `<a href="${l.url}" target="_blank" rel="noopener" class="project-btn">${l.text}</a>`,
         )
         .join("");
         
       m.video.innerHTML = "";
+      m.video.style.display = "";
+      m.video.style.justifyContent = "";
       if (project.youtubeId && project.youtubeId !== "YOUR_YOUTUBE_ID_HERE") {
         m.video.style.display = "block";
-        m.video.innerHTML = `<iframe style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeId}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+        m.video.innerHTML = `<iframe title="${project.title} – YouTube" style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeId}?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       } else if (project.youtubeShortId) {
         m.video.style.display = "flex";
         m.video.style.justifyContent = "center";
-        m.video.innerHTML = `<iframe style="aspect-ratio: 9/16; height: 75vh; max-height: 800px; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeShortId}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+        m.video.innerHTML = `<iframe title="${project.title} – YouTube Short" style="aspect-ratio: 9/16; height: 75vh; max-height: 800px; border-radius: 8px; border: none;" src="https://www.youtube.com/embed/${project.youtubeShortId}?autoplay=1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       } else if (project.instagramId) {
-        m.video.style.display = "flex";
-        m.video.style.justifyContent = "center";
-        m.video.innerHTML = `<iframe style="aspect-ratio: 9/16; height: 75vh; max-height: 800px; border-radius: 8px; border: none;" src="https://www.instagram.com/reel/${project.instagramId}/embed" scrolling="no" allowtransparency="true" loading="lazy"></iframe>`;
+        // Instagram: open in new tab instead of embedding
+        window.open(project.primaryUrl, '_blank', 'noopener');
+        return;
       } else if (project.imageUrl) {
         m.video.style.display = "flex";
         m.video.style.justifyContent = "center";
-        m.video.innerHTML = `<img src="${project.imageUrl}" style="width: 100%; border-radius: 8px; max-height: 80vh; object-fit: contain;">`;
+        m.video.innerHTML = `<img src="${project.imageUrl}" alt="${project.title}" style="width: 100%; border-radius: 8px; max-height: 80vh; object-fit: contain;">`;
       } else if (project.spotifyTrackId) {
         m.video.style.display = "block";
-        m.video.innerHTML = `<iframe style="border-radius:12px; border: none; width: 100%; height: 352px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+        m.video.innerHTML = `<iframe title="${project.title} on Spotify" style="border-radius:12px; border: none; width: 100%; height: 352px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
       } else {
         m.video.style.display = "none";
       }
