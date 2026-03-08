@@ -127,14 +127,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java"]
         },
         {
-          id: "appstudioserverlistener",
-          title: "AppStudioServerListener",
-          description: "The Server Backend for the Studio App ",
-          primaryUrl: "",
-          githubUrl: "https://github.com/omardotcontent/AppStudioServerListener",
-          tags: ["Java"]
-        },
-        {
           id: "muscleprototype",
           title: "MusclePrototype",
           description: "A JavaFX Simulation Project for an Old Competition",
