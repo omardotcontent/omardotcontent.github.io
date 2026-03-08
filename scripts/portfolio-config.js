@@ -12,10 +12,11 @@ const PORTFOLIO_CONFIG = {
   aboutMe: {
     title: "ABOUT ME",
     paragraphs: [
-      "I’m <strong>Omar Mohamed</strong>, born on <strong>May 12, 2006</strong> — a creator driven by design, storytelling, and clean digital experiences.",
-      "For over <strong>6 years</strong>, I’ve been working as a <strong>Video Editor</strong>, building cinematic visuals and motion-driven projects in <strong>Adobe Premiere Pro</strong>. Alongside video, I craft modern layouts, interfaces, and brand visuals across <strong>Figma</strong>, <strong>PowerPoint</strong>, and <strong>Paint.NET</strong>.",
-      "I’m also a <strong>Developer</strong> who enjoys building practical tools, clean user interfaces, and creative digital experiences. I work with <strong>Java</strong> (JavaFX apps, Minecraft plugins), <strong>Python</strong>, <strong>C++</strong>, and <strong>HTML & CSS</strong>.",
-      "I’m constantly learning, iterating, and improving — whether it's visual, interactive, or technical work."
+      "I’m <strong>Omar Mohamed</strong>, born on <strong>May 12, 2006</strong> — just a creator who loves design, storytelling, and making clean digital stuff.",
+      "I'm also the <strong>Founder of Meraki Studios</strong>! The whole idea started when we were a bunch of friends each with talents, and we thought into making 1 studio to bring all of our projects to life! Now I lead the creative direction and development there.",
+      "I've been a <strong>Motion Graphic Designer & Video Editor</strong> for over <strong>6 years</strong> now, making cinematic visuals and marketing stuff for brands like <strong>AKCallers</strong> and <strong>Zumrafood</strong> using <strong>Premiere Pro</strong>. I also make modern layouts and brand designs on <strong>Figma</strong>, <strong>PowerPoint</strong>, and <strong>Paint.NET</strong>.",
+      "But as a <strong>Developer</strong>, I really enjoy building tools, clean and interactive UIs, and creative digital experiences! I work alot with <strong>Java</strong> (JavaFX apps, Minecraft plugins), <strong>Python</strong>, <strong>C++</strong>, <strong>HTML & CSS</strong>, and recently our new scripting engine <strong>Vyn</strong>.",
+      "I'm currently getting my <strong>B.S. in Computer Science</strong> at <strong>Sadat Academy for Management Sciences</strong>. I'm always learning and improving whatever I'm cooking up... this is still the beginning and there is yet more to come."
     ]
   },
 
@@ -73,10 +74,10 @@ const PORTFOLIO_CONFIG = {
         {
           id: "interactivestuff",
           title: "InteractiveStuff",
-          description: "Items Interact within your First-Person View!",
+          description: "Items Interact within your First-Person View, now powered by the Vyn Scripting Engine!",
           primaryUrl: "https://modrinth.com/mod/interactivestuff",
           githubUrl: "https://github.com/omardotcontent/InteractiveStuff",
-          tags: ["Java", "Minecraft"]
+          tags: ["Java", "Minecraft", "Vyn"]
         },
         {
           id: "worldchatter",
@@ -449,6 +450,15 @@ const PORTFOLIO_CONFIG = {
 
   // Professional Experience
   experience: [
+    {
+      role: "Founder & Lead Developer",
+      company: "Meraki Studios",
+      date: "2024 - Present",
+      duties: [
+        "Leading creative direction and UI/UX development across all studio projects.",
+        "Managing a team of talented creators to build tools, games, and digital experiences."
+      ]
+    },
     {
       role: "Motion Graphic Designer",
       company: "AKCallers",
