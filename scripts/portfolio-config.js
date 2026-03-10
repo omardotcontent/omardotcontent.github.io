@@ -494,5 +494,6 @@ const PORTFOLIO_CONFIG = {
   contact: {
     text: "GET IN TOUCH",
     email: "omar@merakistudios.dev",
+    discord: "omardotsocial"
   }
 };

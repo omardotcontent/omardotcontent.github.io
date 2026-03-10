@@ -297,7 +297,10 @@
     const c = PORTFOLIO_CONFIG.contact;
     container.innerHTML = `
         <p class="animate-on-scroll">${c.text}</p>
-        <a href="mailto:${c.email}" class="animate-on-scroll">${c.email}</a>
+        <div class="contact-links animate-on-scroll" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="mailto:${c.email}"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i>${c.email}</a>
+            ${c.discord ? `<a href="https://discord.com/users/${c.discord}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>${c.discord}</a>` : ''}
+        </div>
       `;
   }
 
