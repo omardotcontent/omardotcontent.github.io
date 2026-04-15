@@ -45,9 +45,6 @@ const PORTFOLIO_CONFIG = {
       title: "Development",
       list: [
         { name: "Java", icon: "fa-brands fa-java" },
-        { name: "C++", icon: "fa-solid fa-c" },
-        { name: "Python", icon: "fa-brands fa-python" },
-        { name: "HTML / CSS", icon: "fa-brands fa-html5" },
         { name: "Vyn", iconImg: "images/vyn_logo.png" },
       ]
     }
