@@ -52,7 +52,7 @@ const PORTFOLIO_CONFIG = {
       title: "Audio",
       list: [
         { name: "Music Production", icon: "fa-solid fa-music" },
-        { name: "SFX Design", icon: "fa-brands fa-volume" }
+        { name: "SFX Design", icon: "fa-solid fa-volume" }
       ]
     }
   ],
