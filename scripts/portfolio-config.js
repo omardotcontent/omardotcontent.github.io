@@ -47,6 +47,13 @@ const PORTFOLIO_CONFIG = {
         { name: "Java", icon: "fa-brands fa-java" },
         { name: "Vyn", iconImg: "images/vyn_logo.png" },
       ]
+    },
+    {
+      title: "Audio",
+      list: [
+        { name: "Music Production", icon: "fa-solid fa-music" },
+        { name: "SFX Design", icon: "fa-brands fa-volume" }
+      ]
     }
   ],
 
