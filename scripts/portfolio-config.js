@@ -15,7 +15,7 @@ const PORTFOLIO_CONFIG = {
       "I’m <strong>Omar Mohamed</strong>, born on <strong>May 12, 2006</strong> — just a creator who loves design, storytelling, and making clean digital stuff.",
       "I'm also the <strong>Founder of Meraki Studios</strong>! The whole idea started when we were a bunch of friends each with talents, and we thought into making 1 studio to bring all of our projects to life! Now I lead the creative direction and development there.",
       "I've been a <strong>Motion Graphic Designer & Video Editor</strong> for over <strong>6 years</strong> now, making cinematic visuals and marketing stuff for brands like <strong>AKCallers</strong> and <strong>Zumrafood</strong> using <strong>Premiere Pro</strong>. I also make modern layouts and brand designs on <strong>Figma</strong>, <strong>PowerPoint</strong>, and <strong>Paint.NET</strong>.",
-      "But as a <strong>Developer</strong>, I really enjoy building tools, clean and interactive UIs, and creative digital experiences! I work alot with <strong>Java</strong> (JavaFX apps, Minecraft plugins), <strong>Python</strong>, <strong>C++</strong>, <strong>HTML & CSS</strong>, and recently our new scripting engine <strong>Vyn</strong>.",
+      "But as a <strong>Developer</strong>, I really enjoy building tools, clean and interactive UIs, and creative digital experiences! I work alot with <strong>Java</strong> (JavaFX apps, Minecraft plugins), and recently our new scripting engine <strong>Vyn</strong>.",
       "I'm currently getting my <strong>B.S. in Computer Science</strong> at <strong>Sadat Academy for Management Sciences</strong>. I'm always learning and improving whatever I'm cooking up... this is still the beginning and there is yet more to come."
     ]
   },
@@ -45,10 +45,7 @@ const PORTFOLIO_CONFIG = {
       title: "Development",
       list: [
         { name: "Java", icon: "fa-brands fa-java" },
-        { name: "C++", icon: "fa-solid fa-c" },
-        { name: "Python", icon: "fa-brands fa-python" },
-        { name: "HTML / CSS", icon: "fa-brands fa-html5" },
-        { name: "Vyn", iconImg: "images/vyn_logo.png" },
+        { name: "Vyn", iconImg: "images/vyn_logo.png" }
       ]
     }
   ],
