@@ -491,7 +491,10 @@ const PORTFOLIO_CONFIG = {
   certifications: [
     "Fundamentals of Digital Marketing - Google",
     "Microsoft Office Specialist: PowerPoint (2016 & 2019)",
-    "Beaver Egypt Challenge 2023 - Ministry of Communications"
+    "Beaver Egypt Challenge 2023 - Ministry of Communications",
+    "Digital Egypt Clubs Initiative 2024 - Level Three: Data Science and Ai",
+    "Digital Egypt Clubs Initiative 2023 - Level Two Lite",
+    "ICPC Sadat Academy Community 2026 - Level 1 SAMS Contest"
   ],
 
   // Contact Information
