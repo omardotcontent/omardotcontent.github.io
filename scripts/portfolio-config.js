@@ -486,7 +486,7 @@ const PORTFOLIO_CONFIG = {
   // Education & Certifications
   education: {
     institution: "Sadat Academy for Management Sciences (SAMS)",
-    degree: "B.S. in Computer Science (Ongoing)"
+    degree: "B.S. in Software Engineering (Ongoing)"
   },
   certifications: [
     "Fundamentals of Digital Marketing - Google",
