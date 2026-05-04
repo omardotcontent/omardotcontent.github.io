@@ -300,6 +300,16 @@
         <div class="contact-links animate-on-scroll" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
             <a href="mailto:${c.email}"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i>${c.email}</a>
             ${c.discord ? `<a href="https://discord.com/users/${c.discord}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>${c.discord}</a>` : ''}
+            ${c.discordServer ? `<a href="${c.discordServer}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>Discord Server</a>` : ''}
+            ${c.phone ? `<a href="tel:${c.phone}"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>${c.phone}</a>` : ''}
+            ${c.whatsapp ? `<a href="${c.whatsapp}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp</a>` : ''}
+            ${c.telegram ? `<a href="${c.telegram}" target="_blank" rel="noopener"><i class="fa-brands fa-telegram" style="margin-right: 8px;"></i>Telegram</a>` : ''}
+            ${c.messenger ? `<a href="${c.messenger}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger" style="margin-right: 8px;"></i>Messenger</a>` : ''}
+            ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i>LinkedIn</a>` : ''}
+            ${c.twitter ? `<a href="${c.twitter}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>Twitter / X</a>` : ''}
+            ${c.behance ? `<a href="${c.behance}" target="_blank" rel="noopener"><i class="fa-brands fa-behance" style="margin-right: 8px;"></i>Behance</a>` : ''}
+            ${c.upwork ? `<a href="${c.upwork}" target="_blank" rel="noopener"><i class="fa-brands fa-upwork" style="margin-right: 8px;"></i>Upwork</a>` : ''}
+            ${c.calendly ? `<a href="${c.calendly}" target="_blank" rel="noopener"><i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Book a Call</a>` : ''}
         </div>
       `;
   }

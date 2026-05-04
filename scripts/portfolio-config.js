@@ -499,8 +499,10 @@ const PORTFOLIO_CONFIG = {
 
   // Contact Information
   contact: {
-    text: "GET IN TOUCH",
+    text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
     email: "omar@merakistudios.dev",
-    discord: "omardotsocial"
+    discordServer: "https://discord.com/invite/8Ap2gGaKbw",
+    telegram: "https://t.me/omardotsocial", 
+    messenger: "https://m.me/omardotsocial"
   }
 };
