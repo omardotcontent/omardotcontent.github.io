@@ -54,6 +54,7 @@
     renderFooter(dom.contactInfo);
     setupScrollHighlight();
     setupProjectModal(dom.modal, dom.projectsContainer);
+    setupThemeToggle();
   }
 
   // --- RENDER FUNCTIONS ---
@@ -166,7 +167,8 @@
             <ul>
                 ${skillCategory.list.map((skill) => {
                     if (skill.iconImg) {
-                        return `<li><img src="${skill.iconImg}" alt="${skill.name} icon" style="width: 25px; height: 25px; object-fit: contain;" />${skill.name}</li>`;
+                        const lightAttr = skill.iconImgLight ? `data-dark-src="${skill.iconImg}" data-light-src="${skill.iconImgLight}" class="theme-image"` : '';
+                        return `<li><img src="${skill.iconImg}" ${lightAttr} alt="${skill.name} icon" style="width: 25px; height: 25px; object-fit: contain;" />${skill.name}</li>`;
                     }
                     return `<li><i class="${skill.icon}"></i>${skill.name}</li>`;
                 }).join("")}
@@ -580,6 +582,49 @@
       ?.addEventListener("click", closeModal);
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
+    });
+  }
+
+  function setupThemeToggle() {
+    const themeToggles = document.querySelectorAll(".theme-toggle");
+    
+    const updateThemeAssets = () => {
+      const isLight = document.documentElement.classList.contains("light-mode");
+      
+      themeToggles.forEach(btn => {
+        const icon = btn.querySelector("i");
+        if (icon) {
+          if (isLight) {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+          } else {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+          }
+        }
+      });
+      
+      const themeImages = document.querySelectorAll("img.theme-image");
+      themeImages.forEach(img => {
+        const darkSrc = img.getAttribute("data-dark-src");
+        const lightSrc = img.getAttribute("data-light-src");
+        if (isLight && lightSrc) {
+          img.setAttribute("src", lightSrc);
+        } else if (!isLight && darkSrc) {
+          img.setAttribute("src", darkSrc);
+        }
+      });
+    };
+    
+    updateThemeAssets();
+
+    themeToggles.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("light-mode");
+        const theme = document.documentElement.classList.contains("light-mode") ? "light" : "dark";
+        localStorage.setItem("theme", theme);
+        updateThemeAssets();
+      });
     });
   }
 })();

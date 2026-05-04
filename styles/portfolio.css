@@ -1548,3 +1548,121 @@ footer {
     font-size: 1.8rem;
   }
 }
+
+/* LIGHT MODE VARIABLES & STYLES */
+html.light-mode {
+  --primary-color: #000000;
+  --bg-dark: #f5f5f5;
+  --bg-card: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.01)
+  );
+  --card-border: rgba(0, 0, 0, 0.1);
+  --text-color: #222222;
+  --text-muted: #555555;
+  --accent-glow: #000000;
+}
+
+html.light-mode h2 {
+  background: linear-gradient(135deg, #000000 30%, #555555 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.light-mode h2::after {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4), transparent);
+}
+html.light-mode .hero-text h1 {
+  background: linear-gradient(135deg, #000000 40%, #555555 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light-mode .desktop-header {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.055);
+}
+html.light-mode .desktop-nav .nav-btn.active {
+  color: #000;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  text-shadow: none;
+}
+html.light-mode .desktop-nav .nav-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html.light-mode .mobile-top-header, html.light-mode .mobile-bottom-nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .vertical-divider {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+html.light-mode .project-card, html.light-mode .skill-card, html.light-mode .github-stat-card, html.light-mode .cert-item {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+html.light-mode .project-card:hover, html.light-mode .skill-card:hover, html.light-mode .github-stat-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+html.light-mode footer {
+  background: rgba(245, 245, 245, 0.8);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .modal-content {
+  background: rgba(250, 250, 250, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.15);
+}
+
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(0deg, #000000, #888888, #aaaaaa);
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-right: 0.5rem;
+}
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 6px 16px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+html.light-mode .theme-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+html.light-mode .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}

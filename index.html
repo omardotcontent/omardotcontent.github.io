@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omar Mohamed | Portfolio</title>
+    <script>
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("light-mode");
+      }
+    </script>
 
     <link rel="icon" href="images/icon.png" type="image/png" />
     <meta
@@ -35,7 +40,7 @@
     <header class="desktop-header">
       <div class="header-container">
         <a href="index.html" class="header-logo-link">
-          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo" />
+          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo theme-image" data-dark-src="images/OmarLogo.png" data-light-src="images/OmarLogoLight.png" />
         </a>
         
         <nav class="desktop-nav">
@@ -50,6 +55,12 @@
           <div class="social-group">
             <!-- Social links will be rendered by JavaScript -->
           </div>
+
+          <div class="vertical-divider"></div>
+
+          <button class="theme-toggle" aria-label="Toggle theme" style="margin-right: 0;">
+            <i class="fa-solid fa-moon"></i>
+          </button>
         </nav>
       </div>
     </header>
@@ -76,10 +87,15 @@
     <header class="mobile-top-header">
       <div class="header-container">
         <a href="index.html" class="header-logo-link">
-          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo" />
+          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo theme-image" data-dark-src="images/OmarLogo.png" data-light-src="images/OmarLogoLight.png" />
         </a>
-        <div class="social-group">
-          <!-- Social links will be rendered by JavaScript -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div class="social-group">
+            <!-- Social links will be rendered by JavaScript -->
+          </div>
+          <button class="theme-toggle" aria-label="Toggle theme" style="margin-right: 0;">
+            <i class="fa-solid fa-moon"></i>
+          </button>
         </div>
       </div>
     </header>
@@ -132,13 +148,13 @@
         <div class="github-stats-container" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center; padding: 0 1rem;">
           <div class="stats-row animate-on-scroll" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
             <div class="github-stat-card">
-              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" alt="GitHub Stats" height="180" style="display: block;" />
+              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" class="theme-image" data-dark-src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" data-light-src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333&icon_color=000000" alt="GitHub Stats" height="180" style="display: block;" />
             </div>
             <div class="github-stat-card">
-              <img src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" alt="GitHub Streak" height="180" style="display: block;" />
+              <img src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" class="theme-image" data-dark-src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" data-light-src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=000000&fire=000000&currStreakNum=000000&currStreakLabel=333333&sideNums=000000&sideLabels=333333&dates=333333" alt="GitHub Streak" height="180" style="display: block;" />
             </div>
             <div class="github-stat-card">
-              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" alt="Top Languages" height="180" style="display: block;" />
+              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" class="theme-image" data-dark-src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" data-light-src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333&icon_color=000000" alt="Top Languages" height="180" style="display: block;" />
             </div>
           </div>
         </div>
