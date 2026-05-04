@@ -344,6 +344,7 @@ const PORTFOLIO_CONFIG = {
     },
     {
       category: "Music & Audio",
+      layout: "scrolling",
       list: [
         {
           id: "spotify-1",
@@ -358,6 +359,75 @@ const PORTFOLIO_CONFIG = {
           description: "Calm vibes.",
           spotifyTrackId: "0ZC7l1MCYRbJW27JjkS72K",
           tags: ["Music", "Spotify"]
+        },
+        {
+          id: "bandlab-1",
+          title: "BandLab Track 1",
+          description: "A track from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_748321f3ca38ef1186c3000d3a42581b",
+          tags: ["Music", "BandLab"]
+        },
+        {
+          id: "bandlab-2",
+          title: "BandLab Track 2",
+          description: "A track from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_764d51d3c661f0118dc9000d3a960be3",
+          tags: ["Music", "BandLab"]
+        },
+        {
+          id: "bandlab-3",
+          title: "BandLab Track 3",
+          description: "A track from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_e2d347d72539ef1186c3000d3a42581b",
+          tags: ["Music", "BandLab"]
+        },
+        {
+          id: "bandlab-4",
+          title: "BandLab Track 4",
+          description: "A track from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_8eaa38636cf0ef1190c900224848fea7",
+          tags: ["Music", "BandLab"]
+        }
+      ]
+    },
+    {
+      category: "Remixes",
+      layout: "scrolling",
+      list: [
+        {
+          id: "remix-1",
+          title: "GHO$T Track (My Remix)",
+          description: "My remix of a track by GHO$T.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_6597f45e1ef1ef1190c900224848fea7",
+          tags: ["Music", "Remix", "BandLab"]
+        },
+        {
+          id: "remix-2",
+          title: "GHO$T Track (My Remix) 2",
+          description: "My remix of a track by GHO$T.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_3a341ef4ec09f011aaa70022484892d6",
+          tags: ["Music", "Remix", "BandLab"]
+        },
+        {
+          id: "remix-3",
+          title: "GHO$T Track (My Remix) 3",
+          description: "My remix of a track by GHO$T.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_f233dd49c306f011aaa70022484892d6",
+          tags: ["Music", "Remix", "BandLab"]
+        },
+        {
+          id: "remix-4",
+          title: "Remix 4",
+          description: "A remix from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_02b5d6f9ae60f0118dc9000d3a960be3",
+          tags: ["Music", "Remix", "BandLab"]
+        },
+        {
+          id: "remix-5",
+          title: "Remix 5",
+          description: "A remix from BandLab.",
+          bandlabId: "c263bc9e13e54acf8587093a15770039_52d83473c591ed119d7a000d3a98096b",
+          tags: ["Music", "Remix", "BandLab"]
         }
       ]
     },

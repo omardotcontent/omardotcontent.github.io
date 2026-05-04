@@ -57,41 +57,88 @@
   }
 
   // --- RENDER FUNCTIONS ---
-  function renderHero(container) {
+  // Helper for simulated loading
+  function simulateLoading(container, skeletonHTML, renderContentFn, delay = 600) {
     if (!container) return;
-    const h = PORTFOLIO_CONFIG.hero;
-    container.innerHTML = `
-        <img src="${h.profilePic}" alt="${h.name}" class="hero-profile-pic animate-on-scroll" loading="eager" fetchpriority="high" />
-        <div class="hero-text">
-            <h1 class="animate-on-scroll" style="--delay: 100ms">${h.name}</h1>
-            <h3 class="animate-on-scroll" style="--delay: 200ms">${h.title}</h3>
-            <p class="animate-on-scroll" style="--delay: 300ms">${h.bio}</p>
+    container.innerHTML = skeletonHTML;
+    setTimeout(() => {
+      container.innerHTML = "";
+      renderContentFn(container);
+      // Re-trigger scroll observer for new elements if animation system exists
+      if (window.MerakiAnimations && typeof window.MerakiAnimations.scroll.observe === "function") {
+        window.MerakiAnimations.scroll.observe(".animate-on-scroll");
+      }
+    }, delay);
+  }
+
+  function renderHero(container) {
+    const skeleton = `
+      <div style="display: flex; flex-direction: row; gap: 4rem; width: 100%; align-items: center; justify-content: center; flex-wrap: wrap;">
+        <div class="skeleton-media" style="width: 250px; height: 250px; border-radius: 50%; flex-shrink: 0;"></div>
+        <div class="skeleton-text" style="flex-grow: 1; max-width: 600px;">
+          <div class="skeleton-line" style="width: 70%; height: 4rem; margin-bottom: 1rem;"></div>
+          <div class="skeleton-line" style="width: 50%; height: 2rem; margin-bottom: 2rem;"></div>
+          <div class="skeleton-line" style="width: 100%; height: 1.2rem; margin-bottom: 0.5rem;"></div>
+          <div class="skeleton-line" style="width: 90%; height: 1.2rem; margin-bottom: 0.5rem;"></div>
+          <div class="skeleton-line" style="width: 80%; height: 1.2rem;"></div>
         </div>
+      </div>
     `;
+    simulateLoading(container, skeleton, (cont) => {
+      const h = PORTFOLIO_CONFIG.hero;
+      cont.innerHTML = `
+          <img src="${h.profilePic}" alt="${h.name}" class="hero-profile-pic animate-on-scroll" loading="eager" fetchpriority="high" />
+          <div class="hero-text">
+              <h1 class="animate-on-scroll" style="--delay: 100ms">${h.name}</h1>
+              <h3 class="animate-on-scroll" style="--delay: 200ms">${h.title}</h3>
+              <p class="animate-on-scroll" style="--delay: 300ms">${h.bio}</p>
+          </div>
+      `;
+    }, 500);
   }
 
   function renderAboutMe(container) {
-    if (!container || !PORTFOLIO_CONFIG.aboutMe) return;
-    const paragraphs = PORTFOLIO_CONFIG.aboutMe.paragraphs
-      .map(
-        (p, i) =>
-          `<p style="margin-bottom: 1.5rem; ${i === 0 ? "--delay: 100ms" : i === 1 ? "--delay: 200ms" : "--delay: 300ms"}" class="animate-on-scroll">${p}</p>`,
-      )
-      .join("");
-    container.innerHTML = paragraphs;
+    if (!PORTFOLIO_CONFIG.aboutMe) return;
+    const skeleton = `
+      <div class="skeleton-text" style="width: 100%; text-align: center;">
+        <div class="skeleton-line" style="width: 90%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+        <div class="skeleton-line" style="width: 85%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+        <div class="skeleton-line" style="width: 95%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+        <div class="skeleton-line" style="width: 70%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+      </div>
+    `;
+    simulateLoading(container, skeleton, (cont) => {
+      const paragraphs = PORTFOLIO_CONFIG.aboutMe.paragraphs
+        .map(
+          (p, i) =>
+            `<p style="margin-bottom: 1.5rem; ${i === 0 ? "--delay: 100ms" : i === 1 ? "--delay: 200ms" : "--delay: 300ms"}" class="animate-on-scroll">${p}</p>`,
+        )
+        .join("");
+      cont.innerHTML = paragraphs;
+    }, 600);
   }
 
   function renderMerakiStudios(container) {
-    if (!container || !PORTFOLIO_CONFIG.merakiStudios) return;
-    const m = PORTFOLIO_CONFIG.merakiStudios;
-    container.innerHTML = `
-        <h2 class="animate-on-scroll">${m.title}</h2>
-        <p class="animate-on-scroll" style="margin-bottom: 2rem; color: var(--text-muted); font-size: 1.1rem;">${m.description}</p>
-        <ul class="animate-on-scroll" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; align-items: start; max-width: 600px; margin: 0 auto; text-align: left; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">
-            ${m.list.map(item => `<li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 15px;"></i>${item}</li>`).join('')}
-        </ul>
-        <p class="animate-on-scroll" style="color: var(--text-muted); font-size: 1.1rem;">${m.footer}</p>
+    if (!PORTFOLIO_CONFIG.merakiStudios) return;
+    const skeleton = `
+      <div class="skeleton-text" style="width: 100%; text-align: center;">
+        <div class="skeleton-line" style="width: 40%; height: 2.5rem; margin: 0 auto 2rem;"></div>
+        <div class="skeleton-line" style="width: 80%; height: 1.2rem; margin: 0 auto 2rem;"></div>
+        <div class="skeleton-line" style="width: 60%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+        <div class="skeleton-line" style="width: 50%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+      </div>
     `;
+    simulateLoading(container, skeleton, (cont) => {
+      const m = PORTFOLIO_CONFIG.merakiStudios;
+      cont.innerHTML = `
+          <h2 class="animate-on-scroll">${m.title}</h2>
+          <p class="animate-on-scroll" style="margin-bottom: 2rem; color: var(--text-muted); font-size: 1.1rem;">${m.description}</p>
+          <ul class="animate-on-scroll" style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; align-items: start; max-width: 600px; margin: 0 auto; text-align: left; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">
+              ${m.list.map(item => `<li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 15px;"></i>${item}</li>`).join('')}
+          </ul>
+          <p class="animate-on-scroll" style="color: var(--text-muted); font-size: 1.1rem;">${m.footer}</p>
+      `;
+    }, 700);
   }
 
   function renderHeaderSocial(containers) {
@@ -161,13 +208,23 @@
         frag.appendChild(header);
 
         const grid = document.createElement("div");
-        grid.className = categoryData.layout === "compact" 
-          ? "projects-container compact animate-on-scroll is-visible"
-          : "projects-container animate-on-scroll is-visible";
+        if (categoryData.layout === "compact") {
+          grid.className = "projects-container compact animate-on-scroll is-visible";
+        } else if (categoryData.layout === "scrolling") {
+          grid.className = "projects-container scrolling animate-on-scroll is-visible";
+        } else {
+          grid.className = "projects-container animate-on-scroll is-visible";
+        }
         
         categoryData.list.forEach(project => {
           const div = document.createElement("div");
-          div.className = categoryData.layout === "compact" ? "project-card compact" : "project-card";
+          if (categoryData.layout === "compact") {
+            div.className = "project-card compact";
+          } else if (categoryData.layout === "scrolling") {
+            div.className = "project-card scrolling";
+          } else {
+            div.className = "project-card";
+          }
           div.dataset.id = project.id;
           
           const tags = project.tags || [];
@@ -184,6 +241,17 @@
 
 
           // Generate media preview HTML
+          if (project.bandlabId || project.spotifyTrackId) {
+            div.className = "embed-wrapper animate-on-scroll";
+            if (project.bandlabId) {
+              div.innerHTML = `<iframe title="${project.title} on BandLab" style="border-radius:12px; border: none; width: 100%; height: 360px; display: block; margin: 0 auto; overflow: hidden;" src="https://www.bandlab.com/embed/shout/?id=${project.bandlabId}" allowfullscreen loading="lazy"></iframe>`;
+            } else {
+              div.innerHTML = `<iframe title="${project.title} on Spotify" style="border-radius:12px; border: none; width: 100%; height: 352px; display: block; margin: 0 auto; overflow: hidden;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+            }
+            grid.appendChild(div);
+            return; // Skip normal card generation
+          }
+
           let mediaHTML = "";
           if (project.youtubeId) {
             const thumbUrl = `https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`;
@@ -480,6 +548,9 @@
       } else if (project.spotifyTrackId) {
         m.video.style.display = "block";
         m.video.innerHTML = `<iframe title="${project.title} on Spotify" style="border-radius:12px; border: none; width: 100%; height: 352px;" src="https://open.spotify.com/embed/track/${project.spotifyTrackId}?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+      } else if (project.bandlabId) {
+        m.video.style.display = "block";
+        m.video.innerHTML = `<iframe title="${project.title} on BandLab" style="border-radius:12px; border: none; width: 100%; height: 360px; overflow: hidden;" src="https://www.bandlab.com/embed/shout/?id=${project.bandlabId}" allowfullscreen></iframe>`;
       } else {
         m.video.style.display = "none";
       }
