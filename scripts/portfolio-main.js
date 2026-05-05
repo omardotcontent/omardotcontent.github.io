@@ -365,23 +365,31 @@
   function renderFooter(container) {
     if (!container) return;
     const c = PORTFOLIO_CONFIG.contact;
+    const initialTheme = document.documentElement.classList.contains("light-mode") ? "light" : "dark";
     container.innerHTML = `
-        <p class="animate-on-scroll">${c.text}</p>
-        <div class="contact-links animate-on-scroll" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <a href="mailto:${c.email}"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i>${c.email}</a>
-            ${c.discord ? `<a href="https://discord.com/users/${c.discord}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>${c.discord}</a>` : ''}
-            ${c.discordServer ? `<a href="${c.discordServer}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>Discord Server</a>` : ''}
-            ${c.phone ? `<a href="tel:${c.phone}"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>${c.phone}</a>` : ''}
-            ${c.whatsapp ? `<a href="${c.whatsapp}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp</a>` : ''}
-            ${c.telegram ? `<a href="${c.telegram}" target="_blank" rel="noopener"><i class="fa-brands fa-telegram" style="margin-right: 8px;"></i>Telegram</a>` : ''}
-            ${c.messenger ? `<a href="${c.messenger}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger" style="margin-right: 8px;"></i>Messenger</a>` : ''}
-            ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i>LinkedIn</a>` : ''}
-            ${c.twitter ? `<a href="${c.twitter}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>Twitter / X</a>` : ''}
-            ${c.behance ? `<a href="${c.behance}" target="_blank" rel="noopener"><i class="fa-brands fa-behance" style="margin-right: 8px;"></i>Behance</a>` : ''}
-            ${c.upwork ? `<a href="${c.upwork}" target="_blank" rel="noopener"><i class="fa-brands fa-upwork" style="margin-right: 8px;"></i>Upwork</a>` : ''}
-            ${c.calendly ? `<a href="${c.calendly}" target="_blank" rel="noopener"><i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Book a Call</a>` : ''}
+      <div style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+        <div style="flex: 1; min-width: 300px; text-align: left;">
+          <h3 class="animate-on-scroll" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-color);">Get In Touch</h3>
+          <p class="animate-on-scroll">${c.text}</p>
+          <div class="contact-links animate-on-scroll" style="display: flex; justify-content: flex-start; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+              <a href="mailto:${c.email}"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i>${c.email}</a>
+              ${c.discord ? `<a href="https://discord.com/users/${c.discord}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" style="margin-right: 8px;"></i>${c.discord}</a>` : ''}
+              ${c.phone ? `<a href="tel:${c.phone}"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i>${c.phone}</a>` : ''}
+              ${c.whatsapp ? `<a href="${c.whatsapp}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp</a>` : ''}
+              ${c.telegram ? `<a href="${c.telegram}" target="_blank" rel="noopener"><i class="fa-brands fa-telegram" style="margin-right: 8px;"></i>Telegram</a>` : ''}
+              ${c.messenger ? `<a href="${c.messenger}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger" style="margin-right: 8px;"></i>Messenger</a>` : ''}
+              ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i>LinkedIn</a>` : ''}
+              ${c.twitter ? `<a href="${c.twitter}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" style="margin-right: 8px;"></i>Twitter / X</a>` : ''}
+              ${c.behance ? `<a href="${c.behance}" target="_blank" rel="noopener"><i class="fa-brands fa-behance" style="margin-right: 8px;"></i>Behance</a>` : ''}
+              ${c.upwork ? `<a href="${c.upwork}" target="_blank" rel="noopener"><i class="fa-brands fa-upwork" style="margin-right: 8px;"></i>Upwork</a>` : ''}
+              ${c.calendly ? `<a href="${c.calendly}" target="_blank" rel="noopener"><i class="fa-regular fa-calendar" style="margin-right: 8px;"></i>Book a Call</a>` : ''}
+          </div>
         </div>
-      `;
+        <div class="animate-on-scroll" style="flex-shrink: 0; text-align: center;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--primary-color);">Join the Community</h3>
+          <iframe id="discord-widget" src="https://discord.com/widget?id=1444791753529102428&theme=${initialTheme}" width="350" height="400" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="max-width: 100%; border-radius: 8px;"></iframe>
+        </div>
+      </div>`;
   }
 
   function setupScrollHighlight() {
@@ -614,6 +622,17 @@
           img.setAttribute("src", darkSrc);
         }
       });
+
+      // Update Discord Widget Theme
+      const discordWidget = document.getElementById("discord-widget");
+      if (discordWidget) {
+        const newTheme = isLight ? "light" : "dark";
+        const currentSrc = discordWidget.getAttribute("src");
+        // Use a simple regex to replace the theme parameter
+        const newSrc = currentSrc.replace(/theme=(dark|light)/, `theme=${newTheme}`);
+        // Only update if the src has changed to prevent unnecessary reloads
+        if (currentSrc !== newSrc) discordWidget.setAttribute("src", newSrc);
+      }
     };
     
     updateThemeAssets();

@@ -317,12 +317,12 @@ const PORTFOLIO_CONFIG = {
         {
           id: "spotify-1",
           title: "Avenoir",
-          spotifyTrackId: "5WyWet5iP1Pky2LtRZUMBY"
+          bandlabId: "c263bc9e13e54acf8587093a15770039_5fb2c88ac2bcf0118196000d3a96100f"
         },
         {
           id: "spotify-2",
           title: "Obsidiana",
-          spotifyTrackId: "0ZC7l1MCYRbJW27JjkS72K"
+          bandlabId: "c263bc9e13e54acf8587093a15770039_5352a43b9e64f0118dc9000d3a960be3"
         },
         {
           id: "bandlab-1",
@@ -500,7 +500,6 @@ const PORTFOLIO_CONFIG = {
   contact: {
     text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
     email: "omar@merakistudios.dev",
-    discordServer: "https://discord.com/invite/8Ap2gGaKbw",
     telegram: "https://t.me/omardotsocial", 
     messenger: "https://m.me/omardotsocial"
   }
