@@ -92,7 +92,7 @@
           <div class="hero-text">
               <h1 class="animate-on-scroll" style="--delay: 100ms">${h.name}</h1>
               <h3 class="animate-on-scroll" style="--delay: 200ms">${h.title}</h3>
-              <p class="animate-on-scroll" style="--delay: 300ms">${h.bio}</p>
+              ${h.bio ? `<p class="animate-on-scroll" style="--delay: 300ms">${h.bio}</p>` : ""}
           </div>
       `;
     }, 500);

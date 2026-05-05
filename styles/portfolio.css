@@ -1221,6 +1221,50 @@ footer {
   }
 }
 
+/* LAPTOP / TABLET (Medium Screens: 769px - 1199px) */
+@media (max-width: 1199px) and (min-width: 769px) {
+  /* Scale down the Hero Section to prevent horizontal crowding */
+  .hero-container {
+    gap: 2.5rem;
+  }
+  .hero-text h1 {
+    font-size: 3.5rem;
+  }
+  .hero-text h3 {
+    font-size: 1.35rem;
+  }
+  .hero-profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Limit text blocks so they don't stretch uncomfortably wide in a single column */
+  .about-skills-wrapper,
+  .experience-education-wrapper {
+    max-width: 850px;
+  }
+
+  /* Tweak Header to fit everything comfortably */
+  .desktop-header {
+    min-width: unset;
+    width: max-content;
+  }
+  .header-container {
+    gap: 1.5rem;
+  }
+  .desktop-nav {
+    gap: 0.5rem;
+  }
+  .desktop-nav .nav-btn {
+    padding: 0.5rem 0.8rem;
+  }
+
+  /* Reduce minimum project card width slightly to fit 2 columns better */
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   /* Typography adjustments */

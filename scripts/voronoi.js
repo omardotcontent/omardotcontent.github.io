@@ -77,7 +77,8 @@
           let secondMinDist = Infinity;
 
           // Find the two closest sites using squared distance
-          sites.forEach(site => {
+          for (let i = 0; i < sites.length; i++) {
+            const site = sites[i];
             const dist = distanceSquared(x, y, site.x, site.y);
             if (dist < minDist) {
               secondMinDist = minDist;
@@ -85,7 +86,7 @@
             } else if (dist < secondMinDist) {
               secondMinDist = dist;
             }
-          });
+          }
 
           // If we're close to the border between two cells, add to path
           if (Math.sqrt(secondMinDist) - Math.sqrt(minDist) < BORDER_THRESHOLD) {

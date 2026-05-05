@@ -4,13 +4,11 @@ const PORTFOLIO_CONFIG = {
   hero: {
     name: "Omar Mohamed",
     title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer",
-    bio: "",
     profilePic: "images/omarpic.png"
   },
 
   // About Me expansion
   aboutMe: {
-    title: "ABOUT ME",
     paragraphs: [
       "I’m <strong>Omar Mohamed</strong>, born on <strong>May 12, 2006</strong> — just a creator who loves design, storytelling, and making clean digital stuff.",
       "I'm also the <strong>Founder of Meraki Studios</strong>! The whole idea started when we were a bunch of friends each with talents, and we thought into making 1 studio to bring all of our projects to life! Now I lead the creative direction and development there.",
@@ -217,50 +215,38 @@ const PORTFOLIO_CONFIG = {
         {
           id: "ig-akcallers-1",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/DChgDNyMi1W/",
-          instagramId: "DChgDNyMi1W",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "DChgDNyMi1W"
         },
         {
           id: "ig-akcallers-2",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/DCEp7HFNaaR/",
-          instagramId: "DCEp7HFNaaR",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "DCEp7HFNaaR"
         },
         {
           id: "ig-akcallers-3",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/C-tJaZfAtDt/",
-          instagramId: "C-tJaZfAtDt",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "C-tJaZfAtDt"
         },
         {
           id: "ig-akcallers-4",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/C-5u6eTOcVp/",
-          instagramId: "C-5u6eTOcVp",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "C-5u6eTOcVp"
         },
         {
           id: "ig-akcallers-5",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/C-JMoSPO5kq/",
-          instagramId: "C-JMoSPO5kq",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "C-JMoSPO5kq"
         },
         {
           id: "ig-akcallers-6",
           title: "AKCallers Reel",
-          description: "Promotional content created for AKCallers.",
           primaryUrl: "https://www.instagram.com/reel/C8LADDxNBoJ/",
-          instagramId: "C8LADDxNBoJ",
-          tags: ["Instagram", "AKCallers"]
+          instagramId: "C8LADDxNBoJ"
         }
       ]
     },
@@ -271,122 +257,92 @@ const PORTFOLIO_CONFIG = {
         {
           id: "ig-zumra-1",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/Cz52N_Uy_lu/",
-          instagramId: "Cz52N_Uy_lu",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "Cz52N_Uy_lu"
         },
         {
           id: "ig-zumra-2",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CzVsvrmynUu/",
-          instagramId: "CzVsvrmynUu",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CzVsvrmynUu"
         },
         {
           id: "ig-zumra-3",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CzI1H2QymP8/",
-          instagramId: "CzI1H2QymP8",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CzI1H2QymP8"
         },
         {
           id: "ig-zumra-4",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CyfiNYbyvg8/",
-          instagramId: "CyfiNYbyvg8",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CyfiNYbyvg8"
         },
         {
           id: "ig-zumra-5",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/",
-          instagramId: "Cy0HccJBWr9",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "Cy0HccJBWr9"
         },
         {
           id: "ig-zumra-6",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/",
-          instagramId: "CxZ_uU7IP_o",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CxZ_uU7IP_o"
         },
         {
           id: "ig-zumra-7",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/",
-          instagramId: "CwhWLAyoc2B",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CwhWLAyoc2B"
         },
         {
           id: "ig-zumra-8",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/Cvb0pp9okVl/",
-          instagramId: "Cvb0pp9okVl",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "Cvb0pp9okVl"
         },
         {
           id: "ig-zumra-9",
           title: "ZumraFood Reel",
-          description: "Animated visual content for ZumraFood.",
           primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/",
-          instagramId: "CwR5ggbIclS",
-          tags: ["Instagram", "ZumraFood"]
+          instagramId: "CwR5ggbIclS"
         }
       ]
     },
     {
-      category: "Music & Audio",
+      category: "Original Tracks",
       layout: "scrolling",
       list: [
         {
           id: "spotify-1",
           title: "Avenoir",
-          description: "Y'all like jazz?",
-          spotifyTrackId: "5WyWet5iP1Pky2LtRZUMBY",
-          tags: ["Music", "Spotify"]
+          spotifyTrackId: "5WyWet5iP1Pky2LtRZUMBY"
         },
         {
           id: "spotify-2",
           title: "Obsidiana",
-          description: "Calm vibes.",
-          spotifyTrackId: "0ZC7l1MCYRbJW27JjkS72K",
-          tags: ["Music", "Spotify"]
+          spotifyTrackId: "0ZC7l1MCYRbJW27JjkS72K"
         },
         {
           id: "bandlab-1",
           title: "BandLab Track 1",
-          description: "A track from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_748321f3ca38ef1186c3000d3a42581b",
-          tags: ["Music", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_748321f3ca38ef1186c3000d3a42581b"
         },
         {
           id: "bandlab-2",
           title: "BandLab Track 2",
-          description: "A track from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_764d51d3c661f0118dc9000d3a960be3",
-          tags: ["Music", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_764d51d3c661f0118dc9000d3a960be3"
         },
         {
           id: "bandlab-3",
           title: "BandLab Track 3",
-          description: "A track from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_e2d347d72539ef1186c3000d3a42581b",
-          tags: ["Music", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_e2d347d72539ef1186c3000d3a42581b"
         },
         {
           id: "bandlab-4",
           title: "BandLab Track 4",
-          description: "A track from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_8eaa38636cf0ef1190c900224848fea7",
-          tags: ["Music", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_8eaa38636cf0ef1190c900224848fea7"
         }
       ]
     },
@@ -397,44 +353,28 @@ const PORTFOLIO_CONFIG = {
         {
           id: "remix-1",
           title: "GHO$T Track (My Remix)",
-          description: "My remix of a track by GHO$T.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_6597f45e1ef1ef1190c900224848fea7",
-          tags: ["Music", "Remix", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_6597f45e1ef1ef1190c900224848fea7"
         },
         {
           id: "remix-2",
           title: "GHO$T Track (My Remix) 2",
-          description: "My remix of a track by GHO$T.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_3a341ef4ec09f011aaa70022484892d6",
-          tags: ["Music", "Remix", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_3a341ef4ec09f011aaa70022484892d6"
         },
         {
           id: "remix-3",
           title: "GHO$T Track (My Remix) 3",
-          description: "My remix of a track by GHO$T.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_f233dd49c306f011aaa70022484892d6",
-          tags: ["Music", "Remix", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_f233dd49c306f011aaa70022484892d6"
         },
         {
           id: "remix-4",
           title: "Remix 4",
-          description: "A remix from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_02b5d6f9ae60f0118dc9000d3a960be3",
-          tags: ["Music", "Remix", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_02b5d6f9ae60f0118dc9000d3a960be3"
         },
         {
           id: "remix-5",
           title: "Remix 5",
-          description: "A remix from BandLab.",
-          bandlabId: "c263bc9e13e54acf8587093a15770039_52d83473c591ed119d7a000d3a98096b",
-          tags: ["Music", "Remix", "BandLab"]
+          bandlabId: "c263bc9e13e54acf8587093a15770039_52d83473c591ed119d7a000d3a98096b"
         }
-      ]
-    },
-    {
-      category: "Design & Art",
-      list: [
-        // Add design & art projects here
       ]
     },
     {
@@ -445,78 +385,67 @@ const PORTFOLIO_CONFIG = {
           id: "render-1",
           title: "1v1",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/1v1.webp",
-          tags: ["Render", "Minecraft"]
+          imageUrl: "images/renders/1v1.webp"
         },
         {
           id: "render-2",
           title: "Herobrine Alpha",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/HerobrineAlpha.webp",
-          tags: ["Render", "Minecraft"]
+          imageUrl: "images/renders/HerobrineAlpha.webp"
         },
         {
           id: "render-3",
           title: "Spring Fab",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/SpringFab.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/SpringFab.webp"
         },
         {
           id: "render-4",
           title: "Steve in Nether",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/SteveinNether.webp",
-          tags: ["Render", "Minecraft"]
+          imageUrl: "images/renders/SteveinNether.webp"
         },
         {
           id: "render-5",
           title: "Fireball",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/Test.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/Test.webp"
         },
         {
           id: "render-6",
           title: "Breaking Bad",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/breaking bad.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/breaking bad.webp"
         },
         {
           id: "render-7",
           title: "Car",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/car.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/car.webp"
         },
         {
           id: "render-8",
           title: "Old Banner",
           description: "Made in Mine-Imator.",
-          imageUrl: "images/renders/fnaf2.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/fnaf2.webp"
         },
         {
           id: "render-9",
           title: "New Banner",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/iconbanner.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/iconbanner.webp"
         },
         {
           id: "render-10",
           title: "Lines",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/render.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/render.webp"
         },
         {
           id: "render-11",
           title: "Starweevil",
           description: "Made in Mine-Imator + Paint.NET.",
-          imageUrl: "images/renders/starfinal.webp",
-          tags: ["Render", "Design"]
+          imageUrl: "images/renders/starfinal.webp"
         }
       ]
     }
