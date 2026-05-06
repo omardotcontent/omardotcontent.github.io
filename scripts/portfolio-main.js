@@ -148,11 +148,14 @@
     if (!containers || containers.length === 0) return;
     const htmlSnippet = PORTFOLIO_CONFIG.headerSocial
       .map(
-        (s) => `
-        <a href="${s.url}" target="_blank" title="${s.platform}" aria-label="${s.platform}"><i class="${s.icon}"></i></a>
-    `,
+        (category) => {
+          const links = category.links.map(
+            (s) => `<a href="${s.url}" target="_blank" title="${s.platform}" aria-label="${s.platform}"><i class="${s.icon}"></i></a>`
+          ).join("");
+          return `<div class="social-category">${links}</div>`;
+        }
       )
-      .join("");
+      .join('<div class="social-divider"></div>');
       
     containers.forEach((c) => {
         c.innerHTML = htmlSnippet;

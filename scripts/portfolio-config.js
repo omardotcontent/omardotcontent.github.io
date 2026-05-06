@@ -20,12 +20,28 @@ const PORTFOLIO_CONFIG = {
 
   // Header Social Links
   headerSocial: [
-    { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
-    { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" },
-    { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
-    { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
-    { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
-    { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" }
+    {
+      category: "Professional",
+      links: [
+        { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
+        { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" }
+      ]
+    },
+    {
+      category: "Content & Music",
+      links: [
+        { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
+        { platform: "BandLab", url: "https://www.bandlab.com/omardotmusic", icon: "fa-solid fa-music" }
+      ]
+    },
+    {
+      category: "Socials",
+      links: [
+        { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
+        { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
+        { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" }
+      ]
+    }
   ],
 
   // Skills Section
