@@ -103,21 +103,35 @@
   function renderAboutMe(container) {
     if (!PORTFOLIO_CONFIG.aboutMe) return;
     const skeleton = `
-      <div class="skeleton-text" style="width: 100%; text-align: center;">
-        <div class="skeleton-line" style="width: 90%; height: 1.2rem; margin: 0 auto 1rem;"></div>
-        <div class="skeleton-line" style="width: 85%; height: 1.2rem; margin: 0 auto 1rem;"></div>
-        <div class="skeleton-line" style="width: 95%; height: 1.2rem; margin: 0 auto 1rem;"></div>
-        <div class="skeleton-line" style="width: 70%; height: 1.2rem; margin: 0 auto 1rem;"></div>
+      <div class="skeleton-text" style="width: 100%; text-align: left;">
+        <div class="skeleton-line" style="width: 30%; height: 1.5rem; margin-bottom: 0.8rem;"></div>
+        <div class="skeleton-line" style="width: 90%; height: 1.2rem; margin-bottom: 0.5rem;"></div>
+        <div class="skeleton-line" style="width: 85%; height: 1.2rem; margin-bottom: 2rem;"></div>
+        <div class="skeleton-line" style="width: 40%; height: 1.5rem; margin-bottom: 0.8rem;"></div>
+        <div class="skeleton-line" style="width: 95%; height: 1.2rem; margin-bottom: 0.5rem;"></div>
+        <div class="skeleton-line" style="width: 70%; height: 1.2rem; margin-bottom: 1rem;"></div>
       </div>
     `;
     simulateLoading(container, skeleton, (cont) => {
-      const paragraphs = PORTFOLIO_CONFIG.aboutMe.paragraphs
-        .map(
-          (p, i) =>
-            `<p style="margin-bottom: 1.5rem; ${i === 0 ? "--delay: 100ms" : i === 1 ? "--delay: 200ms" : "--delay: 300ms"}" class="animate-on-scroll">${p}</p>`,
-        )
-        .join("");
-      cont.innerHTML = paragraphs;
+      if (PORTFOLIO_CONFIG.aboutMe.sections) {
+        const sectionsHtml = PORTFOLIO_CONFIG.aboutMe.sections
+          .map(
+            (section, i) => `
+            <div class="about-me-part animate-on-scroll" style="--delay: ${i * 100}ms">
+              <h3 style="color: var(--primary-color); font-size: 1.4rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.75rem;">
+                ${section.icon ? `<i class="${section.icon}" style="font-size: 1.1rem; opacity: 0.8;"></i>` : ''}
+                ${section.subtitle}
+              </h3>
+              <p style="text-align: left; line-height: 1.8; margin-bottom: 0;">${section.content}</p>
+            </div>
+            `
+          )
+          .join("");
+        cont.innerHTML = `<div class="about-me-grid">${sectionsHtml}</div>`;
+      } else if (PORTFOLIO_CONFIG.aboutMe.paragraphs) {
+        const paragraphs = PORTFOLIO_CONFIG.aboutMe.paragraphs.map((p, i) => `<p style="margin-bottom: 1.5rem; ${i === 0 ? "--delay: 100ms" : i === 1 ? "--delay: 200ms" : "--delay: 300ms"}" class="animate-on-scroll">${p}</p>`).join("");
+        cont.innerHTML = paragraphs;
+      }
     }, 600);
   }
 

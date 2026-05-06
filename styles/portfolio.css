@@ -432,17 +432,57 @@ img {
   }
 }
 
-/* ABOUT-SKILLS SECTION WITHIN MAIN */
-.about-skills-section {
-  margin-top: 4rem;
-  padding: 0 2rem;
+/* ABOUT ME & SKILLS SECTIONS */
+.about-me-section {
+  margin-top: 6rem;
 }
+
+.about-skills-section {
+  margin-top: 8rem;
+}
+.about-me-section h2,
 .about-skills-section h2 {
   text-align: center;
   font-size: 3.5rem;
   margin-bottom: 3rem;
   color: var(--primary-color);
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* ABOUT ME GRID */
+.about-me-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.about-me-part {
+  background: var(--bg-card);
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-me-part:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .about-me-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+  .about-me-grid .about-me-part:first-child {
+    grid-column: 1 / -1; /* Makes the "Who I Am" intro span full width */
+  }
 }
 
 /* SKILLS SECTION */
@@ -1231,7 +1271,6 @@ footer {
 }
 
 /* WIDE SCREEN WRAPPERS */
-.about-skills-wrapper,
 .experience-education-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -1241,20 +1280,16 @@ footer {
 }
 
 @media (min-width: 1200px) {
-  .about-skills-wrapper,
   .experience-education-wrapper {
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 6rem;
   }
 
-  .about-skills-section,
   .experience-education-section {
     margin-top: 0 !important;
   }
 
-  .about-me-section h2,
-  .about-skills-section h2,
   .experience-section-inner h2,
   .experience-education-section h2 {
     text-align: left;
@@ -1263,8 +1298,6 @@ footer {
     width: auto;
   }
 
-  .about-me-section h2::after,
-  .about-skills-section h2::after,
   .experience-section-inner h2::after,
   .experience-education-section h2::after {
     left: 0;
@@ -1304,7 +1337,6 @@ footer {
   }
 
   /* Limit text blocks so they don't stretch uncomfortably wide in a single column */
-  .about-skills-wrapper,
   .experience-education-wrapper {
     max-width: 850px;
   }
@@ -1369,11 +1401,12 @@ footer {
     height: 150px;
   }
 
-  /* About-Skills section mobile spacing */
+  /* About & Skills mobile spacing */
+  .about-me-section,
   .about-skills-section {
-    margin-top: 3rem;
-    padding: 0 1rem;
+    margin-top: 4rem;
   }
+  .about-me-section h2,
   .about-skills-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -1636,6 +1669,7 @@ footer {
   h2 {
     font-size: 2rem;
   }
+  .about-me-section h2,
   .about-skills-section h2,
   .experience-education-section h2 {
     font-size: 2rem;
@@ -1738,7 +1772,7 @@ html.light-mode .social-divider {
   background: rgba(0, 0, 0, 0.2);
 }
 
-html.light-mode .project-card, html.light-mode .skill-card, html.light-mode .github-stat-card, html.light-mode .cert-item {
+html.light-mode .project-card, html.light-mode .skill-card, html.light-mode .github-stat-card, html.light-mode .cert-item, html.light-mode .about-me-part {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
@@ -1762,7 +1796,7 @@ html.light-mode .learning-tag:hover {
   border-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
-html.light-mode .project-card:hover, html.light-mode .skill-card:hover, html.light-mode .github-stat-card:hover {
+html.light-mode .project-card:hover, html.light-mode .skill-card:hover, html.light-mode .github-stat-card:hover, html.light-mode .about-me-part:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
 }
