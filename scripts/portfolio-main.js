@@ -10,6 +10,7 @@
       merakiContent: document.querySelector(".meraki-content"),
       socialGroups: document.querySelectorAll(".social-group"), // targets both desktop and mobile top header
       skillsContainer: document.querySelector(".skills-container"),
+      learningContainer: document.querySelector(".learning-container"),
       projectsContainer: document.querySelector("#projects-wrapper"),
       experienceTimeline: document.querySelector(".experience-timeline"),
       educationContainer: document.querySelector(".education-container"),
@@ -41,6 +42,7 @@
     renderAboutMe(dom.aboutMeContent);
     renderHeaderSocial(dom.socialGroups);
     renderSkills(dom.skillsContainer);
+    renderLearning(dom.learningContainer);
     renderMerakiStudios(dom.merakiContent);
     // Set body as loaded immediately since we removed the loader
     document.body.classList.add("loaded");
@@ -175,6 +177,29 @@
             </ul>
         </div>
     `,
+      )
+      .join("");
+  }
+
+  function renderLearning(container) {
+    if (!container) return;
+    if (!PORTFOLIO_CONFIG.currentlyLearning || PORTFOLIO_CONFIG.currentlyLearning.length === 0) {
+      const section = container.closest('.learning-section');
+      if (section) section.style.display = 'none';
+      return;
+    }
+    container.innerHTML = PORTFOLIO_CONFIG.currentlyLearning
+      .map(
+        (item) => {
+          let iconHTML = '';
+          if (item.iconImg) {
+             const lightAttr = item.iconImgLight ? `data-dark-src="${item.iconImg}" data-light-src="${item.iconImgLight}" class="theme-image"` : '';
+             iconHTML = `<img src="${item.iconImg}" ${lightAttr} alt="${item.name} icon" style="width: 20px; height: 20px; object-fit: contain;" />`;
+          } else if (item.icon) {
+             iconHTML = `<i class="${item.icon}"></i>`;
+          }
+          return `<div class="learning-tag">${iconHTML}<span>${item.name}</span></div>`;
+        }
       )
       .join("");
   }

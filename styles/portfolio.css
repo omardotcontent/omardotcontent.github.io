@@ -394,7 +394,7 @@ img {
 
 /* HERO SECTION LINK STYLES */
 .hero-text a {
-  color: #ffffff;
+  color: var(--primary-color);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
@@ -438,6 +438,7 @@ img {
   gap: 2rem;
   max-width: 1600px;
   margin: 0 auto;
+  align-items: start; /* Prevents cards with fewer items from awkwardly stretching vertically */
 }
 .skill-card {
   background: var(--bg-card);
@@ -467,19 +468,68 @@ img {
 }
 .skill-card ul {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 .skill-card li {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  flex: 1 1 auto; /* This is the magic! Makes items grow to fill empty space dynamically */
+  line-height: 1.4;
+  text-align: center;
+  word-break: break-word;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.skill-card li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.skill-card li img {
+  flex-shrink: 0;
 }
 .skill-card i {
-  font-size: 1.5rem;
-  width: 25px;
-  text-align: center;
-  color: var(--text-muted);
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+/* CURRENTLY LEARNING */
+.learning-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.learning-tag {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.learning-tag:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.learning-tag i {
+  font-size: 1.3rem;
+  color: var(--primary-color);
 }
 
 /* GITHUB STATS CARDS */
@@ -1217,7 +1267,8 @@ footer {
   }
 
   .skills-container {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted to give big texts more breathing room */
+    align-items: start;
   }
 }
 
@@ -1327,8 +1378,17 @@ footer {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  .skill-card li {
+  
+  /* Currently learning mobile */
+  .learning-section h2 {
+    font-size: 2rem;
+  }
+  .learning-container {
+    justify-content: center;
+  }
+  .learning-tag {
     font-size: 1rem;
+    padding: 0.6rem 1.2rem;
   }
 
   /* Projects mobile layout */
@@ -1624,6 +1684,10 @@ html.light-mode .hero-text h1 {
   -webkit-text-fill-color: transparent;
 }
 
+html.light-mode .hero-text a:hover {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
 html.light-mode .desktop-header {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(0, 0, 0, 0.1);
@@ -1654,6 +1718,24 @@ html.light-mode .project-card, html.light-mode .skill-card, html.light-mode .git
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
+html.light-mode .skill-card li {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+html.light-mode .skill-card li:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+html.light-mode .learning-tag {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+html.light-mode .learning-tag:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
 html.light-mode .project-card:hover, html.light-mode .skill-card:hover, html.light-mode .github-stat-card:hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
