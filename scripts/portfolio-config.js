@@ -530,8 +530,8 @@ const PORTFOLIO_CONFIG = {
     degree: "B.S. in Software Engineering (Ongoing)"
   },
   certifications: [
-    "Fundamentals of Digital Marketing - Google",
     "Agile Project Management - HP LIFE",
+    "Fundamentals of Digital Marketing - Google",
     "Digital Egypt Clubs Initiative 2023 - Level Two Lite",
     "Microsoft Office Specialist: PowerPoint (2016 & 2019)",
     "Beaver Egypt Challenge 2023 - Ministry of Communications",
