@@ -94,7 +94,6 @@ const PORTFOLIO_CONFIG = {
   // Currently Learning Section
   currentlyLearning: [
     { name: "C++", icon: "fa-brands fa-cuttlefish" },
-    { name: "Agile Project Management - HP LIFE", icon: "fa-solid fa-diagram-project" },
     { name: "Unreal Engine", icon: "fa-solid fa-gamepad" }
   ],
 
@@ -532,6 +531,7 @@ const PORTFOLIO_CONFIG = {
   },
   certifications: [
     "Fundamentals of Digital Marketing - Google",
+    "Agile Project Management - HP LIFE",
     "Digital Egypt Clubs Initiative 2023 - Level Two Lite",
     "Microsoft Office Specialist: PowerPoint (2016 & 2019)",
     "Beaver Egypt Challenge 2023 - Ministry of Communications",
