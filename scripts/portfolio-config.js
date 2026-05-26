@@ -4,7 +4,7 @@ const PORTFOLIO_CONFIG = {
   hero: {
     name: "Omar Mohamed",
     title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer",
-    profilePic: "images/omarpic.png"
+    profilePic: "images/omarpic.webp"
   },
 
   // About Me expansion
@@ -94,7 +94,8 @@ const PORTFOLIO_CONFIG = {
   // Currently Learning Section
   currentlyLearning: [
     { name: "C++", icon: "fa-brands fa-cuttlefish" },
-    { name: "Unreal Engine", icon: "fa-solid fa-gamepad" }
+    { name: "Unreal Engine", icon: "fa-solid fa-gamepad" },
+    { name: "Java Technical (Hult Prize SAMS)", icon: "fa-brands fa-java" }
   ],
 
   // Meraki Studios section
