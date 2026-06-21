@@ -94,7 +94,6 @@ const PORTFOLIO_CONFIG = {
   // Currently Learning Section
   currentlyLearning: [
     { name: "C++", icon: "fa-brands fa-cuttlefish" },
-    { name: "Unreal Engine", icon: "fa-solid fa-gamepad" },
     { name: "Java Technical (Hult Prize SAMS)", icon: "fa-brands fa-java" }
   ],
 
