@@ -3,233 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Omar Mohamed | Portfolio</title>
-    <script>
-      if (localStorage.getItem("theme") === "light") {
-        document.documentElement.classList.add("light-mode");
-      }
-    </script>
+    <title>Omar Mohamed | Motion Designer & Developer</title>
 
     <link rel="icon" href="images/icon.png" type="image/png" />
 
     <!-- Primary Meta Tags for SEO & Social Sharing -->
-    <meta name="description" content="Founder @ Meraki Studios | Motion Designer & Java Developer">
+    <meta name="description" content="Co-Founder @ Meraki Studios | Motion Designer & Java Developer — A cinematic portfolio experience." />
 
     <!-- Open Graph / Facebook / Discord -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://omardotcontent.github.io/">
-    <meta property="og:title" content="Omar Mohamed | Portfolio">
-    <meta property="og:description" content="Founder @ Meraki Studios | Motion Designer & Java Developer">
-    <meta property="og:image" content="https://omardotcontent.github.io/images/omarpic.webp">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://omardotcontent.github.io/" />
+    <meta property="og:title" content="Omar Mohamed | Motion Designer & Developer" />
+    <meta property="og:description" content="Co-Founder @ Meraki Studios | Motion Designer & Java Developer" />
+    <meta property="og:image" content="https://omardotcontent.github.io/images/omarpic.webp" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://omardotcontent.github.io/">
-    <meta property="twitter:title" content="Omar Mohamed | Portfolio">
-    <meta property="twitter:description" content="Founder @ Meraki Studios | Motion Designer & Java Developer">
-    <meta property="twitter:image" content="https://omardotcontent.github.io/images/omarpic.webp">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://omardotcontent.github.io/" />
+    <meta property="twitter:title" content="Omar Mohamed | Motion Designer & Developer" />
+    <meta property="twitter:description" content="Co-Founder @ Meraki Studios | Motion Designer & Java Developer" />
+    <meta property="twitter:image" content="https://omardotcontent.github.io/images/omarpic.webp" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/c71afe14f5.js" crossorigin="anonymous"></script>
+
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/portfolio.css" />
+    <link rel="stylesheet" href="styles/cinema.css" />
   </head>
   <body>
-    <!-- Voronoi Background -->
-    <div id="shape-grid">
-      <canvas id="voronoi-canvas"></canvas>
+    <!-- WebGL Liquid Gradient Background -->
+    <canvas id="gradient-canvas"></canvas>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint" id="scroll-hint">
+      <div class="scroll-hint-arrow"></div>
+      <span>SCROLL</span>
     </div>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--accent-glow); z-index: 9999; transition: width 0.1s ease-out;"></div>
+    <!-- Cinematic Scenes -->
+    <main id="cinema">
 
-    <!-- Desktop Header -->
-    <header class="desktop-header">
-      <div class="header-container">
-        <a href="index.html" class="header-logo-link">
-          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo theme-image" data-dark-src="images/OmarLogo.png" data-light-src="images/OmarLogoLight.png" />
-        </a>
-        
-        <nav class="desktop-nav">
-          <div class="nav-links">
-            <a href="#main" class="nav-btn active">About</a>
-            <a href="#projects" class="nav-btn">Projects</a>
-            <a href="#experience" class="nav-btn">Experience</a>
-          </div>
-          
-          <div class="vertical-divider"></div>
-          
-          <div class="social-group">
-            <!-- Social links will be rendered by JavaScript -->
-          </div>
-
-          <div class="vertical-divider"></div>
-
-          <button class="theme-toggle" aria-label="Toggle theme" style="margin-right: 0;">
-            <i class="fa-solid fa-moon"></i>
-          </button>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-bottom-nav">
-      <div class="nav-links">
-        <a href="#main" class="nav-btn active">
-          <i class="fa-solid fa-user"></i>
-          <span>About</span>
-        </a>
-        <a href="#projects" class="nav-btn">
-          <i class="fa-solid fa-code"></i>
-          <span>Projects</span>
-        </a>
-        <a href="#experience" class="nav-btn">
-          <i class="fa-solid fa-briefcase"></i>
-          <span>Experience</span>
-        </a>
-      </div>
-    </nav>
-
-    <!-- Mobile Top Header -->
-    <header class="mobile-top-header">
-      <div class="header-container">
-        <a href="index.html" class="header-logo-link">
-          <img src="images/OmarLogo.png" alt="Omar Mohamed Logo" class="header-logo theme-image" data-dark-src="images/OmarLogo.png" data-light-src="images/OmarLogoLight.png" />
-        </a>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <div class="social-group">
-            <!-- Social links will be rendered by JavaScript -->
-          </div>
-          <button class="theme-toggle" aria-label="Toggle theme" style="margin-right: 0;">
-            <i class="fa-solid fa-moon"></i>
-          </button>
+      <!-- Scene 1: Hero -->
+      <section class="scene scene--hero" data-scene="hero">
+        <div class="scene__content" id="hero-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
-      </div>
-    </header>
+      </section>
 
-    <!-- Main Hero Section -->
-    <section id="main">
-      <div class="hero-container">
-        <!-- Hero content will be rendered by JavaScript -->
-      </div>
-
-        <!-- About Me Section -->
-        <div class="about-me-section">
-          <h2 class="animate-on-scroll">ABOUT ME</h2>
-          <div
-            class="about-me-content"
-            style="
-              max-width: 1600px;
-              margin: 0 auto;
-              line-height: 1.8;
-              color: var(--text-muted);
-              font-size: 1.2rem;
-              text-align: left;
-              padding: 0 1rem;
-            "
-          >
-            <!-- About me text will be rendered by JavaScript -->
-          </div>
+      <!-- Scene 2: Meraki Studios -->
+      <section class="scene scene--meraki" data-scene="meraki">
+        <div class="scene__content" id="meraki-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
+      </section>
 
-        <div class="about-skills-section">
-          <h2 class="animate-on-scroll">SKILLS & TOOLS</h2>
-          <div class="skills-container">
-            <!-- Skills will be rendered by JavaScript -->
-          </div>
-
-          <!-- Currently Learning Section -->
-          <div class="learning-section" style="margin-top: 4rem;">
-            <h2 class="animate-on-scroll">CURRENTLY LEARNING</h2>
-            <div class="learning-container animate-on-scroll" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-              <!-- Rendered by JS -->
-            </div>
-          </div>
+      <!-- Scene 3: Skills & Tools -->
+      <section class="scene scene--skills" data-scene="skills">
+        <div class="scene__content" id="skills-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
+      </section>
 
-      <!-- Meraki Studios Section -->
-      <div class="meraki-studios-section">
-        <div class="meraki-content" style="max-width: 1500px; margin: 4rem auto 0; padding: 0 2rem; text-align: center;">
-          <!-- Rendered by JS -->
+      <!-- Scene 4: Projects -->
+      <section class="scene scene--projects" data-scene="projects">
+        <div class="scene__content" id="projects-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
-      </div>
+      </section>
 
-      <!-- GitHub Stats Section -->
-      <div class="github-stats-section" style="margin-top: 5rem;">
-        <h2 class="animate-on-scroll">GITHUB STATS</h2>
-        <div class="github-stats-container" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center; padding: 0 1rem;">
-          <div class="stats-row animate-on-scroll" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
-            <div class="github-stat-card">
-              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" class="theme-image" data-dark-src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" data-light-src="https://github-readme-stats-blond-eight-93.vercel.app/api?username=omardotcontent&show_icons=true&count_private=true&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333&icon_color=000000" alt="GitHub Stats" height="180" style="display: block;" />
-            </div>
-            <div class="github-stat-card">
-              <img src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" class="theme-image" data-dark-src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=ffffff&fire=ffffff&currStreakNum=ffffff&currStreakLabel=b0b0b0&sideNums=ffffff&sideLabels=b0b0b0&dates=b0b0b0" data-light-src="https://streak-stats.demolab.com?user=omardotcontent&hide_border=true&background=00000000&ring=000000&fire=000000&currStreakNum=000000&currStreakLabel=333333&sideNums=000000&sideLabels=333333&dates=333333" alt="GitHub Streak" height="180" style="display: block;" />
-            </div>
-            <div class="github-stat-card">
-              <img src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" class="theme-image" data-dark-src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=ffffff&text_color=b0b0b0&icon_color=ffffff" data-light-src="https://github-readme-stats-blond-eight-93.vercel.app/api/top-langs/?username=omardotcontent&layout=compact&count_private=true&hide_border=true&bg_color=00000000&title_color=000000&text_color=333333&icon_color=000000" alt="Top Languages" height="180" style="display: block;" />
-            </div>
-          </div>
+      <!-- Scene 5: Experience & Education -->
+      <section class="scene scene--experience" data-scene="experience">
+        <div class="scene__content" id="experience-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2 class="animate-on-scroll">PROJECTS</h2>
-      <div id="projects-wrapper">
-        <!-- Projects will be rendered by JavaScript -->
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-      <div class="experience-education-wrapper">
-        <div class="experience-section-inner">
-          <h2 class="animate-on-scroll">EXPERIENCE</h2>
-          <div class="experience-timeline">
-            <!-- Experience will be rendered by JavaScript -->
-          </div>
+      <!-- Scene 6: Contact / Outro -->
+      <section class="scene scene--contact" data-scene="contact">
+        <div class="scene__content" id="contact-content">
+          <!-- Built by kinetic-scenes.js -->
         </div>
+      </section>
 
-        <!-- Education within Experience Section -->
-        <div class="experience-education-section">
-          <h2 class="animate-on-scroll">EDUCATION & CERTIFICATES</h2>
-          <div class="education-container">
-            <!-- Education and Certs will be rendered by JavaScript -->
-          </div>
-        </div>
-      </div>
-    </section>
+    </main>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer-compact" id="contact">
-        <div class="center-slot footer-section contact-info">
-          <!-- Contact info will be rendered by JavaScript -->
-        </div>
-      </div>
-    </footer>
-
-    <!-- Project Modal -->
-    <div id="project-modal">
-      <div class="modal-content">
-        <button class="modal-close-btn">&times;</button>
-        <h2 id="modal-project-title"></h2>
-        <div id="modal-project-video"></div>
-        <p id="modal-project-description"></p>
-        <div id="modal-project-links"></div>
-      </div>
-    </div>
-    
-    <script src="scripts/portfolio-config.js" defer></script>
-    <script src="scripts/animations.js" defer></script>
-    <script src="scripts/voronoi.js" defer></script>
-    <script src="scripts/portfolio-main.js" defer></script>
+    <!-- Scripts -->
+    <script src="scripts/portfolio-config.js"></script>
+    <script src="scripts/gradient-shader.js"></script>
+    <script src="scripts/scroll-engine.js"></script>
+    <script src="scripts/kinetic-scenes.js"></script>
   </body>
 </html>

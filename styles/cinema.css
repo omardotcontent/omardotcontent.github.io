@@ -1,0 +1,1167 @@
+/* ============================================================
+   CINEMA.CSS — Cinematic Motion Graphics Portfolio
+   Design System + Scene Layouts + Kinetic Animations
+   ============================================================ */
+
+/* --- Design Tokens --- */
+:root {
+  /* Colors */
+  --color-void: #050510;
+  --color-white: #ffffff;
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-15: rgba(255, 255, 255, 0.15);
+  --color-white-08: rgba(255, 255, 255, 0.08);
+  --color-accent-green: #18e07a;
+  --color-accent-purple: #6b28d4;
+  --color-accent-magenta: #c42d8a;
+  --color-accent-blue: #3b82f6;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Easing */
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-slam: cubic-bezier(0.05, 0.7, 0.1, 1.0);
+
+  /* Timing */
+  --duration-fast: 0.4s;
+  --duration-normal: 0.7s;
+  --duration-slow: 1.2s;
+  --duration-hero: 1.6s;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  /* We handle smooth scrolling manually */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--color-void);
+  color: var(--color-white);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Hide default scrollbar for cleaner look */
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+a {
+  color: var(--color-accent-green);
+  text-decoration: none;
+  transition: color 0.3s var(--ease-smooth);
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+/* --- WebGL Canvas Background --- */
+#gradient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- Main Container --- */
+#cinema {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Scene Base --- */
+.scene {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.scene__content {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* --- Scroll Hint --- */
+.scroll-hint {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.6s var(--ease-smooth);
+  pointer-events: none;
+}
+
+.scroll-hint.hidden {
+  opacity: 0;
+}
+
+.scroll-hint span {
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--color-white-50);
+  text-transform: uppercase;
+}
+
+.scroll-hint-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--color-white-50);
+  border-bottom: 2px solid var(--color-white-50);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s var(--ease-snap) infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(45deg) translateY(8px);
+    opacity: 0.4;
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM
+   ============================================================ */
+
+.ktext-hero {
+  font-size: clamp(3rem, 10vw, 11rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.ktext-heading {
+  font-size: clamp(2rem, 6vw, 6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.ktext-subheading {
+  font-size: clamp(1.3rem, 3vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-white-90);
+}
+
+.ktext-body {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-white-70);
+}
+
+.ktext-label {
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-white-50);
+}
+
+.ktext-accent {
+  background: linear-gradient(135deg, var(--color-accent-green), var(--color-accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   KINETIC ANIMATION CLASSES
+   ============================================================ */
+
+/* Base hidden state — all animated elements start invisible */
+.k-anim {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Triggered state */
+.k-anim.k-visible {
+  opacity: 1;
+}
+
+/* --- Scale In (center explosion) --- */
+.k-scale-in {
+  transform: scale(0.3);
+  transition: transform var(--duration-normal) var(--ease-snap),
+    opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.k-scale-in.k-visible {
+  transform: scale(1);
+}
+
+/* --- Slam In (oversized → snap to size) --- */
+.k-slam {
+  transform: scale(2.5);
+  transition: transform var(--duration-normal) var(--ease-slam),
+    opacity 0.2s var(--ease-smooth);
+}
+
+.k-slam.k-visible {
+  transform: scale(1);
+}
+
+/* --- Slide from Left --- */
+.k-slide-left {
+  transform: translateX(-120px);
+  transition: transform var(--duration-normal) var(--ease-snap),
+    opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.k-slide-left.k-visible {
+  transform: translateX(0);
+}
+
+/* --- Slide from Right --- */
+.k-slide-right {
+  transform: translateX(120px);
+  transition: transform var(--duration-normal) var(--ease-snap),
+    opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.k-slide-right.k-visible {
+  transform: translateX(0);
+}
+
+/* --- Slide Up --- */
+.k-slide-up {
+  transform: translateY(80px);
+  transition: transform var(--duration-normal) var(--ease-snap),
+    opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.k-slide-up.k-visible {
+  transform: translateY(0);
+}
+
+/* --- Slide Down --- */
+.k-slide-down {
+  transform: translateY(-80px);
+  transition: transform var(--duration-normal) var(--ease-snap),
+    opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.k-slide-down.k-visible {
+  transform: translateY(0);
+}
+
+/* --- Fade In --- */
+.k-fade {
+  transition: opacity var(--duration-slow) var(--ease-smooth);
+}
+
+.k-fade.k-visible {
+  opacity: 1;
+}
+
+/* --- Flash In (rapid appear) --- */
+.k-flash {
+  transform: scale(1.1);
+  transition: transform 0.15s var(--ease-snap),
+    opacity 0.1s linear;
+}
+
+.k-flash.k-visible {
+  transform: scale(1);
+}
+
+/* --- Typewriter Effect --- */
+.k-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid var(--color-accent-green);
+  white-space: nowrap;
+  width: 0;
+  opacity: 1 !important;
+  transition: none;
+}
+
+.k-typewriter.k-visible {
+  animation: typewriter 2s steps(40) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--color-accent-green);
+  }
+}
+
+/* ============================================================
+   STAGGER SYSTEM
+   Children inside a .k-stagger parent get incremental delays
+   ============================================================ */
+
+.k-stagger>.k-anim:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.k-stagger>.k-anim:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.k-stagger>.k-anim:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.k-stagger>.k-anim:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.k-stagger>.k-anim:nth-child(5) {
+  transition-delay: 0.32s;
+}
+
+.k-stagger>.k-anim:nth-child(6) {
+  transition-delay: 0.40s;
+}
+
+.k-stagger>.k-anim:nth-child(7) {
+  transition-delay: 0.48s;
+}
+
+.k-stagger>.k-anim:nth-child(8) {
+  transition-delay: 0.56s;
+}
+
+.k-stagger>.k-anim:nth-child(9) {
+  transition-delay: 0.64s;
+}
+
+.k-stagger>.k-anim:nth-child(10) {
+  transition-delay: 0.72s;
+}
+
+.k-stagger>.k-anim:nth-child(11) {
+  transition-delay: 0.80s;
+}
+
+.k-stagger>.k-anim:nth-child(12) {
+  transition-delay: 0.88s;
+}
+
+/* Fast stagger variant */
+.k-stagger-fast>.k-anim:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(2) {
+  transition-delay: 0.04s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(3) {
+  transition-delay: 0.08s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(4) {
+  transition-delay: 0.12s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(5) {
+  transition-delay: 0.16s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(6) {
+  transition-delay: 0.20s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(7) {
+  transition-delay: 0.24s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(8) {
+  transition-delay: 0.28s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(9) {
+  transition-delay: 0.32s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(10) {
+  transition-delay: 0.36s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(11) {
+  transition-delay: 0.40s;
+}
+
+.k-stagger-fast>.k-anim:nth-child(12) {
+  transition-delay: 0.44s;
+}
+
+/* ============================================================
+   SCENE-SPECIFIC LAYOUTS
+   ============================================================ */
+
+/* --- Hero Scene --- */
+.scene--hero {
+  min-height: 100vh;
+}
+
+.scene--hero .hero-name {
+  margin-bottom: var(--space-sm);
+}
+
+.scene--hero .hero-title {
+  margin-bottom: var(--space-xs);
+}
+
+.scene--hero .hero-subtitle {
+  margin-top: var(--space-sm);
+}
+
+/* --- Meraki Scene --- */
+.scene--meraki {
+  min-height: 150vh;
+}
+
+.meraki-intro {
+  margin-bottom: var(--space-lg);
+}
+
+.meraki-list {
+  list-style: none;
+  text-align: left;
+  max-width: 700px;
+  margin: var(--space-md) auto;
+}
+
+.meraki-list li {
+  padding: var(--space-xs) 0;
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: var(--color-white-70);
+}
+
+.meraki-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-green);
+  font-weight: 700;
+}
+
+/* --- Skills Scene --- */
+.scene--skills {
+  min-height: 100vh;
+}
+
+.skills-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .skills-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.skills-category {
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transition: border-color 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+}
+
+.skills-category:hover {
+  border-color: var(--color-accent-blue);
+  transform: translateY(-2px);
+}
+
+.skills-category-title {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--color-white);
+  border-left: 3px solid var(--color-accent-green);
+  padding-left: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 600;
+  color: var(--color-white-90);
+  transition: border-color 0.3s var(--ease-smooth),
+    background 0.3s var(--ease-smooth),
+    transform 0.3s var(--ease-smooth);
+}
+
+.skill-item:hover {
+  border-color: var(--color-accent-green);
+  background: rgba(24, 224, 122, 0.08);
+  transform: translateY(-2px);
+}
+
+.skill-item i,
+.skill-item img {
+  font-size: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
+  object-fit: contain;
+  color: var(--color-white-70);
+  display: block;
+}
+
+/* --- Projects Scene --- */
+.scene--projects {
+  min-height: 300vh;
+}
+
+.projects-category {
+  margin-bottom: var(--space-xl);
+}
+
+.projects-category-title {
+  margin-bottom: var(--space-lg);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-md);
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.project-card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-white-15);
+  border-radius: 16px;
+  background: var(--color-white-08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s var(--ease-smooth),
+    transform 0.3s var(--ease-snap),
+    background 0.3s var(--ease-smooth);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.project-card:hover {
+  border-color: var(--color-accent-purple);
+  transform: translateY(-4px);
+  background: rgba(123, 47, 247, 0.08);
+  color: inherit;
+}
+
+.project-card-title {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.project-card-desc {
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  color: var(--color-white-50);
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  background: var(--color-white-15);
+  color: var(--color-white-70);
+}
+
+/* Media embed cards */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-sm);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.media-card {
+  border: 1px solid var(--color-white-15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-white-08);
+  transition: border-color 0.3s var(--ease-smooth);
+}
+
+.media-card:hover {
+  border-color: var(--color-accent-magenta);
+}
+
+.media-card a {
+  display: block;
+  padding: var(--space-sm);
+  color: var(--color-white-90);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Render/image cards */
+.renders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-sm);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.render-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-white-15);
+  transition: border-color 0.3s var(--ease-smooth),
+    transform 0.3s var(--ease-snap);
+}
+
+.render-card:hover {
+  border-color: var(--color-accent-green);
+  transform: scale(1.03);
+}
+
+.render-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.render-card-title {
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white-90);
+  text-align: center;
+  background: var(--color-white-08);
+}
+
+/* Music embed cards */
+.music-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.music-card {
+  border: 1px solid var(--color-white-15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-white-08);
+  width: 320px;
+  transition: border-color 0.3s var(--ease-smooth);
+}
+
+.music-card:hover {
+  border-color: var(--color-accent-purple);
+}
+
+.music-card iframe {
+  width: 100%;
+  border: none;
+}
+
+.music-card-title {
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white-90);
+  text-align: center;
+}
+
+/* --- Experience Scene --- */
+.scene--experience {
+  min-height: 200vh;
+}
+
+.experience-entry {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 2px solid var(--color-white-15);
+}
+
+.experience-entry:last-child {
+  margin-bottom: 0;
+}
+
+.experience-role {
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+
+.experience-company {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--color-accent-green);
+  margin-top: 0.3rem;
+}
+
+.experience-date {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 600;
+  color: var(--color-white-50);
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+.experience-duties {
+  list-style: none;
+  margin-top: var(--space-sm);
+}
+
+.experience-duties li {
+  padding: 0.3rem 0;
+  color: var(--color-white-70);
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.experience-duties li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-white-30);
+}
+
+/* Education Section */
+.education-block {
+  text-align: left;
+  max-width: 800px;
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-white-15);
+  border-radius: 16px;
+  background: var(--color-white-08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.education-institution {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 800;
+  color: var(--color-white);
+}
+
+.education-degree {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: var(--color-accent-green);
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+.certs-list {
+  list-style: none;
+  margin-top: var(--space-sm);
+  columns: 1;
+}
+
+.certs-list li {
+  padding: 0.35rem 0;
+  color: var(--color-white-70);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  position: relative;
+  padding-left: 1.2rem;
+  break-inside: avoid;
+}
+
+.certs-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-purple);
+  font-size: 0.7em;
+}
+
+/* --- Contact Scene --- */
+.scene--contact {
+  min-height: 100vh;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--color-white-15);
+  border-radius: 100px;
+  background: var(--color-white-08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  font-weight: 600;
+  color: var(--color-white-90);
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease-smooth),
+    background 0.3s var(--ease-smooth),
+    transform 0.3s var(--ease-snap);
+}
+
+.contact-link:hover {
+  border-color: var(--color-accent-green);
+  background: rgba(0, 255, 135, 0.08);
+  transform: translateY(-2px);
+  color: var(--color-white);
+}
+
+.contact-link i {
+  font-size: 1.2em;
+}
+
+.contact-email {
+  margin-top: var(--space-md);
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-accent-green);
+}
+
+.contact-outro {
+  margin-top: var(--space-lg);
+}
+
+/* ============================================================
+   SCENE DIVIDERS — visual breathing room
+   ============================================================ */
+
+.scene-divider {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .scene {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .renders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .music-card {
+    width: 100%;
+  }
+
+  .experience-entry {
+    padding-left: var(--space-sm);
+  }
+
+  .certs-list {
+    columns: 1;
+  }
+
+  .k-slide-left {
+    transform: translateX(-60px);
+  }
+
+  .k-slide-right {
+    transform: translateX(60px);
+  }
+
+  .k-slide-up {
+    transform: translateY(40px);
+  }
+
+  .k-slam {
+    transform: scale(1.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .ktext-hero {
+    font-size: clamp(2.5rem, 14vw, 5rem);
+  }
+
+  .renders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+
+.mt-md {
+  margin-top: var(--space-md);
+}
+
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Meraki Studios SVG Logo --- */
+.meraki-logo-wrapper {
+  margin: 0.5rem 0 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.meraki-logo-wrapper svg {
+  width: min(560px, 86vw);
+  height: auto;
+  display: block;
+  /* Soft glow to separate from background */
+  filter: drop-shadow(0 0 18px rgba(24, 224, 122, 0.12));
+}
+
+@media (max-width: 480px) {
+  .meraki-logo-wrapper svg {
+    width: min(340px, 92vw);
+  }
+}
+
+/* ============================================================
+   3D CAROUSEL (TURNAROUND SHOWCASE)
+   ============================================================ */
+
+.carousel-scene {
+  perspective: 1200px;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  margin: 4rem 0;
+  touch-action: pan-y;
+  /* allow vertical scroll, intercept horizontal */
+}
+
+.carousel-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  cursor: grab;
+}
+
+.carousel-container:active {
+  cursor: grabbing;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.carousel-item:hover {
+  border-color: var(--color-accent-blue);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-item iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.carousel-item-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Note: Mobile adjustments are handled dynamically via JS for the 3D Carousel container and items */

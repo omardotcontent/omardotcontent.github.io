@@ -543,7 +543,9 @@ const PORTFOLIO_CONFIG = {
   contact: {
     text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
     email: "omar@merakistudios.dev",
-    telegram: "https://t.me/omardotsocial", 
+    telegram: "https://t.me/omardotsocial",
     messenger: "https://m.me/omardotsocial"
   }
 };
+
+window.PORTFOLIO_CONFIG = PORTFOLIO_CONFIG;
