@@ -596,7 +596,6 @@ a:hover {
 .skill-item img {
   font-size: 1.3em;
   width: 1.3em;
-  height: 1.3em;
   object-fit: contain;
   color: var(--color-white-70);
   display: block;
