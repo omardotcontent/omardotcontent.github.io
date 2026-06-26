@@ -228,7 +228,7 @@
       card.className = 'project-card k-anim k-slide-up';
 
       const title = el('div', 'project-card-title');
-      
+
       let faviconHTML = '';
       if (project.primaryUrl) {
         try {
@@ -239,7 +239,7 @@
           console.error(e);
         }
       }
-      
+
       title.innerHTML = faviconHTML + project.title;
       card.appendChild(title);
 
@@ -274,23 +274,28 @@
       link.rel = 'noopener noreferrer';
 
       if (type === 'youtube') {
+        card.classList.add('media-card--landscape');
+
         const id = item.youtubeId || item.youtubeShortId;
         if (id) {
           // YouTube thumbnail
           const img = document.createElement('img');
           img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
           img.alt = item.title;
-          img.style.cssText = 'width: 100%; display: block; border-radius: 8px 8px 0 0;';
           link.appendChild(img);
         }
-        const text = el('span', '', item.title);
+        const text = el('div', 'media-card-title', item.title);
         link.appendChild(text);
       } else {
-        // Instagram — just title link
-        const icon = el('i', 'fa-brands fa-instagram');
-        icon.style.marginRight = '0.5rem';
-        link.appendChild(icon);
-        const text = el('span', '', item.title || 'View Reel');
+        // Instagram Reel — vertical layout
+        card.classList.add('media-card--vertical');
+
+        const placeholder = el('div', 'instagram-placeholder');
+        const icon = el('i', 'fa-brands fa-instagram instagram-placeholder-icon');
+        placeholder.appendChild(icon);
+        link.appendChild(placeholder);
+
+        const text = el('div', 'media-card-title', item.title || 'View Reel');
         link.appendChild(text);
       }
 
@@ -318,7 +323,7 @@
         itemHeight = Math.round(202 * (itemWidth / 560));
       } else {
         itemWidth = 560;
-        itemHeight = 330;
+        itemHeight = 335;
       }
     } else if (type === 'image') {
       if (vw < 600) {
