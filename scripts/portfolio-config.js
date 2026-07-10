@@ -3,59 +3,24 @@
 const PORTFOLIO_CONFIG = {
   hero: {
     name: "Omar Mohamed",
-    title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer",
-    profilePic: "images/omarpic.webp"
-  },
-
-  // About Me expansion
-  aboutMe: {
-    sections: [
-      {
-        subtitle: "Who I Am",
-        icon: "fa-solid fa-user",
-        content: "I’m <strong>Omar Mohamed</strong>, born on <strong>May 12, 2006</strong> — just a creator who loves design, storytelling, and making clean digital stuff."
-      },
-      {
-        subtitle: "Meraki Studios",
-        icon: "fa-solid fa-star",
-        content: "I'm also the <strong>Founder of Meraki Studios</strong>! The whole idea started when we were a bunch of friends each with talents, and we thought into making 1 studio to bring all of our projects to life! Now I lead the creative direction and development there."
-      },
-      {
-        subtitle: "Design & Video Editing",
-        icon: "fa-solid fa-clapperboard",
-        content: "I've been a <strong>Motion Graphic Designer & Video Editor</strong> for over <strong>6 years</strong> now, making cinematic visuals and marketing stuff for brands like <strong>AKCallers</strong> and <strong>Zumrafood</strong> using <strong>Premiere Pro</strong>. I also make modern layouts and brand designs on <strong>Figma</strong>, <strong>PowerPoint</strong>, and <strong>Paint.NET</strong>."
-      },
-      {
-        subtitle: "Software Development",
-        icon: "fa-solid fa-code",
-        content: "But as a <strong>Developer</strong>, I really enjoy building tools, clean and interactive UIs, and creative digital experiences! I work alot with <strong>Java</strong> (JavaFX apps, Minecraft plugins), and recently our new scripting engine <strong>Vyn</strong>."
-      },
-      {
-        subtitle: "Education & The Future",
-        icon: "fa-solid fa-rocket",
-        content: "I'm currently getting my <strong>B.S. in Computer Science</strong> at <strong>Sadat Academy for Management Sciences</strong>. I'm always learning and improving whatever I'm cooking up... this is still the beginning and there is yet more to come."
-      }
-    ]
+    title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer"
   },
 
   // Header Social Links
   headerSocial: [
     {
-      category: "Professional",
       links: [
         { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
         { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" }
       ]
     },
     {
-      category: "Content & Music",
       links: [
         { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
         { platform: "BandLab", url: "https://www.bandlab.com/omardotmusic", icon: "fa-solid fa-music" }
       ]
     },
     {
-      category: "Socials",
       links: [
         { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
         { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
@@ -79,7 +44,7 @@ const PORTFOLIO_CONFIG = {
       title: "Development",
       list: [
         { name: "Java", icon: "fa-brands fa-java" },
-        { name: "Vyn", iconImg: "images/vyn_logo.png", iconImgLight: "images/vyn_logo_light.png" },
+        { name: "Vyn", iconImg: "images/vyn_logo.png" },
       ]
     },
     {
@@ -99,7 +64,6 @@ const PORTFOLIO_CONFIG = {
 
   // Meraki Studios section
   merakiStudios: {
-    title: "What I Do at Meraki Studios",
     description: "At <strong>Meraki Studios</strong>, I lead creative direction, design systems, and development across all projects. My work includes:",
     list: [
       "Overseeing video editing & motion graphics",
@@ -116,7 +80,6 @@ const PORTFOLIO_CONFIG = {
       category: "Software & Development",
       list: [
         {
-          id: "interactivestuff",
           title: "InteractiveStuff",
           description: "Items Interact within your First-Person View, now powered by the Vyn Scripting Engine!",
           primaryUrl: "https://modrinth.com/mod/interactivestuff",
@@ -124,7 +87,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java", "Minecraft", "Vyn"]
         },
         {
-          id: "worldchatter",
           title: "WorldChatter",
           description: "Enhance your chatting experience.",
           primaryUrl: "https://modrinth.com/plugin/worldchatter",
@@ -132,7 +94,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java", "Minecraft"]
         },
         {
-          id: "worldcaster",
           title: "WorldCaster",
           description: "Standalone Broadcast Add-on for WorldChatter!",
           primaryUrl: "https://modrinth.com/plugin/worldcaster",
@@ -140,7 +101,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java", "Minecraft"]
         },
         {
-          id: "simpletodo",
           title: "SimpleToDO",
           description: "A Simple TO-DO JavaFX Desktop Application",
           primaryUrl: "",
@@ -148,7 +108,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java"]
         },
         {
-          id: "meraki-studios",
           title: "meraki-studios",
           description: "The Official Organization where a bunch of Nerds create limitless projects.",
           primaryUrl: "",
@@ -156,7 +115,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["JavaScript", "Contributor"]
         },
         {
-          id: "sync",
           title: "Sync",
           description: "A Simple Utilities Discord Bot made with JDA ",
           primaryUrl: "",
@@ -164,7 +122,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java"]
         },
         {
-          id: "astudioapp",
           title: "AStudioApp",
           description: "A Fully Working JavaFX Social Media App with basic features",
           primaryUrl: "",
@@ -172,7 +129,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["Java"]
         },
         {
-          id: "muscleprototype",
           title: "MusclePrototype",
           description: "A JavaFX Simulation Project for an Old Competition",
           primaryUrl: "",
@@ -185,7 +141,6 @@ const PORTFOLIO_CONFIG = {
       category: "Content & Media",
       list: [
         {
-          id: "yt-video-1",
           title: "[MC/FNAF] Demons",
           description: "Video content created for YouTube.",
           primaryUrl: "https://www.youtube.com/watch?v=pyReY80-Pd4",
@@ -193,7 +148,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Video", "Animation"]
         },
         {
-          id: "yt-video-2",
           title: "[MI/MC] Lighting Test",
           description: "Video content created for YouTube.",
           primaryUrl: "https://youtu.be/tdlf_Lt6fJQ",
@@ -201,7 +155,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Video", "Animation"]
         },
         {
-          id: "yt-video-3",
           title: "I'M AT SOUP",
           description: "Video content created for YouTube.",
           primaryUrl: "https://youtu.be/chCtnrT1MZ0",
@@ -209,7 +162,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Video", "Animation"]
         },
         {
-          id: "yt-video-4",
           title: "Mathematical Questions.",
           description: "Video content created for YouTube.",
           primaryUrl: "https://youtu.be/-2PuvoV-jX0",
@@ -217,7 +169,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Video", "Animation"]
         },
         {
-          id: "yt-edit-1",
           title: "Meraki Studios - GeminiCraft",
           description: "Video Edit for GeminiCraft",
           primaryUrl: "https://youtu.be/F-xHKUArMv4",
@@ -225,7 +176,20 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Edit"]
         },
         {
-          id: "yt-short-1",
+          title: "WorldChatter",
+          description: "Video Edit for WorldChatter",
+          primaryUrl: "https://youtu.be/zuHdnLSL5CQ",
+          youtubeId: "zuHdnLSL5CQ",
+          tags: ["YouTube", "Edit"]
+        },
+        {
+          title: "Fazbear's Return | Video Edit",
+          description: "Video Edit for my old indie game.",
+          primaryUrl: "https://youtu.be/5mVHEP1LHes",
+          youtubeId: "5mVHEP1LHes",
+          tags: ["YouTube", "Edit"]
+        },
+        {
           title: "Nitro-ify Short",
           description: "Short-form video content created for Nitro-ify.",
           primaryUrl: "https://www.youtube.com/shorts/QecSNWdMtEA",
@@ -233,7 +197,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Shorts", "Edit"]
         },
         {
-          id: "yt-short-2",
           title: "Nitro-ify Short",
           description: "Short-form video content created for Nitro-ify.",
           primaryUrl: "https://youtube.com/shorts/Z6OwqV8kn2M",
@@ -241,7 +204,6 @@ const PORTFOLIO_CONFIG = {
           tags: ["YouTube", "Shorts", "Edit"]
         },
         {
-          id: "yt-short-3",
           title: "Nitro-ify Short",
           description: "Short-form video content created for Nitro-ify.",
           primaryUrl: "https://youtube.com/shorts/E__UR37Avn8",
@@ -255,38 +217,32 @@ const PORTFOLIO_CONFIG = {
       layout: "compact",
       list: [
         {
-          id: "ig-akcallers-1",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Old TV Theme",
           primaryUrl: "https://www.instagram.com/reel/DChgDNyMi1W/",
           instagramId: "DChgDNyMi1W"
         },
         {
-          id: "ig-akcallers-2",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Motion Graphics Shop Promo",
           primaryUrl: "https://www.instagram.com/reel/DCEp7HFNaaR/",
           instagramId: "DCEp7HFNaaR"
         },
         {
-          id: "ig-akcallers-3",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Motion Graphics Leads Generation Promo",
           primaryUrl: "https://www.instagram.com/reel/C-tJaZfAtDt/",
           instagramId: "C-tJaZfAtDt"
         },
         {
-          id: "ig-akcallers-4",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Unreal Engine Animated Promo",
           primaryUrl: "https://www.instagram.com/reel/C-5u6eTOcVp/",
           instagramId: "C-5u6eTOcVp"
         },
         {
-          id: "ig-akcallers-5",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Motion Graphics Promo 2",
           primaryUrl: "https://www.instagram.com/reel/C-JMoSPO5kq/",
           instagramId: "C-JMoSPO5kq"
         },
         {
-          id: "ig-akcallers-6",
-          title: "AKCallers Reel",
+          title: "AKCallers Reel | Miami Retro Promo",
           primaryUrl: "https://www.instagram.com/reel/C8LADDxNBoJ/",
           instagramId: "C8LADDxNBoJ"
         }
@@ -297,58 +253,49 @@ const PORTFOLIO_CONFIG = {
       layout: "compact",
       list: [
         {
-          id: "ig-zumra-1",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo",
           primaryUrl: "https://www.instagram.com/reel/Cz52N_Uy_lu/",
           instagramId: "Cz52N_Uy_lu"
         },
         {
-          id: "ig-zumra-2",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 2",
           primaryUrl: "https://www.instagram.com/reel/CzVsvrmynUu/",
           instagramId: "CzVsvrmynUu"
         },
         {
-          id: "ig-zumra-3",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 3",
           primaryUrl: "https://www.instagram.com/reel/CzI1H2QymP8/",
           instagramId: "CzI1H2QymP8"
         },
         {
-          id: "ig-zumra-4",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 4",
           primaryUrl: "https://www.instagram.com/reel/CyfiNYbyvg8/",
           instagramId: "CyfiNYbyvg8"
         },
         {
-          id: "ig-zumra-5",
-          title: "ZumraFood Reel",
-          primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/",
-          instagramId: "Cy0HccJBWr9"
-        },
-        {
-          id: "ig-zumra-6",
-          title: "ZumraFood Reel",
-          primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/",
-          instagramId: "CxZ_uU7IP_o"
-        },
-        {
-          id: "ig-zumra-7",
-          title: "ZumraFood Reel",
-          primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/",
-          instagramId: "CwhWLAyoc2B"
-        },
-        {
-          id: "ig-zumra-8",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 5",
           primaryUrl: "https://www.instagram.com/reel/Cvb0pp9okVl/",
           instagramId: "Cvb0pp9okVl"
         },
         {
-          id: "ig-zumra-9",
-          title: "ZumraFood Reel",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 4",
           primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/",
           instagramId: "CwR5ggbIclS"
+        },
+        {
+          title: "ZumraFood Reel | Motion Graphics Products Halloween Promo",
+          primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/",
+          instagramId: "Cy0HccJBWr9"
+        },
+        {
+          title: "ZumraFood Reel | Unreal Engine Products Promo",
+          primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/",
+          instagramId: "CxZ_uU7IP_o"
+        },
+        {
+          title: "ZumraFood Reel | Motion Graphics Beach Products Promo",
+          primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/",
+          instagramId: "CwhWLAyoc2B"
         }
       ]
     },
@@ -357,33 +304,21 @@ const PORTFOLIO_CONFIG = {
       layout: "scrolling",
       list: [
         {
-          id: "spotify-1",
-          title: "Avenoir",
           bandlabId: "c263bc9e13e54acf8587093a15770039_5fb2c88ac2bcf0118196000d3a96100f"
         },
         {
-          id: "spotify-2",
-          title: "Obsidiana",
           bandlabId: "c263bc9e13e54acf8587093a15770039_5352a43b9e64f0118dc9000d3a960be3"
         },
         {
-          id: "bandlab-1",
-          title: "BandLab Track 1",
           bandlabId: "c263bc9e13e54acf8587093a15770039_748321f3ca38ef1186c3000d3a42581b"
         },
         {
-          id: "bandlab-2",
-          title: "BandLab Track 2",
           bandlabId: "c263bc9e13e54acf8587093a15770039_764d51d3c661f0118dc9000d3a960be3"
         },
         {
-          id: "bandlab-3",
-          title: "BandLab Track 3",
           bandlabId: "c263bc9e13e54acf8587093a15770039_e2d347d72539ef1186c3000d3a42581b"
         },
         {
-          id: "bandlab-4",
-          title: "BandLab Track 4",
           bandlabId: "c263bc9e13e54acf8587093a15770039_8eaa38636cf0ef1190c900224848fea7"
         }
       ]
@@ -393,28 +328,18 @@ const PORTFOLIO_CONFIG = {
       layout: "scrolling",
       list: [
         {
-          id: "remix-1",
-          title: "GHO$T Track (My Remix)",
           bandlabId: "c263bc9e13e54acf8587093a15770039_6597f45e1ef1ef1190c900224848fea7"
         },
         {
-          id: "remix-2",
-          title: "GHO$T Track (My Remix) 2",
           bandlabId: "c263bc9e13e54acf8587093a15770039_3a341ef4ec09f011aaa70022484892d6"
         },
         {
-          id: "remix-3",
-          title: "GHO$T Track (My Remix) 3",
           bandlabId: "c263bc9e13e54acf8587093a15770039_f233dd49c306f011aaa70022484892d6"
         },
         {
-          id: "remix-4",
-          title: "Remix 4",
           bandlabId: "c263bc9e13e54acf8587093a15770039_02b5d6f9ae60f0118dc9000d3a960be3"
         },
         {
-          id: "remix-5",
-          title: "Remix 5",
           bandlabId: "c263bc9e13e54acf8587093a15770039_52d83473c591ed119d7a000d3a98096b"
         }
       ]
@@ -424,69 +349,47 @@ const PORTFOLIO_CONFIG = {
       layout: "compact",
       list: [
         {
-          id: "render-1",
           title: "1v1",
-          description: "Made in Mine-Imator + Paint.NET.",
           imageUrl: "images/renders/1v1.webp"
         },
         {
-          id: "render-2",
           title: "Herobrine Alpha",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/HerobrineAlpha.webp"
         },
         {
-          id: "render-3",
           title: "Spring Fab",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/SpringFab.webp"
         },
         {
-          id: "render-4",
           title: "Steve in Nether",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/SteveinNether.webp"
         },
         {
-          id: "render-5",
           title: "Fireball",
-          description: "Made in Mine-Imator + Paint.NET.",
           imageUrl: "images/renders/Test.webp"
         },
         {
-          id: "render-6",
           title: "Breaking Bad",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/breaking bad.webp"
         },
         {
-          id: "render-7",
           title: "Car",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/car.webp"
         },
         {
-          id: "render-8",
           title: "Old Banner",
-          description: "Made in Mine-Imator.",
           imageUrl: "images/renders/fnaf2.webp"
         },
         {
-          id: "render-9",
           title: "New Banner",
-          description: "Made in Mine-Imator + Paint.NET.",
           imageUrl: "images/renders/iconbanner.webp"
         },
         {
-          id: "render-10",
           title: "Lines",
-          description: "Made in Mine-Imator + Paint.NET.",
           imageUrl: "images/renders/render.webp"
         },
         {
-          id: "render-11",
           title: "Starweevil",
-          description: "Made in Mine-Imator + Paint.NET.",
           imageUrl: "images/renders/starfinal.webp"
         }
       ]
