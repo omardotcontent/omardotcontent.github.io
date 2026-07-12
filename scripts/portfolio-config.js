@@ -366,7 +366,7 @@ const PORTFOLIO_CONFIG = {
           instagramId: "Cvb0pp9okVl"
         },
         {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 4",
+          title: "ZumraFood Reel | Motion Graphics Products Promo 6",
           primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/",
           instagramId: "CwR5ggbIclS"
         },
