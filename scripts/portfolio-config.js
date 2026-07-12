@@ -24,7 +24,8 @@ const PORTFOLIO_CONFIG = {
       links: [
         { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
         { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
-        { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" }
+        { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" },
+        { platform: "Discord", url: "https://discord.com/invite/8Ap2gGaKbw", icon: "fa-brands fa-discord" }
       ]
     }
   ],
@@ -73,6 +74,93 @@ const PORTFOLIO_CONFIG = {
     ],
     footer: "My goal is to create <strong>clean, intuitive, and meaningful</strong> digital experiences — visually and technically."
   },
+  // Services Section
+  services: [
+    {
+      category: "Minecraft Development",
+      items: [
+        {
+          title: "Minecraft Plugins",
+          description: "Custom Java plugins built for Spigot/Paper networks (e.g., WorldChatter, WorldCaster, GeminiCraft).",
+          icon: "fa-solid fa-code"
+        },
+        {
+          title: "Minecraft Mods",
+          description: "Enhance your client/server experience with custom mods (e.g., InteractiveStuff).",
+          icon: "fa-solid fa-cubes"
+        }
+      ]
+    },
+    {
+      category: "Video & Motion Graphics",
+      items: [
+        {
+          title: "Video Editing",
+          description: "High-quality video editing tailored for YouTube, Shorts, and Promos using Premiere Pro.",
+          icon: "fa-solid fa-film"
+        },
+        {
+          title: "Motion Graphics",
+          description: "Cinematic, engaging animations and intros that capture attention.",
+          icon: "fa-solid fa-wand-magic-sparkles"
+        }
+      ]
+    },
+    {
+      category: "Design & Branding",
+      items: [
+        {
+          title: "Text & Server Logos",
+          description: "Eye-catching custom text logos crafted for your brand.",
+          icon: "fa-solid fa-font"
+        },
+        {
+          title: "Logo Refinement",
+          description: "Polishing existing logos for a professional look (Figma + Paint.NET) — see FalconMC & Arioxa Cloud.",
+          icon: "fa-solid fa-pen-nib"
+        },
+        {
+          title: "3D Minecraft Graphics",
+          description: "Custom 3D renders and pictures created with Mine-Imator.",
+          icon: "fa-brands fa-unity"
+        }
+      ]
+    },
+    {
+      category: "Audio & Presentations",
+      items: [
+        {
+          title: "Sound Design",
+          description: "Mixing AI-generated and free sounds in Premiere Pro for an original audio experience.",
+          icon: "fa-solid fa-volume-high"
+        },
+        {
+          title: "PowerPoint Presentations",
+          description: "Professional, clean, and animated presentation design.",
+          icon: "fa-solid fa-file-powerpoint"
+        }
+      ]
+    }
+  ],
+
+  // Bundles Section
+  bundles: [
+    {
+      title: "The Ultimate Creator Pack",
+      description: "Everything you need to launch a top-tier Minecraft server: Custom Plugins, Logos, 3D Renders, and a cinematic Promo Video.",
+      icon: "fa-solid fa-bolt"
+    },
+    {
+      title: "Full Minecraft Server Package",
+      description: "A complete server setup with plugins, images, designs, and everything needed to run smoothly.",
+      icon: "fa-solid fa-server"
+    },
+    {
+      title: "Full Minecraft Animations Package",
+      description: "Complete custom 3D animations and motion graphics specifically tailored for Minecraft content.",
+      icon: "fa-solid fa-video"
+    }
+  ],
 
   // Projects Collection
   projects: [
@@ -393,10 +481,23 @@ const PORTFOLIO_CONFIG = {
           imageUrl: "images/renders/starfinal.webp"
         }
       ]
+    },
+    {
+      category: "Branding & Logos",
+      layout: "grid",
+      list: [
+        {
+          title: "Arioxa Cloud Icon",
+          imageUrl: "images/arioxa/icon.png"
+        },
+        {
+          title: "FalconMC Banner",
+          imageUrl: "images/falconMC/bannerSmall.png"
+        }
+      ]
     }
   ],
 
-  // Professional Experience
   experience: [
     {
       role: "Founder & Lead Developer",

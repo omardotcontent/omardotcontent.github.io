@@ -198,6 +198,9 @@
       if (category.layout === 'compact' && category.list[0] && category.list[0].imageUrl) {
         // Renders & Graphics — 3D Carousel
         build3DCarousel(catDiv, category.list, 'image');
+      } else if (category.layout === 'grid' && category.list[0] && category.list[0].imageUrl) {
+        // Simple Image Grid
+        buildMediaGrid(catDiv, category.list, 'imageGrid');
       } else if (category.layout === 'compact' && category.list[0] && category.list[0].instagramId) {
         // Instagram embeds — media link cards
         buildMediaGrid(catDiv, category.list, 'instagram');
@@ -281,6 +284,16 @@
           // YouTube thumbnail
           const img = document.createElement('img');
           img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
+          img.alt = item.title;
+          link.appendChild(img);
+        }
+        const text = el('div', 'media-card-title', item.title);
+        link.appendChild(text);
+      } else if (type === 'imageGrid') {
+        card.classList.add('media-card--landscape');
+        if (item.imageUrl) {
+          const img = document.createElement('img');
+          img.src = item.imageUrl;
           img.alt = item.title;
           link.appendChild(img);
         }
@@ -606,12 +619,74 @@
   }
 
   // ============================================================
+  // SCENE 3.5: Services & Bundles
+  // ============================================================
+  function buildServices() {
+    const container = document.getElementById('services-content');
+    if (!container || !CONFIG.services) return;
+
+    // Scene heading
+    const label = el('p', 'ktext-label k-anim k-fade mb-sm', 'WHAT I PROVIDE');
+    container.appendChild(label);
+
+    const heading = el('h2', 'ktext-heading k-anim k-slam mb-lg', 'SERVICES & BUNDLES');
+    container.appendChild(heading);
+
+    // Services
+    CONFIG.services.forEach(category => {
+      const catTitle = el('h3', 'ktext-subheading services-category-title k-anim k-slide-up', category.category);
+      container.appendChild(catTitle);
+
+      const grid = el('div', 'services-grid k-stagger');
+      category.items.forEach(item => {
+        const card = el('div', 'service-card k-anim k-scale-in');
+        
+        const icon = el('i', `${item.icon} service-icon`);
+        card.appendChild(icon);
+
+        const title = el('div', 'service-title', item.title);
+        card.appendChild(title);
+
+        const desc = el('div', 'service-desc', item.description);
+        card.appendChild(desc);
+
+        grid.appendChild(card);
+      });
+      container.appendChild(grid);
+    });
+
+    // Bundles
+    if (CONFIG.bundles && CONFIG.bundles.length) {
+      const bundlesLabel = el('h3', 'ktext-subheading services-category-title k-anim k-slide-up mt-lg', 'EXCLUSIVE BUNDLES');
+      container.appendChild(bundlesLabel);
+
+      const bundlesGrid = el('div', 'bundles-grid k-stagger');
+      CONFIG.bundles.forEach(bundle => {
+        const card = el('div', 'bundle-card k-anim k-slide-up');
+
+        const icon = el('i', `${bundle.icon} bundle-icon`);
+        card.appendChild(icon);
+
+        const title = el('div', 'bundle-title', bundle.title);
+        card.appendChild(title);
+
+        const desc = el('div', 'bundle-desc', bundle.description);
+        card.appendChild(desc);
+
+        bundlesGrid.appendChild(card);
+      });
+      container.appendChild(bundlesGrid);
+    }
+  }
+
+  // ============================================================
   // INIT — Build all scenes, then set up sub-element observers
   // ============================================================
   function init() {
     buildHero();
     buildMeraki();
     buildSkills();
+    buildServices();
     buildProjects();
     buildExperience();
     buildContact();
@@ -622,6 +697,8 @@
       // Observe project cards, skill items, experience entries individually
       ScrollEngine.observeElements('.project-card', { threshold: 0.1 });
       ScrollEngine.observeElements('.skill-item', { threshold: 0.1 });
+      ScrollEngine.observeElements('.service-card', { threshold: 0.1 });
+      ScrollEngine.observeElements('.bundle-card', { threshold: 0.1 });
       ScrollEngine.observeElements('.experience-entry .k-anim', { threshold: 0.15 });
       ScrollEngine.observeElements('.media-card', { threshold: 0.1 });
       ScrollEngine.observeElements('.render-card', { threshold: 0.1 });
