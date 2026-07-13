@@ -170,9 +170,9 @@
         }
       )
       .join('<div class="social-divider"></div>');
-      
+
     containers.forEach((c) => {
-        c.innerHTML = htmlSnippet;
+      c.innerHTML = htmlSnippet;
     });
   }
 
@@ -185,12 +185,12 @@
             <h3>${skillCategory.title}</h3>
             <ul>
                 ${skillCategory.list.map((skill) => {
-                    if (skill.iconImg) {
-                        const lightAttr = skill.iconImgLight ? `data-dark-src="${skill.iconImg}" data-light-src="${skill.iconImgLight}" class="theme-image"` : '';
-                        return `<li><img src="${skill.iconImg}" ${lightAttr} alt="${skill.name} icon" style="width: 25px; height: 25px; object-fit: contain;" />${skill.name}</li>`;
-                    }
-                    return `<li><i class="${skill.icon}"></i>${skill.name}</li>`;
-                }).join("")}
+          if (skill.iconImg) {
+            const lightAttr = skill.iconImgLight ? `data-dark-src="${skill.iconImg}" data-light-src="${skill.iconImgLight}" class="theme-image"` : '';
+            return `<li><img src="${skill.iconImg}" ${lightAttr} alt="${skill.name} icon" style="width: 25px; height: 25px; object-fit: contain;" />${skill.name}</li>`;
+          }
+          return `<li><i class="${skill.icon}"></i>${skill.name}</li>`;
+        }).join("")}
             </ul>
         </div>
     `,
@@ -210,10 +210,10 @@
         (item) => {
           let iconHTML = '';
           if (item.iconImg) {
-             const lightAttr = item.iconImgLight ? `data-dark-src="${item.iconImg}" data-light-src="${item.iconImgLight}" class="theme-image"` : '';
-             iconHTML = `<img src="${item.iconImg}" ${lightAttr} alt="${item.name} icon" style="width: 20px; height: 20px; object-fit: contain;" />`;
+            const lightAttr = item.iconImgLight ? `data-dark-src="${item.iconImg}" data-light-src="${item.iconImgLight}" class="theme-image"` : '';
+            iconHTML = `<img src="${item.iconImg}" ${lightAttr} alt="${item.name} icon" style="width: 20px; height: 20px; object-fit: contain;" />`;
           } else if (item.icon) {
-             iconHTML = `<i class="${item.icon}"></i>`;
+            iconHTML = `<i class="${item.icon}"></i>`;
           }
           return `<div class="learning-tag">${iconHTML}<span>${item.name}</span></div>`;
         }
@@ -223,7 +223,7 @@
 
   function renderProjects(container) {
     if (!container) return;
-    
+
     // Show skeleton loading placeholders
     container.innerHTML = '<div class="projects-container animate-on-scroll is-visible">' +
       Array(6).fill('').map(() => `
@@ -259,7 +259,7 @@
         } else {
           grid.className = "projects-container animate-on-scroll is-visible";
         }
-        
+
         categoryData.list.forEach(project => {
           const div = document.createElement("div");
           if (categoryData.layout === "compact") {
@@ -270,7 +270,7 @@
             div.className = "project-card";
           }
           div.dataset.id = project.id;
-          
+
           const tags = project.tags || [];
 
           // Favicon
@@ -279,7 +279,7 @@
             try {
               const urlObj = new URL(project.primaryUrl);
               faviconUrl = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`;
-            } catch(e) {}
+            } catch (e) { }
           }
 
 
@@ -324,7 +324,7 @@
             </div>`;
           }
 
-          const faviconHTML = faviconUrl 
+          const faviconHTML = faviconUrl
             ? `<img src="${faviconUrl}" alt="${project.title} icon" class="${categoryData.layout === 'compact' ? 'project-favicon' : 'project-favicon--large'}" onerror="this.style.display='none'">`
             : '';
 
@@ -355,12 +355,12 @@
           }
           grid.appendChild(div);
         });
-        
+
         frag.appendChild(grid);
       });
-      
+
       container.appendChild(frag);
-      
+
       setTimeout(() => {
         if (window.MerakiAnimations && typeof window.MerakiAnimations.scroll.observe === 'function') {
           window.MerakiAnimations.scroll.observe('.project-card');
@@ -489,8 +489,8 @@
 
           // Provide immediate visual feedback while smooth scrolling
           navLinks.forEach((l) => {
-              const isActive = l.getAttribute("href") === `#${targetId}`;
-              l.classList.toggle("active", isActive);
+            const isActive = l.getAttribute("href") === `#${targetId}`;
+            l.classList.toggle("active", isActive);
           });
         }
       });
@@ -564,13 +564,13 @@
       if (!project) return;
       m.title.textContent = project.title;
       m.desc.textContent = project.fullDescription || project.description;
-      
+
       const links = project.links || [];
       if (project.primaryUrl && !links.find(l => l.url === project.primaryUrl)) {
-          links.push({text: "Visit", url: project.primaryUrl});
+        links.push({ text: "Visit", url: project.primaryUrl });
       }
       if (project.githubUrl && !links.find(l => l.url === project.githubUrl)) {
-          links.push({text: "Source", url: project.githubUrl});
+        links.push({ text: "Source", url: project.githubUrl });
       }
       m.links.innerHTML = links
         .map(
@@ -578,7 +578,7 @@
             `<a href="${l.url}" target="_blank" rel="noopener" class="project-btn">${l.text}</a>`,
         )
         .join("");
-        
+
       m.video.innerHTML = "";
       m.video.style.display = "";
       m.video.style.justifyContent = "";
@@ -637,10 +637,10 @@
 
   function setupThemeToggle() {
     const themeToggles = document.querySelectorAll(".theme-toggle");
-    
+
     const updateThemeAssets = () => {
       const isLight = document.documentElement.classList.contains("light-mode");
-      
+
       themeToggles.forEach(btn => {
         const icon = btn.querySelector("i");
         if (icon) {
@@ -653,7 +653,7 @@
           }
         }
       });
-      
+
       const themeImages = document.querySelectorAll("img.theme-image");
       themeImages.forEach(img => {
         const darkSrc = img.getAttribute("data-dark-src");
@@ -676,7 +676,7 @@
         if (currentSrc !== newSrc) discordWidget.setAttribute("src", newSrc);
       }
     };
-    
+
     updateThemeAssets();
 
     themeToggles.forEach(btn => {

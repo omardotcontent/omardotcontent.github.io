@@ -51,8 +51,8 @@ const PORTFOLIO_CONFIG = {
     {
       title: "Audio",
       list: [
-        { name: "Music Production", icon: "fa-solid fa-music" },
-        { name: "SFX Design", icon: "fa-solid fa-volume" }
+        { name: "BandLab", icon: "fa-solid fa-music" },
+        { name: "Premire Pro (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
       ]
     }
   ],
@@ -110,7 +110,7 @@ const PORTFOLIO_CONFIG = {
       category: "Design & Branding",
       items: [
         {
-          title: "Text & Server Logos",
+          title: "Text Logos",
           description: "Eye-catching custom text logos crafted for your brand.",
           icon: "fa-solid fa-font"
         },
@@ -122,7 +122,7 @@ const PORTFOLIO_CONFIG = {
         {
           title: "3D Minecraft Graphics",
           description: "Custom 3D renders and pictures created with Mine-Imator.",
-          icon: "fa-brands fa-unity"
+          icon: "fa-solid fa-cube"
         }
       ]
     },
@@ -300,93 +300,7 @@ const PORTFOLIO_CONFIG = {
         }
       ]
     },
-    {
-      category: "AKCallers Videos",
-      layout: "compact",
-      list: [
-        {
-          title: "AKCallers Reel | Old TV Theme",
-          primaryUrl: "https://www.instagram.com/reel/DChgDNyMi1W/",
-          instagramId: "DChgDNyMi1W"
-        },
-        {
-          title: "AKCallers Reel | Motion Graphics Shop Promo",
-          primaryUrl: "https://www.instagram.com/reel/DCEp7HFNaaR/",
-          instagramId: "DCEp7HFNaaR"
-        },
-        {
-          title: "AKCallers Reel | Motion Graphics Leads Generation Promo",
-          primaryUrl: "https://www.instagram.com/reel/C-tJaZfAtDt/",
-          instagramId: "C-tJaZfAtDt"
-        },
-        {
-          title: "AKCallers Reel | Unreal Engine Animated Promo",
-          primaryUrl: "https://www.instagram.com/reel/C-5u6eTOcVp/",
-          instagramId: "C-5u6eTOcVp"
-        },
-        {
-          title: "AKCallers Reel | Motion Graphics Promo 2",
-          primaryUrl: "https://www.instagram.com/reel/C-JMoSPO5kq/",
-          instagramId: "C-JMoSPO5kq"
-        },
-        {
-          title: "AKCallers Reel | Miami Retro Promo",
-          primaryUrl: "https://www.instagram.com/reel/C8LADDxNBoJ/",
-          instagramId: "C8LADDxNBoJ"
-        }
-      ]
-    },
-    {
-      category: "ZumraFood Videos",
-      layout: "compact",
-      list: [
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo",
-          primaryUrl: "https://www.instagram.com/reel/Cz52N_Uy_lu/",
-          instagramId: "Cz52N_Uy_lu"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 2",
-          primaryUrl: "https://www.instagram.com/reel/CzVsvrmynUu/",
-          instagramId: "CzVsvrmynUu"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 3",
-          primaryUrl: "https://www.instagram.com/reel/CzI1H2QymP8/",
-          instagramId: "CzI1H2QymP8"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 4",
-          primaryUrl: "https://www.instagram.com/reel/CyfiNYbyvg8/",
-          instagramId: "CyfiNYbyvg8"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 5",
-          primaryUrl: "https://www.instagram.com/reel/Cvb0pp9okVl/",
-          instagramId: "Cvb0pp9okVl"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Promo 6",
-          primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/",
-          instagramId: "CwR5ggbIclS"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Products Halloween Promo",
-          primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/",
-          instagramId: "Cy0HccJBWr9"
-        },
-        {
-          title: "ZumraFood Reel | Unreal Engine Products Promo",
-          primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/",
-          instagramId: "CxZ_uU7IP_o"
-        },
-        {
-          title: "ZumraFood Reel | Motion Graphics Beach Products Promo",
-          primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/",
-          instagramId: "CwhWLAyoc2B"
-        }
-      ]
-    },
+
     {
       category: "Original Tracks",
       layout: "scrolling",
@@ -487,12 +401,16 @@ const PORTFOLIO_CONFIG = {
       layout: "grid",
       list: [
         {
-          title: "Arioxa Cloud Icon",
+          title: "Arioxa Cloud",
           imageUrl: "images/arioxa/icon.png"
         },
         {
-          title: "FalconMC Banner",
+          title: "FalconMC",
           imageUrl: "images/falconMC/bannerSmall.png"
+        },
+        {
+          title: "BetyBites",
+          imageUrl: "images/BetyBites/betybites.png"
         }
       ]
     }
@@ -515,6 +433,14 @@ const PORTFOLIO_CONFIG = {
       duties: [
         "Produced engaging motion graphics for brand marketing campaigns.",
         "Collaborated with creative teams to deliver high-quality video assets."
+      ],
+      videos: [
+        { title: "AKCallers Reel | Old TV Theme", primaryUrl: "https://www.instagram.com/reel/DChgDNyMi1W/", instagramId: "DChgDNyMi1W" },
+        { title: "AKCallers Reel | Motion Graphics Shop Promo", primaryUrl: "https://www.instagram.com/reel/DCEp7HFNaaR/", instagramId: "DCEp7HFNaaR" },
+        { title: "AKCallers Reel | Motion Graphics Leads Generation Promo", primaryUrl: "https://www.instagram.com/reel/C-tJaZfAtDt/", instagramId: "C-tJaZfAtDt" },
+        { title: "AKCallers Reel | Unreal Engine Animated Promo", primaryUrl: "https://www.instagram.com/reel/C-5u6eTOcVp/", instagramId: "C-5u6eTOcVp" },
+        { title: "AKCallers Reel | Motion Graphics Promo 2", primaryUrl: "https://www.instagram.com/reel/C-JMoSPO5kq/", instagramId: "C-JMoSPO5kq" },
+        { title: "AKCallers Reel | Miami Retro Promo", primaryUrl: "https://www.instagram.com/reel/C8LADDxNBoJ/", instagramId: "C8LADDxNBoJ" }
       ]
     },
     {
@@ -524,6 +450,17 @@ const PORTFOLIO_CONFIG = {
       duties: [
         "Designed animated visual content to enhance the company's online presence.",
         "Created promotional assets for social media and digital platforms."
+      ],
+      videos: [
+        { title: "ZumraFood Reel | Motion Graphics Products Promo", primaryUrl: "https://www.instagram.com/reel/Cz52N_Uy_lu/", instagramId: "Cz52N_Uy_lu" },
+        { title: "ZumraFood Reel | Motion Graphics Products Promo 2", primaryUrl: "https://www.instagram.com/reel/CzVsvrmynUu/", instagramId: "CzVsvrmynUu" },
+        { title: "ZumraFood Reel | Motion Graphics Products Promo 3", primaryUrl: "https://www.instagram.com/reel/CzI1H2QymP8/", instagramId: "CzI1H2QymP8" },
+        { title: "ZumraFood Reel | Motion Graphics Products Promo 4", primaryUrl: "https://www.instagram.com/reel/CyfiNYbyvg8/", instagramId: "CyfiNYbyvg8" },
+        { title: "ZumraFood Reel | Motion Graphics Products Promo 5", primaryUrl: "https://www.instagram.com/reel/Cvb0pp9okVl/", instagramId: "Cvb0pp9okVl" },
+        { title: "ZumraFood Reel | Motion Graphics Products Promo 6", primaryUrl: "https://www.instagram.com/reel/CwR5ggbIclS/", instagramId: "CwR5ggbIclS" },
+        { title: "ZumraFood Reel | Motion Graphics Products Halloween Promo", primaryUrl: "https://www.instagram.com/reel/Cy0HccJBWr9/", instagramId: "Cy0HccJBWr9" },
+        { title: "ZumraFood Reel | Unreal Engine Products Promo", primaryUrl: "https://www.instagram.com/reel/CxZ_uU7IP_o/", instagramId: "CxZ_uU7IP_o" },
+        { title: "ZumraFood Reel | Motion Graphics Beach Products Promo", primaryUrl: "https://www.instagram.com/reel/CwhWLAyoc2B/", instagramId: "CwhWLAyoc2B" }
       ]
     }
   ],

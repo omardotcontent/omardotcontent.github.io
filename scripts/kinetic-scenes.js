@@ -12,6 +12,39 @@
   }
 
   // ============================================================
+  // Lightbox Modal System
+  // ============================================================
+  let lightboxModal, lightboxImg;
+  function initLightbox() {
+    lightboxModal = document.createElement('div');
+    lightboxModal.className = 'lightbox-modal';
+
+    lightboxImg = document.createElement('img');
+    lightboxImg.className = 'lightbox-content';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-close';
+    closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+
+    lightboxModal.appendChild(lightboxImg);
+    lightboxModal.appendChild(closeBtn);
+    document.body.appendChild(lightboxModal);
+
+    const close = () => lightboxModal.classList.remove('active');
+    closeBtn.addEventListener('click', close);
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) close();
+    });
+  }
+
+  window.openLightbox = function (src) {
+    lightboxImg.src = src;
+    lightboxModal.classList.add('active');
+  };
+
+  document.addEventListener('DOMContentLoaded', initLightbox);
+
+  // ============================================================
   // Utility: create element with classes and optional text
   // ============================================================
   function el(tag, classes, text) {
@@ -296,6 +329,10 @@
           img.src = item.imageUrl;
           img.alt = item.title;
           link.appendChild(img);
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.openLightbox(item.imageUrl);
+          });
         }
         const text = el('div', 'media-card-title', item.title);
         link.appendChild(text);
@@ -365,9 +402,6 @@
 
     // Interaction variables
     let currAngle = 0;
-    let isDragging = false;
-    let startX = 0;
-    let dragAngle = 0;
 
     items.forEach((item, index) => {
       const panel = el('div', 'carousel-item');
@@ -386,6 +420,12 @@
 
         const title = el('div', 'carousel-item-title', item.title);
         panel.appendChild(title);
+
+        panel.style.cursor = 'pointer';
+        panel.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.openLightbox(item.imageUrl);
+        });
       } else if (type === 'music' && item.bandlabId) {
         const iframe = document.createElement('iframe');
         iframe.src = `https://www.bandlab.com/embed/shout/?id=${item.bandlabId}`;
@@ -399,13 +439,14 @@
 
       // Hover centering logic for each panel
       panel.addEventListener('mouseenter', () => {
-        if (isDragging) return;
         clearInterval(autoRotateInterval);
 
         // Target angle to face the front is -angle
         const targetAngle = -angle;
-        const diff = ((targetAngle - currAngle) + 180) % 360 - 180;
-        currAngle = currAngle + diff;
+        let diff = (targetAngle - currAngle) % 360;
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+        currAngle += diff;
 
         container.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
         container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
@@ -417,59 +458,89 @@
     scene.appendChild(container);
     parent.appendChild(scene);
 
-    // Physical drag sensitivity based on radius
-    const sensitivityMultiplier = 360 / (2 * Math.PI * radius);
-
     // Auto rotate
     let autoRotateInterval = setInterval(() => {
-      if (!isDragging) {
-        currAngle -= 0.5;
-        container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
-      }
+      currAngle -= 0.5;
+      container.style.transition = 'none';
+      container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
     }, 30);
 
     // Stop auto-rotate on scene hover
     scene.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
     scene.addEventListener('mouseleave', () => {
       autoRotateInterval = setInterval(() => {
-        if (!isDragging) {
-          currAngle -= 0.5;
-          container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
-        }
+        currAngle -= 0.5;
+        container.style.transition = 'none';
+        container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
       }, 30);
     });
+  }
 
-    // Touch / Mouse Drag
-    const onDragStart = (e) => {
-      isDragging = true;
-      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-      container.style.transition = 'none'; // remove transition during drag
-    };
+  // ============================================================
+  // Experience Video Modal System
+  // ============================================================
+  let experienceModal;
+  function openExperienceModal(buttonEl, videos) {
+    if (!experienceModal) {
+      experienceModal = document.createElement('div');
+      experienceModal.className = 'exp-modal';
+      document.body.appendChild(experienceModal);
 
-    const onDragMove = (e) => {
-      if (!isDragging) return;
-      const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-      const dx = x - startX;
-      dragAngle = currAngle + (dx * sensitivityMultiplier);
-      container.style.transform = `translateZ(${-radius}px) rotateY(${dragAngle}deg)`;
-    };
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'lightbox-close'; // reuse lightbox close btn
+      closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      closeBtn.addEventListener('click', closeExperienceModal);
+      experienceModal.appendChild(closeBtn);
 
-    const onDragEnd = () => {
-      if (!isDragging) return;
-      isDragging = false;
-      currAngle = dragAngle;
-      container.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      container.style.transform = `translateZ(${-radius}px) rotateY(${currAngle}deg)`;
-    };
+      const container = document.createElement('div');
+      container.className = 'exp-videos-container';
+      experienceModal.appendChild(container);
+    }
 
-    scene.addEventListener('mousedown', onDragStart);
-    scene.addEventListener('touchstart', onDragStart, { passive: true });
+    // Clear previous videos
+    const container = experienceModal.querySelector('.exp-videos-container');
+    container.innerHTML = '';
 
-    window.addEventListener('mousemove', onDragMove);
-    window.addEventListener('touchmove', onDragMove, { passive: true });
+    // Render videos immediately
+    videos.forEach((video, index) => {
+      const card = document.createElement('a');
+      card.href = video.primaryUrl;
+      card.target = '_blank';
+      card.className = 'media-card media-card--vertical exp-video-card';
+      card.style.animationDelay = `${index * 0.1}s`; // staggered
 
-    window.addEventListener('mouseup', onDragEnd);
-    window.addEventListener('touchend', onDragEnd);
+      const placeholder = el('div', 'instagram-placeholder');
+      const icon = el('i', 'fa-brands fa-instagram instagram-placeholder-icon');
+      placeholder.appendChild(icon);
+      card.appendChild(placeholder);
+
+      const text = el('div', 'media-card-title', video.title || 'View Reel');
+      card.appendChild(text);
+
+      container.appendChild(card);
+    });
+
+    // Force layout so CSS transition plays on the very first click
+    experienceModal.offsetHeight;
+
+    // Make modal active
+    experienceModal.classList.add('active');
+    
+    // Prevent scrolling
+    document.body.classList.add('modal-open');
+    document.documentElement.classList.add('modal-open');
+  }
+
+  function closeExperienceModal() {
+    experienceModal.classList.remove('active');
+    
+    // Restore scrolling
+    document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
+    
+    setTimeout(() => {
+      experienceModal.querySelector('.exp-videos-container').innerHTML = '';
+    }, 300); // wait for fade out
   }
 
   // ============================================================
@@ -505,6 +576,16 @@
           duties.appendChild(el('li', 'k-anim k-slide-right', duty));
         });
         entry.appendChild(duties);
+      }
+
+      if (exp.videos && exp.videos.length) {
+        const btn = document.createElement('button');
+        btn.className = 'experience-video-btn k-anim k-slide-up';
+        btn.innerHTML = '<i class="fa-solid fa-play" style="margin-right: 8px;"></i> See my work';
+        btn.addEventListener('click', (e) => {
+          openExperienceModal(e.currentTarget, exp.videos);
+        });
+        entry.appendChild(btn);
       }
 
       container.appendChild(entry);
@@ -640,7 +721,7 @@
       const grid = el('div', 'services-grid k-stagger');
       category.items.forEach(item => {
         const card = el('div', 'service-card k-anim k-scale-in');
-        
+
         const icon = el('i', `${item.icon} service-icon`);
         card.appendChild(icon);
 
