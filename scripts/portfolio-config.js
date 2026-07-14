@@ -590,7 +590,7 @@ An advanced JavaFX simulation project created for a technical competition.
     text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
     categories: [
       {
-        title: "Social Media",
+        title: "Socials",
         links: [
           { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
           { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
@@ -599,7 +599,7 @@ An advanced JavaFX simulation project created for a technical competition.
         ]
       },
       {
-        title: "Professional Links",
+        title: "Work & Code",
         links: [
           { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
           { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" },
@@ -608,7 +608,7 @@ An advanced JavaFX simulation project created for a technical competition.
         ]
       },
       {
-        title: "Others",
+        title: "Music & Support",
         links: [
           { platform: "BandLab", url: "https://www.bandlab.com/omardotmusic", icon: "fa-solid fa-music" },
           { platform: "Spotify", url: "https://open.spotify.com/artist/3ZsYOoNLRJw51wOf8l6j3z", icon: "fa-brands fa-spotify" },
@@ -617,7 +617,7 @@ An advanced JavaFX simulation project created for a technical competition.
         ]
       },
       {
-        title: "Contact Methods",
+        title: "Reach Out",
         links: [
           { platform: "Email", url: "mailto:omar@merakistudios.dev", icon: "fa-solid fa-envelope" },
           { platform: "WhatsApp", url: "https://wa.me/201020906531", icon: "fa-brands fa-whatsapp" },
