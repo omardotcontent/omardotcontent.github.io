@@ -57,6 +57,8 @@ html {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
 body {
@@ -65,11 +67,15 @@ body {
   color: var(--color-white);
   overflow-x: hidden;
   line-height: 1.5;
+}
+
+/* Hide scrollbar UI — scroll still works */
+* {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
@@ -486,6 +492,8 @@ a:hover {
 /* --- Meraki Scene --- */
 .scene--meraki {
   min-height: 150vh;
+  align-items: flex-start;
+  padding-top: var(--space-xl);
 }
 
 .meraki-intro {
