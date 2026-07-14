@@ -4,7 +4,17 @@ const PORTFOLIO_CONFIG = {
   hero: {
     name: "Omar Mohamed",
     title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer",
-    resumeUrl: "Resume.pdf" // Replace with actual path or URL to your resume
+    resumeUrl: "Resume.pdf",
+    servicesAnchor: "#services" // The anchor to scroll to for the View Services CTA
+  },
+
+  // About Me Section
+  aboutMe: {
+    paragraphs: [
+      "Creative developer and motion designer with 3+ years of hands-on experience — I blend technical precision with artistic direction to produce digital experiences that are both visually impactful and functionally solid.",
+      "I've shipped production-grade Java software and open source tools with 223,000+ combined downloads, while producing high-impact visual content for commercial brands. Whether it's architecting a Minecraft plugin, crafting a cinematic animation in Premiere Pro, or leading a team of creators — I approach every project with the same philosophy: clean, intentional, and meaningful.",
+      "I'm also the Founder of Meraki Studios, a multi-disciplinary creative studio spanning software development, 3D art, motion design, and media production. Equally fluent in technical stacks and artistic tooling, with a track record of delivering polished, real-world products — independently and within teams."
+    ]
   },
 
   // Header Social Links
@@ -56,13 +66,6 @@ const PORTFOLIO_CONFIG = {
         { name: "Premire Pro (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
       ]
     },
-    {
-      title: "Languages",
-      list: [
-        { name: "Arabic (Native)", icon: "fa-solid fa-language" },
-        { name: "English (B2 - Upper-Intermediate)", icon: "fa-solid fa-language" }
-      ]
-    }
   ],
 
   // Currently Learning Section
@@ -560,6 +563,28 @@ An advanced JavaFX simulation project created for a technical competition.
     "Digital Egypt Clubs Initiative 2024 - Level Three: Data Science and Ai"
   ],
 
+  // Languages
+  languages: [
+    { name: "Arabic", level: "Native", percent: 100 },
+    { name: "English", level: "B2 — Upper-Intermediate", percent: 72 }
+  ],
+
+  // Testimonials (client reviews — add quotes here when you have them)
+  // testimonials: [
+  //   {
+  //     quote: "Omar delivered an incredible plugin for our server — professional, fast, and exactly what we needed.",
+  //     author: "ServerOwner123",
+  //     role: "Minecraft Server Owner",
+  //     avatar: "" // URL to avatar image (optional)
+  //   },
+  //   {
+  //     quote: "The motion graphics Omar made for our brand were stunning. Clients loved the promo video!",
+  //     author: "ClientName",
+  //     role: "Marketing Director @ SomeCompany",
+  //     avatar: ""
+  //   }
+  // ],
+
   // Contact Information
   contact: {
     text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
@@ -586,7 +611,7 @@ An advanced JavaFX simulation project created for a technical competition.
         title: "Others",
         links: [
           { platform: "BandLab", url: "https://www.bandlab.com/omardotmusic", icon: "fa-solid fa-music" },
-          { platform: "Spotify", url: " https://open.spotify.com/artist/3ZsYOoNLRJw51wOf8l6j3z", icon: "fa-brands fa-spotify" },
+          { platform: "Spotify", url: "https://open.spotify.com/artist/3ZsYOoNLRJw51wOf8l6j3z", icon: "fa-brands fa-spotify" },
           { platform: "Discord", url: "https://discord.com/invite/8Ap2gGaKbw", icon: "fa-brands fa-discord" },
           { platform: "Ko-fi", url: "https://ko-fi.com/omardotcontent", icon: "fa-brands fa-ko-fi" }
         ]
@@ -595,6 +620,7 @@ An advanced JavaFX simulation project created for a technical competition.
         title: "Contact Methods",
         links: [
           { platform: "Email", url: "mailto:omar@merakistudios.dev", icon: "fa-solid fa-envelope" },
+          { platform: "WhatsApp", url: "https://wa.me/201020906531", icon: "fa-brands fa-whatsapp" },
           { platform: "Telegram", url: "https://t.me/omardotsocial", icon: "fa-brands fa-telegram" },
           { platform: "Messenger", url: "https://m.me/omardotsocial", icon: "fa-brands fa-facebook-messenger" }
         ]

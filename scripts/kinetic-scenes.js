@@ -94,20 +94,53 @@
       'Creating clean, intuitive, and meaningful digital experiences.');
     container.appendChild(tagline);
 
-    // Resume Button
-    if (CONFIG.hero.resumeUrl) {
-      const btnWrapper = el('div', 'k-anim k-slide-up');
-      btnWrapper.style.marginTop = '2.5rem';
-      
-      const resumeBtn = elHTML('a', 'btn-primary', '<i class="fa-solid fa-file-pdf"></i> Download Resume');
-      resumeBtn.href = CONFIG.hero.resumeUrl;
-      resumeBtn.target = '_blank';
-      resumeBtn.style.padding = '14px 28px';
-      resumeBtn.style.fontSize = '1.1rem';
-      
-      btnWrapper.appendChild(resumeBtn);
+    // Buttons row
+    if (CONFIG.hero.resumeUrl || CONFIG.hero.servicesAnchor) {
+      const btnWrapper = el('div', 'hero-btn-row k-anim k-slide-up');
+
+      if (CONFIG.hero.resumeUrl) {
+        const resumeBtn = elHTML('a', 'btn-primary', '<i class="fa-solid fa-file-pdf"></i> Download Resume');
+        resumeBtn.href = CONFIG.hero.resumeUrl;
+        resumeBtn.target = '_blank';
+        btnWrapper.appendChild(resumeBtn);
+      }
+
+      if (CONFIG.hero.servicesAnchor) {
+        const servicesBtn = elHTML('a', 'btn-secondary', '<i class="fa-solid fa-briefcase"></i> View Services');
+        servicesBtn.href = CONFIG.hero.servicesAnchor;
+        servicesBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(CONFIG.hero.servicesAnchor);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+        btnWrapper.appendChild(servicesBtn);
+      }
+
       container.appendChild(btnWrapper);
     }
+  }
+
+  // ============================================================
+  // SCENE 1.5: About Me
+  // ============================================================
+  function buildAboutMe() {
+    const container = document.getElementById('about-content');
+    if (!container || !CONFIG.aboutMe) return;
+
+    const label = el('p', 'ktext-label k-anim k-fade mb-sm', 'WHO I AM');
+    container.appendChild(label);
+
+    const heading = el('h2', 'ktext-heading k-anim k-slide-up mb-lg', 'ABOUT ME');
+    container.appendChild(heading);
+
+    const textBlock = el('div', 'about-me-block k-stagger');
+    if (CONFIG.aboutMe.paragraphs) {
+      CONFIG.aboutMe.paragraphs.forEach((p) => {
+        const para = el('p', 'ktext-body k-anim k-fade about-me-paragraph', p);
+        textBlock.appendChild(para);
+      });
+    }
+    container.appendChild(textBlock);
   }
 
   // ============================================================
@@ -337,7 +370,7 @@
           img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
           img.alt = item.title;
           link.appendChild(img);
-          
+
           link.addEventListener('click', (e) => {
             e.preventDefault();
             if (window.openYoutubeModal) window.openYoutubeModal(id);
@@ -382,13 +415,13 @@
           iframe.setAttribute('allowfullscreen', 'true');
           iframe.loading = 'lazy';
           iframe.allow = 'autoplay';
-          
+
           const wrapper = el('div', 'bandlab-wrapper');
           wrapper.style.width = '100%';
           wrapper.style.height = '100%';
           wrapper.appendChild(iframe);
-          
-          card.innerHTML = ''; 
+
+          card.innerHTML = '';
           card.appendChild(wrapper);
           grid.appendChild(card);
           return; // skip appending link
@@ -571,7 +604,7 @@
 
     // Make modal active
     experienceModal.classList.add('active');
-    
+
     // Prevent scrolling
     document.body.classList.add('modal-open');
     document.documentElement.classList.add('modal-open');
@@ -579,11 +612,11 @@
 
   function closeExperienceModal() {
     experienceModal.classList.remove('active');
-    
+
     // Restore scrolling
     document.body.classList.remove('modal-open');
     document.documentElement.classList.remove('modal-open');
-    
+
     setTimeout(() => {
       experienceModal.querySelector('.exp-videos-container').innerHTML = '';
     }, 300); // wait for fade out
@@ -661,6 +694,34 @@
       eduBlock.appendChild(certsList);
     }
 
+
+    // Languages
+    if (CONFIG.languages && CONFIG.languages.length) {
+      const langHeading = el('p', 'ktext-label k-anim k-fade mt-md mb-sm', 'LANGUAGES');
+      eduBlock.appendChild(langHeading);
+
+      const langList = el('div', 'languages-list k-stagger-fast');
+      CONFIG.languages.forEach((lang) => {
+        const langItem = el('div', 'language-item k-anim k-slide-up');
+
+        const nameRow = el('div', 'language-name-row');
+        const name = el('span', 'language-name', lang.name);
+        const level = el('span', 'language-level', lang.level);
+        nameRow.appendChild(name);
+        nameRow.appendChild(level);
+        langItem.appendChild(nameRow);
+
+        const barTrack = el('div', 'language-bar-track');
+        const barFill = el('div', 'language-bar-fill');
+        barFill.style.setProperty('--lang-percent', lang.percent + '%');
+        barTrack.appendChild(barFill);
+        langItem.appendChild(barTrack);
+
+        langList.appendChild(langItem);
+      });
+      eduBlock.appendChild(langList);
+    }
+
     container.appendChild(eduBlock);
   }
 
@@ -683,13 +744,13 @@
 
     // Categories
     const categoriesDiv = el('div', 'contact-categories-wrapper k-stagger mt-md');
-    
+
     if (contact.categories) {
       contact.categories.forEach((category) => {
         const catDiv = el('div', 'contact-category k-anim k-slide-up');
         const catTitle = el('p', 'ktext-label mb-sm', category.title);
         catDiv.appendChild(catTitle);
-        
+
         const linksDiv = el('div', 'contact-links');
         category.links.forEach((link) => {
           const a = document.createElement('a');
@@ -699,16 +760,16 @@
             a.rel = 'noopener noreferrer';
           }
           a.className = 'contact-link-icon tooltip';
-          
+
           const icon = el('i', link.icon);
           a.appendChild(icon);
-          
+
           const tooltipText = el('span', 'tooltiptext', link.platform);
           a.appendChild(tooltipText);
-          
+
           linksDiv.appendChild(a);
         });
-        
+
         catDiv.appendChild(linksDiv);
         categoriesDiv.appendChild(catDiv);
       });
@@ -788,33 +849,33 @@
   // ============================================================
   function buildSlideshow(parent, items) {
     const scene = el('div', 'slideshow k-anim k-scale-in');
-    
+
     let currentIndex = 0;
     const slides = [];
     const dots = [];
-    
+
     items.forEach((item, index) => {
       const slide = el('div', 'slideshow-slide');
       if (index === 0) slide.classList.add('active');
-      
+
       const img = document.createElement('img');
       img.src = item.imageUrl;
       img.alt = item.title || '';
       img.loading = 'lazy';
       slide.appendChild(img);
-      
+
       scene.appendChild(slide);
       slides.push(slide);
     });
-    
+
     const prevBtn = el('button', 'slideshow-btn slideshow-prev');
     prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-    
+
     const nextBtn = el('button', 'slideshow-btn slideshow-next');
     nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
-    
+
     const dotsContainer = el('div', 'slideshow-dots');
-    
+
     const goToSlide = (idx) => {
       slides[currentIndex].classList.remove('active');
       dots[currentIndex].classList.remove('active');
@@ -822,7 +883,7 @@
       slides[currentIndex].classList.add('active');
       dots[currentIndex].classList.add('active');
     };
-    
+
     items.forEach((_, index) => {
       const dot = el('div', 'slideshow-dot');
       if (index === 0) dot.classList.add('active');
@@ -830,42 +891,42 @@
       dotsContainer.appendChild(dot);
       dots.push(dot);
     });
-    
+
     prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
     nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-    
+
     scene.appendChild(prevBtn);
     scene.appendChild(nextBtn);
     scene.appendChild(dotsContainer);
-    
+
     parent.appendChild(scene);
   }
 
   // ============================================================
   // Modals & Nav Bar Init
   // ============================================================
-  
+
   let youtubeModal, youtubeIframe;
   function initYoutubeModal() {
     youtubeModal = document.createElement('div');
     youtubeModal.className = 'custom-modal youtube-modal';
-    
+
     const content = document.createElement('div');
     content.className = 'youtube-modal-content';
-    
+
     youtubeIframe = document.createElement('iframe');
     youtubeIframe.setAttribute('allowfullscreen', 'true');
     youtubeIframe.setAttribute('allow', 'autoplay; encrypted-media');
-    
+
     const closeBtn = document.createElement('button');
     closeBtn.className = 'custom-modal-close';
     closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    
+
     content.appendChild(youtubeIframe);
     youtubeModal.appendChild(content);
     youtubeModal.appendChild(closeBtn);
     document.body.appendChild(youtubeModal);
-    
+
     const close = () => {
       youtubeModal.classList.remove('active');
       setTimeout(() => youtubeIframe.src = '', 300);
@@ -876,7 +937,7 @@
     });
   }
 
-  window.openYoutubeModal = function(youtubeId) {
+  window.openYoutubeModal = function (youtubeId) {
     youtubeIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
     youtubeModal.classList.add('active');
   };
@@ -885,14 +946,14 @@
   function initProjectModal() {
     projectModal = document.createElement('div');
     projectModal.className = 'custom-modal project-modal';
-    
+
     const content = document.createElement('div');
     content.className = 'project-modal-content';
-    
+
     const left = document.createElement('div');
     left.className = 'project-modal-left';
     left.innerHTML = '<div class="slideshow-container"></div>';
-    
+
     const right = document.createElement('div');
     right.className = 'project-modal-right';
     right.innerHTML = `
@@ -904,17 +965,17 @@
       </div>
       <div class="project-modal-footer"></div>
     `;
-    
+
     const closeBtn = document.createElement('button');
     closeBtn.className = 'custom-modal-close';
     closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    
+
     content.appendChild(left);
     content.appendChild(right);
     projectModal.appendChild(content);
     projectModal.appendChild(closeBtn);
     document.body.appendChild(projectModal);
-    
+
     const close = () => {
       projectModal.classList.remove('active');
       setTimeout(() => {
@@ -928,9 +989,9 @@
     });
   }
 
-  window.openProjectModal = function(project) {
+  window.openProjectModal = function (project) {
     projectModal.querySelector('.project-modal-title').innerHTML = project.title || 'Project';
-    
+
     const descEl = projectModal.querySelector('.project-modal-desc');
     const content = project.longDescription || project.description || '';
     if (typeof marked !== 'undefined') {
@@ -938,7 +999,7 @@
     } else {
       descEl.innerHTML = content;
     }
-    
+
     const footer = projectModal.querySelector('.project-modal-footer');
     footer.innerHTML = '';
     if (project.primaryUrl) {
@@ -947,10 +1008,10 @@
     if (project.githubUrl) {
       footer.innerHTML += `<a href="${project.githubUrl}" target="_blank" class="btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>`;
     }
-    
+
     const leftContainer = projectModal.querySelector('.slideshow-container');
     leftContainer.innerHTML = '';
-    
+
     if (project.media && project.media.length > 0) {
       // Build a mini slideshow if media exists
       const scene = el('div', 'slideshow');
@@ -959,11 +1020,11 @@
       let currentIndex = 0;
       const slides = [];
       const dots = [];
-      
+
       project.media.forEach((m, index) => {
         const slide = el('div', 'slideshow-slide');
         if (index === 0) slide.classList.add('active');
-        
+
         let type = 'image';
         let url = '';
 
@@ -985,28 +1046,28 @@
         }
 
         if (type === 'youtube') {
-           slide.innerHTML = `<iframe src="https://www.youtube.com/embed/${url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+          slide.innerHTML = `<iframe src="https://www.youtube.com/embed/${url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
         } else if (type === 'video') {
-           slide.innerHTML = `<video src="${url}" style="width:100%;height:100%;object-fit:contain;" controls autoplay loop muted playsinline></video>`;
+          slide.innerHTML = `<video src="${url}" style="width:100%;height:100%;object-fit:contain;" controls autoplay loop muted playsinline></video>`;
         } else {
-           const img = document.createElement('img');
-           img.src = url;
-           img.style.width = '100%';
-           img.style.height = '100%';
-           img.style.objectFit = 'contain';
-           slide.appendChild(img);
+          const img = document.createElement('img');
+          img.src = url;
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'contain';
+          slide.appendChild(img);
         }
-        
+
         scene.appendChild(slide);
         slides.push(slide);
       });
-      
+
       if (project.media.length > 1) {
         const prevBtn = el('button', 'slideshow-btn slideshow-prev');
         prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
         const nextBtn = el('button', 'slideshow-btn slideshow-next');
         nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
-        
+
         const dotsContainer = el('div', 'slideshow-dots');
         const goToSlide = (idx) => {
           slides[currentIndex].classList.remove('active');
@@ -1032,40 +1093,40 @@
     } else {
       leftContainer.innerHTML = '<div style="color:var(--color-white-50); display:flex; height:100%; align-items:center; justify-content:center;">Media coming soon...</div>';
     }
-    
+
     projectModal.classList.add('active');
   };
 
   function initNavBar() {
     const navBar = el('div', 'nav-bar');
     const sections = Array.from(document.querySelectorAll('.scene'));
-    
+
     sections.forEach(section => {
       const id = section.getAttribute('data-scene');
       if (!id) return;
       const dot = el('a', 'nav-dot');
       dot.href = `#${id}`; // though we scroll manually, good for semantic
       dot.setAttribute('data-target', id);
-      
+
       const circle = el('div', 'nav-dot-circle');
       const textObj = el('div', 'nav-dot-text');
-      
+
       // Capitalize first letter
       textObj.textContent = id.charAt(0).toUpperCase() + id.slice(1);
-      
+
       dot.appendChild(circle);
       dot.appendChild(textObj);
-      
+
       dot.addEventListener('click', (e) => {
         e.preventDefault();
         section.scrollIntoView({ behavior: 'smooth' });
       });
-      
+
       navBar.appendChild(dot);
     });
-    
+
     document.body.appendChild(navBar);
-    
+
     const dots = navBar.querySelectorAll('.nav-dot');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1078,7 +1139,7 @@
         }
       });
     }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
-    
+
     sections.forEach(sec => observer.observe(sec));
   }
 
@@ -1091,6 +1152,7 @@
     initNavBar();
 
     buildHero();
+    buildAboutMe();
     buildMeraki();
     buildSkills();
     buildServices();
