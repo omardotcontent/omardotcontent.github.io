@@ -22,8 +22,7 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-glow) transparent;
+  scrollbar-width: none; /* Firefox */
 }
 
 *:focus-visible {
@@ -87,33 +86,14 @@ body.nav-open {
   width: 100%;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
+/* Hide all scrollbars globally — scroll still works */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(0deg, #ffffff, #888888, #444444);
-  background-size: 100% 300%;
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: padding-box;
-  animation: scrollbar-flow 8s ease-in-out infinite;
-}
-
-@keyframes scrollbar-flow {
-
-  0%,
-  100% {
-    background-position: 0% 0%;
-  }
-
-  50% {
-    background-position: 0% 100%;
-  }
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 /* VORONOI BACKGROUND */
@@ -673,27 +653,6 @@ img {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-}
-
-.projects-container.scrolling::-webkit-scrollbar {
-  height: 8px;
-}
-
-.projects-container.scrolling::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  margin: 0 2rem;
-}
-
-.projects-container.scrolling::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-}
-
-.projects-container.scrolling::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .projects-container.scrolling>div.embed-wrapper {
@@ -2023,9 +1982,6 @@ html.light-mode .modal-content {
   box-shadow: 0 16px 64px rgba(0, 0, 0, 0.15);
 }
 
-html.light-mode ::-webkit-scrollbar-thumb {
-  background: linear-gradient(0deg, #000000, #888888, #aaaaaa);
-}
 
 /* THEME TOGGLE BUTTON */
 .theme-toggle {
