@@ -681,63 +681,40 @@
     const subtitle = el('p', 'ktext-body k-anim k-slide-up mt-md', contact.text);
     container.appendChild(subtitle);
 
-    // Email — typewriter style
-    const emailWrapper = el('div', 'contact-email k-anim k-slide-up mt-md');
-    const emailLink = document.createElement('a');
-    emailLink.href = `mailto:${contact.email}`;
-    emailLink.textContent = contact.email;
-    emailLink.style.color = 'inherit';
-    emailWrapper.appendChild(emailLink);
-    container.appendChild(emailWrapper);
-
-    // Social links
-    const linksDiv = el('div', 'contact-links k-stagger');
-
-    // Flatten all social link categories
-    if (CONFIG.headerSocial) {
-      CONFIG.headerSocial.forEach((group) => {
-        group.links.forEach((link) => {
+    // Categories
+    const categoriesDiv = el('div', 'contact-categories-wrapper k-stagger mt-md');
+    
+    if (contact.categories) {
+      contact.categories.forEach((category) => {
+        const catDiv = el('div', 'contact-category k-anim k-slide-up');
+        const catTitle = el('p', 'ktext-label mb-sm', category.title);
+        catDiv.appendChild(catTitle);
+        
+        const linksDiv = el('div', 'contact-links');
+        category.links.forEach((link) => {
           const a = document.createElement('a');
           a.href = link.url;
           a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.className = 'contact-link k-anim k-scale-in';
-
+          if (!link.url.startsWith('mailto:')) {
+            a.rel = 'noopener noreferrer';
+          }
+          a.className = 'contact-link-icon tooltip';
+          
           const icon = el('i', link.icon);
           a.appendChild(icon);
-
-          const text = el('span', '', link.platform);
-          a.appendChild(text);
-
+          
+          const tooltipText = el('span', 'tooltiptext', link.platform);
+          a.appendChild(tooltipText);
+          
           linksDiv.appendChild(a);
         });
+        
+        catDiv.appendChild(linksDiv);
+        categoriesDiv.appendChild(catDiv);
       });
     }
 
-    // Telegram & Messenger
-    if (contact.telegram) {
-      const tg = document.createElement('a');
-      tg.href = contact.telegram;
-      tg.target = '_blank';
-      tg.rel = 'noopener noreferrer';
-      tg.className = 'contact-link k-anim k-scale-in';
-      tg.appendChild(el('i', 'fa-brands fa-telegram'));
-      tg.appendChild(el('span', '', 'Telegram'));
-      linksDiv.appendChild(tg);
-    }
-
-    if (contact.messenger) {
-      const msg = document.createElement('a');
-      msg.href = contact.messenger;
-      msg.target = '_blank';
-      msg.rel = 'noopener noreferrer';
-      msg.className = 'contact-link k-anim k-scale-in';
-      msg.appendChild(el('i', 'fa-brands fa-facebook-messenger'));
-      msg.appendChild(el('span', '', 'Messenger'));
-      linksDiv.appendChild(msg);
-    }
-
-    container.appendChild(linksDiv);
+    container.appendChild(categoriesDiv);
 
     // Outro
     const outro = el('p', 'ktext-label contact-outro k-anim k-fade mt-lg',

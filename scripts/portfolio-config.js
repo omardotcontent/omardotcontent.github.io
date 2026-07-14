@@ -55,6 +55,13 @@ const PORTFOLIO_CONFIG = {
         { name: "BandLab", icon: "fa-solid fa-music" },
         { name: "Premire Pro (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
       ]
+    },
+    {
+      title: "Languages",
+      list: [
+        { name: "Arabic (Native)", icon: "fa-solid fa-language" },
+        { name: "English (B2 - Upper-Intermediate)", icon: "fa-solid fa-language" }
+      ]
     }
   ],
 
@@ -556,9 +563,43 @@ An advanced JavaFX simulation project created for a technical competition.
   // Contact Information
   contact: {
     text: "Feel free to reach out for collaborations, inquiries, or just to say hi!",
-    email: "omar@merakistudios.dev",
-    telegram: "https://t.me/omardotsocial",
-    messenger: "https://m.me/omardotsocial"
+    categories: [
+      {
+        title: "Social Media",
+        links: [
+          { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
+          { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
+          { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
+          { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" }
+        ]
+      },
+      {
+        title: "Professional Links",
+        links: [
+          { platform: "LinkedIn", url: "https://www.linkedin.com/in/omardotcontent", icon: "fa-brands fa-linkedin" },
+          { platform: "GitHub", url: "https://github.com/omardotcontent", icon: "fa-brands fa-github" },
+          { platform: "Modrinth", url: "https://modrinth.com/user/OmarDotContent", icon: "fa-solid fa-link" },
+          { platform: "CurseForge", url: "https://www.curseforge.com/members/omardotcontent/projects", icon: "fa-solid fa-link" }
+        ]
+      },
+      {
+        title: "Others",
+        links: [
+          { platform: "BandLab", url: "https://www.bandlab.com/omardotmusic", icon: "fa-solid fa-music" },
+          { platform: "Spotify", url: " https://open.spotify.com/artist/3ZsYOoNLRJw51wOf8l6j3z", icon: "fa-brands fa-spotify" },
+          { platform: "Discord", url: "https://discord.com/invite/8Ap2gGaKbw", icon: "fa-brands fa-discord" },
+          { platform: "Ko-fi", url: "https://ko-fi.com/omardotcontent", icon: "fa-brands fa-ko-fi" }
+        ]
+      },
+      {
+        title: "Contact Methods",
+        links: [
+          { platform: "Email", url: "mailto:omar@merakistudios.dev", icon: "fa-solid fa-envelope" },
+          { platform: "Telegram", url: "https://t.me/omardotsocial", icon: "fa-brands fa-telegram" },
+          { platform: "Messenger", url: "https://m.me/omardotsocial", icon: "fa-brands fa-facebook-messenger" }
+        ]
+      }
+    ]
   }
 };
 
