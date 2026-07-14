@@ -3,7 +3,8 @@
 const PORTFOLIO_CONFIG = {
   hero: {
     name: "Omar Mohamed",
-    title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer"
+    title: "Founder @ <a href='https://www.merakistudios.dev/'>Meraki Studios</a> | Motion Designer & Java Developer",
+    resumeUrl: "Resume.pdf" // Replace with actual path or URL to your resume
   },
 
   // Header Social Links
@@ -170,57 +171,129 @@ const PORTFOLIO_CONFIG = {
         {
           title: "InteractiveStuff",
           description: "Items Interact within your First-Person View, now powered by the Vyn Scripting Engine!",
+          longDescription: `
+### The First-Person Item Interactions Mod!
+**InteractiveStuff** is a client-side Fabric mod for Minecraft 1.21.10+ that adds immersive, interactive behaviors to items and blocks natively in first-person view. 
+
+#### Key Features:
+- 🎮 **Immersive Interactions:** Features animated held items, reactive note blocks, sculk sensors, lanterns, and much more—all directly from your first-person perspective.
+- ⚙️ **Vyn Engine Support:** Integrates seamlessly with the Vyn scripting engine, allowing resource pack creators to script item rendering and custom behaviors in any way they want, with zero Java required!
+- ⚡ **High Performance:** Designed as a fully client-side mod. First-person mode is strongly recommended for the best experience.
+          `,
           primaryUrl: "https://modrinth.com/mod/interactivestuff",
           githubUrl: "https://github.com/omardotcontent/InteractiveStuff",
+          media: ["https://www.youtube.com/watch?v=noj6l1028vI", "https://cdn.modrinth.com/data/KDfqMm8K/images/0da07f98d8333d3516a3085532778f38e1adfa49.gif", "https://cdn.modrinth.com/data/KDfqMm8K/images/4d7934c0414324929d0421e1b1025b0f3721f612.gif", "https://cdn.modrinth.com/data/KDfqMm8K/images/9cc693d18fcd25b1b173c2031dae32d4db68fb41.png"],
           tags: ["Java", "Minecraft", "Vyn"]
         },
         {
           title: "WorldChatter",
           description: "Enhance your chatting experience.",
+          longDescription: `
+### The Ultimate Chat Management Plugin
+**WorldChatter** is an advanced chat management plugin for Minecraft servers that helps keep your community clean, organized, and secure. 
+
+#### Security & Moderation
+- 🛡️ **Anti-Swear, Anti-AD, Anti-Caps:** Automatically blocks profanity, IP/URL advertisements, and excessive uppercase messages.
+- 🚫 **Anti-Repeat & Anti-Spam:** Prevents players from flooding the chat with repeated characters or messages.
+- 🔒 **Chat Locking & Clearing:** Allows staff to lock or wipe the chat instantly.
+
+#### Powerful Utilities
+- 🌐 **Proxy Support (BungeeCord/Velocity):** Notifies the network when players switch between servers.
+- 📣 **Channels & Aliases:** Organize players into custom chat channels and create gradient aliases for names.
+- ✨ **Custom Join/Quit Messages:** Create personalized, permission-based join and quit notifications.
+- 🔔 **Sound Notifications:** Trigger custom sounds for staff when rules are broken.
+
+WorldChatter is highly configurable, supports PlaceholderAPI, and features a full API for developers.
+          `,
           primaryUrl: "https://modrinth.com/plugin/worldchatter",
           githubUrl: "https://github.com/omardotcontent/WorldChatter",
+          media: ["https://youtu.be/O95rzhgVSZI", "https://cdn.modrinth.com/data/12lXE0dp/images/0ecac0a4fb6beb0deaf0edd4196d1b267db6a681.png", "https://cdn.modrinth.com/data/12lXE0dp/images/355bc5ae6dc127c119f3cc563f83a3c58c0668c4.png", "https://cdn.modrinth.com/data/12lXE0dp/images/3eacf6855bd3f9f1b115a0bbfad3d8510dde20a3.png"],
           tags: ["Java", "Minecraft"]
         },
         {
           title: "WorldCaster",
           description: "Standalone Broadcast Add-on for WorldChatter!",
+          longDescription: `
+### Standalone Broadcast Add-on
+**WorldCaster** is a powerful standalone broadcast plugin ported directly from WorldChatter, designed to handle cross-server or cross-world announcements with ease.
+
+#### Key Features:
+- 📡 **Advanced Broadcast System:** Send different messages to specific worlds or proxy servers.
+- 🎲 **Shuffle & Randomize:** Display random messages from a pool on a custom timer.
+- ✨ **MiniMessage Support:** Fully supports colored texts, gradients, and text replacements.
+- 🔧 **Custom Prefixes:** Add customized prefixes to all broadcast announcements.
+          `,
           primaryUrl: "https://modrinth.com/plugin/worldcaster",
           githubUrl: "https://github.com/omardotcontent/WorldCaster",
+          media: [],
           tags: ["Java", "Minecraft"]
         },
         {
           title: "SimpleToDO",
           description: "A Simple TO-DO JavaFX Desktop Application",
+          longDescription: `
+### SimpleToDO
+A lightweight, efficient JavaFX desktop application designed to keep your daily tasks organized. 
+
+#### Features:
+- **Task Management:** Create, edit, and delete your daily to-do tasks.
+- **Progress Tracking:** Easily mark tasks as completed or pending to stay on top of your workflow.
+          `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/SimpleToDO",
+          media: ["https://media.licdn.com/dms/image/v2/D4E22AQGfm0byctu8vw/feedshare-image-high-res/B4EZ9Lw7_tIAAY-/0/1783682547914?e=1785369600&v=beta&t=6wCimT7mIDRbQCe_RbAS6LtQauE4_Lj5GfcKIUJXm5U"
+            , "https://media.licdn.com/dms/image/v2/D4E22AQFgcLvSNVeqIQ/feedshare-image-high-res/B4EZ9Lw798JgAU-/0/1783682547856?e=1785369600&v=beta&t=djKxqVDvo7fg3t1xPvYXJtEha7UT9tKiqb0ImkEO6eQ",
+            "https://media.licdn.com/dms/image/v2/D4E22AQH9-aKu6XUwHA/feedshare-shrink_1280/B4EZ9Lw8AdJYAM-/0/1783682548060?e=1785369600&v=beta&t=068iomHlj4HtPDJz1QDzD3EXScxTLuMk27EbeGCTy8I"
+          ],
           tags: ["Java"]
-        },
-        {
-          title: "meraki-studios",
-          description: "The Official Organization where a bunch of Nerds create limitless projects.",
-          primaryUrl: "",
-          githubUrl: "https://github.com/MerakiDotStudios/meraki-studios",
-          tags: ["JavaScript", "Contributor"]
         },
         {
           title: "Sync",
           description: "A Simple Utilities Discord Bot made with JDA ",
+          longDescription: `
+### Sync Discord Bot
+**Sync** is a handy utility Discord bot built using the Java Discord API (JDA).
+
+#### Features:
+- **Server Insights:** Instantly retrieve detailed information about your server.
+- **Member Utilities:** Helpful commands to view details about server members and manage community information effortlessly.
+          `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/sync",
+          media: ["https://media.licdn.com/dms/image/v2/D4E22AQHrM55iz9awEQ/feedshare-shrink_800/B4EZ9Lw8FGIsAc-/0/1783682548317?e=1785369600&v=beta&t=GU2tjBRbDdJEtD9k2D6WCBf9Yoqgw-RHbb_okkr3ezc", "https://media.licdn.com/dms/image/v2/D4E22AQF_fw1Iv7yLJQ/feedshare-shrink_1280/B4EZ9Lw7_uIcAM-/0/1783682547978?e=1785369600&v=beta&t=Y-PXE_l2JeootjVyKkkkzTe-0Klb98VSGurGU4LNh3M"],
           tags: ["Java"]
         },
         {
           title: "AStudioApp",
           description: "A Fully Working JavaFX Social Media App with basic features",
+          longDescription: `
+### AStudioApp
+A fully working, feature-rich Social Media application built with JavaFX.
+
+#### Features:
+- **Rich Chatting:** Full emoji support and dedicated channel structures.
+- **Smooth UX:** Custom-built smooth animations for a premium feel.
+- **User Profiles:** Complete username and profile management system for users.
+          `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/AStudioApp",
+          media: [],
           tags: ["Java"]
         },
         {
           title: "MusclePrototype",
           description: "A JavaFX Simulation Project for an Old Competition",
+          longDescription: `
+### MusclePrototype
+An advanced JavaFX simulation project created for a technical competition. 
+
+#### Features:
+- **Hardware Simulation:** Showcased how live hardware readings (muscle detection, weight, and height info) could seamlessly stream into a JavaFX application.
+- **Data Validation:** Included complex data validation and processing logic to mimic real-world sensors in a simulated environment.
+          `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/MusclePrototype",
+          media: ["https://media.licdn.com/dms/image/v2/D4E22AQHLIJQApgFzug/feedshare-shrink_1280/B4EZ9Lw8BJJUAQ-/0/1783682548052?e=1785369600&v=beta&t=WC39z28gT2JRw7_2HYIZgydn8Q-8kCTg9kwYynH9VO8"],
           tags: ["Java"]
         }
       ]
@@ -303,7 +376,7 @@ const PORTFOLIO_CONFIG = {
 
     {
       category: "Original Tracks",
-      layout: "scrolling",
+      layout: "grid",
       list: [
         {
           bandlabId: "c263bc9e13e54acf8587093a15770039_5fb2c88ac2bcf0118196000d3a96100f"
@@ -327,7 +400,7 @@ const PORTFOLIO_CONFIG = {
     },
     {
       category: "Remixes",
-      layout: "scrolling",
+      layout: "grid",
       list: [
         {
           bandlabId: "c263bc9e13e54acf8587093a15770039_6597f45e1ef1ef1190c900224848fea7"
@@ -348,7 +421,7 @@ const PORTFOLIO_CONFIG = {
     },
     {
       category: "Renders & Graphics",
-      layout: "compact",
+      layout: "slideshow",
       list: [
         {
           title: "1v1",

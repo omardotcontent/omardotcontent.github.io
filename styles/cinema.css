@@ -67,9 +67,22 @@ body {
   line-height: 1.5;
 }
 
-/* Hide default scrollbar for cleaner look */
+/* Scrollbar */
 body::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 a {
@@ -110,8 +123,9 @@ a:hover {
 }
 
 .scene__content {
-  max-width: 100%;
-  width: 100%;
+  max-width: 95%;
+  width: 95%;
+  margin: 0 auto;
   text-align: center;
   position: relative;
 }
@@ -522,7 +536,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 3rem auto 0;
   text-align: left;
 }
@@ -618,7 +632,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-md);
-  max-width: 1100px;
+  max-width: 95%;
   margin: 0 auto;
   text-align: left;
 }
@@ -644,6 +658,7 @@ a:hover {
   transform: translateY(-4px);
   background: rgba(123, 47, 247, 0.08);
   color: inherit;
+  transition-delay: 0s !important;
 }
 
 .project-card-title {
@@ -680,9 +695,9 @@ a:hover {
 /* Media embed cards */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: var(--space-sm);
-  max-width: 1100px;
+  max-width: 95%;
   margin: 0 auto;
   align-items: start;
 }
@@ -708,6 +723,10 @@ a:hover {
 
 .media-card--vertical {
   aspect-ratio: 9 / 16;
+}
+
+.media-card--bandlab {
+  height: 360px;
 }
 
 .media-card a {
@@ -1005,6 +1024,7 @@ a:hover {
   background: rgba(0, 255, 135, 0.08);
   transform: translateY(-2px);
   color: var(--color-white);
+  transition-delay: 0s !important;
 }
 
 .contact-link i {
@@ -1147,7 +1167,7 @@ a:hover {
 }
 
 .meraki-logo-wrapper svg {
-  width: min(1200px, 95vw);
+  width: 95%;
   height: auto;
   display: block;
   /* Premium organic glow to match logo size */
@@ -1481,7 +1501,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  max-width: 1200px;
+  max-width: 95%;
   padding: 40px;
   overflow-y: auto;
   max-height: 100vh;
@@ -1499,5 +1519,437 @@ a:hover {
   to {
     opacity: 1;
     transform: translate(0, 0) scale(1);
+  }
+}
+
+/* ============================================================
+   LEFT NAVIGATION BAR
+   ============================================================ */
+
+.nav-bar {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: transparent;
+  padding: 15px 10px;
+  border-radius: 30px;
+  transition: background 0.3s var(--ease-smooth), padding 0.3s var(--ease-smooth);
+}
+
+.nav-bar:hover {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-dot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  group: nav-item;
+}
+
+.nav-dot-circle {
+  width: 8px;
+  height: 8px;
+  background: var(--color-white-50);
+  border-radius: 50%;
+  transition: background 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+}
+
+.nav-dot.active .nav-dot-circle {
+  background: var(--color-white);
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-dot-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-white);
+  opacity: 0;
+  transform: translateX(-10px);
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth), max-width 0.3s var(--ease-smooth);
+}
+
+.nav-bar:hover .nav-dot-text {
+  opacity: 0.5;
+  transform: translateX(0);
+  max-width: 150px;
+}
+
+.nav-bar:hover .nav-dot:hover .nav-dot-text {
+  opacity: 1;
+}
+
+.nav-dot.active .nav-dot-text {
+  opacity: 1 !important;
+  transform: translateX(0);
+  max-width: 150px;
+}
+
+@media (max-width: 1024px) {
+  .nav-bar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   MODALS (PROJECT & YOUTUBE)
+   ============================================================ */
+
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-smooth);
+}
+
+.custom-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.custom-modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-smooth), color 0.3s var(--ease-smooth);
+  z-index: 10;
+}
+
+.custom-modal-close:hover {
+  transform: scale(1.1);
+  color: var(--color-accent-purple);
+}
+
+/* YouTube Modal */
+.youtube-modal-content {
+  width: 90%;
+  max-width: 1000px;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.4s var(--ease-smooth);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal.active .youtube-modal-content {
+  transform: scale(1);
+}
+
+.youtube-modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Project Modal */
+.project-modal-content {
+  width: 98vw;
+  max-width: none;
+  height: 96vh;
+  max-height: none;
+  background: rgba(20, 20, 25, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  transform: translateY(40px);
+  transition: transform 0.4s var(--ease-smooth);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal.active .project-modal-content {
+  transform: translateY(0);
+}
+
+.project-modal-left {
+  flex: 1.5;
+  background: #0a0a10;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-modal-left .slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.project-modal-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.project-modal-header {
+  margin-bottom: 20px;
+}
+
+.project-modal-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.project-modal-desc {
+  font-size: 1.1rem;
+  color: var(--color-white-70);
+  line-height: 1.6;
+}
+
+.project-modal-desc h1,
+.project-modal-desc h2,
+.project-modal-desc h3,
+.project-modal-desc h4 {
+  color: var(--color-white);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+
+.project-modal-desc h1 {
+  font-size: 2rem;
+}
+
+.project-modal-desc h2 {
+  font-size: 1.75rem;
+}
+
+.project-modal-desc h3 {
+  font-size: 1.5rem;
+}
+
+.project-modal-desc p {
+  margin-bottom: 1em;
+}
+
+.project-modal-desc ul,
+.project-modal-desc ol {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.project-modal-desc li {
+  margin-bottom: 0.5em;
+}
+
+.project-modal-desc blockquote {
+  border-left: 4px solid var(--color-accent-purple);
+  padding-left: 1em;
+  margin-left: 0;
+  margin-bottom: 1em;
+  color: var(--color-white-50);
+  font-style: italic;
+}
+
+.project-modal-desc strong {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.project-modal-footer {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  background: var(--color-accent-purple);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: #7a3cf0;
+  transform: translateY(-2px);
+  color: white;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .project-modal-content {
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .project-modal-left {
+    flex: 1;
+    min-height: 40vh;
+  }
+
+  .project-modal-right {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .project-modal-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* ============================================================
+   SLIDESHOW COMPONENT
+   ============================================================ */
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
+
+.slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slideshow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.2rem;
+  transition: background 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slideshow-prev {
+  left: 10px;
+}
+
+.slideshow-next {
+  right: 10px;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slideshow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.slideshow-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+@media (min-width: 2000px) {
+  .scene__content {
+    margin: 0 auto;
   }
 }
