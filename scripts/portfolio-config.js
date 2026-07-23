@@ -593,8 +593,7 @@ An advanced JavaFX simulation project created for a technical competition.
         title: "Socials",
         links: [
           { platform: "YouTube", url: "https://www.youtube.com/@omardotcontent", icon: "fa-brands fa-youtube" },
-          { platform: "Twitter / X", url: "https://x.com/omardotsocial", icon: "fa-brands fa-x-twitter" },
-          { platform: "Instagram", url: "https://www.instagram.com/omardotsocial", icon: "fa-brands fa-instagram" },
+          { platform: "Instagram", url: "https://www.instagram.com/omardotrandom", icon: "fa-brands fa-instagram" },
           { platform: "TikTok", url: "https://www.tiktok.com/@omardotsocial", icon: "fa-brands fa-tiktok" }
         ]
       },
