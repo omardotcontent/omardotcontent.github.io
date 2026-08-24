@@ -251,10 +251,7 @@ A lightweight, efficient JavaFX desktop application designed to keep your daily 
           `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/SimpleToDO",
-          media: ["https://media.licdn.com/dms/image/v2/D4E22AQGfm0byctu8vw/feedshare-image-high-res/B4EZ9Lw7_tIAAY-/0/1783682547914?e=1785369600&v=beta&t=6wCimT7mIDRbQCe_RbAS6LtQauE4_Lj5GfcKIUJXm5U"
-            , "https://media.licdn.com/dms/image/v2/D4E22AQFgcLvSNVeqIQ/feedshare-image-high-res/B4EZ9Lw798JgAU-/0/1783682547856?e=1785369600&v=beta&t=djKxqVDvo7fg3t1xPvYXJtEha7UT9tKiqb0ImkEO6eQ",
-            "https://media.licdn.com/dms/image/v2/D4E22AQH9-aKu6XUwHA/feedshare-shrink_1280/B4EZ9Lw8AdJYAM-/0/1783682548060?e=1785369600&v=beta&t=068iomHlj4HtPDJz1QDzD3EXScxTLuMk27EbeGCTy8I"
-          ],
+          media: ["images/projects/todo.jpeg", "images/projects/todo2.jpeg", "images/projects/todo3.jpeg"],
           tags: ["Java"]
         },
         {
@@ -270,7 +267,7 @@ A lightweight, efficient JavaFX desktop application designed to keep your daily 
           `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/sync",
-          media: ["https://media.licdn.com/dms/image/v2/D4E22AQHrM55iz9awEQ/feedshare-shrink_800/B4EZ9Lw8FGIsAc-/0/1783682548317?e=1785369600&v=beta&t=GU2tjBRbDdJEtD9k2D6WCBf9Yoqgw-RHbb_okkr3ezc", "https://media.licdn.com/dms/image/v2/D4E22AQF_fw1Iv7yLJQ/feedshare-shrink_1280/B4EZ9Lw7_uIcAM-/0/1783682547978?e=1785369600&v=beta&t=Y-PXE_l2JeootjVyKkkkzTe-0Klb98VSGurGU4LNh3M"],
+          media: ["images/projects/sync.jpeg", "images/projects/sync2.jpeg"],
           tags: ["Java"]
         },
         {
@@ -303,7 +300,7 @@ An advanced JavaFX simulation project created for a technical competition.
           `,
           primaryUrl: "",
           githubUrl: "https://github.com/omardotcontent/MusclePrototype",
-          media: ["https://media.licdn.com/dms/image/v2/D4E22AQHLIJQApgFzug/feedshare-shrink_1280/B4EZ9Lw8BJJUAQ-/0/1783682548052?e=1785369600&v=beta&t=WC39z28gT2JRw7_2HYIZgydn8Q-8kCTg9kwYynH9VO8"],
+          media: ["images/projects/muscle.jpeg"],
           tags: ["Java"]
         }
       ]
