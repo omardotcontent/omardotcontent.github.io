@@ -49,7 +49,7 @@ const PORTFOLIO_CONFIG = {
         { name: "Adobe Premiere Pro", icon: "fa-solid fa-video" },
         { name: "Figma", icon: "fa-brands fa-figma" },
         { name: "Microsoft PowerPoint", icon: "fa-solid fa-file-powerpoint" },
-        { name: "Paint.NET", icon: "fa-solid fa-palette" },
+        { name: "Pinta & Photopea", icon: "fa-solid fa-palette" },
       ]
     },
     {
@@ -71,7 +71,7 @@ const PORTFOLIO_CONFIG = {
   // Currently Learning Section
   currentlyLearning: [
     { name: "C++", icon: "fa-brands fa-cuttlefish" },
-    { name: "Java Technical (Hult Prize SAMS)", icon: "fa-brands fa-java" }
+    { name: "UI/UX Design (DEPI)", icon: "fa-solid fa-pen-ruler" }
   ],
 
   // Meraki Studios section
@@ -557,7 +557,11 @@ An advanced JavaFX simulation project created for a technical competition.
     "Microsoft Office Specialist: PowerPoint (2016 & 2019)",
     "Beaver Egypt Challenge 2023 - Ministry of Communications",
     "ICPC Sadat Academy Community 2026 - Level 1 SAMS Contest",
-    "Digital Egypt Clubs Initiative 2024 - Level Three: Data Science and Ai"
+    "Java Member - Hult Prize Program, Sadat Academy (2025-2026)",
+    "Best Member Award, Java Committee - Hult Prize SAMS (2025/2026)",
+    "Java Committee Training Completion - Hult Prize SAMS (2025/2026)",
+    "Digital Egypt Clubs Initiative 2024 - Level Three: Data Science and Ai",
+    "ICPC ECPC Qualifications Collegiate Programming Contest 2026 - 95th Place" 
   ],
 
   // Languages
