@@ -63,7 +63,7 @@ const PORTFOLIO_CONFIG = {
       title: "Audio",
       list: [
         { name: "BandLab", icon: "fa-solid fa-music" },
-        { name: "Premire Pro (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
+        { name: "Premiere Pro (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
       ]
     },
   ],
