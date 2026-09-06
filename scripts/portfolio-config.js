@@ -12,7 +12,7 @@ const PORTFOLIO_CONFIG = {
   aboutMe: {
     paragraphs: [
       "Creative developer and motion designer with 3+ years of hands-on experience — I blend technical precision with artistic direction to produce digital experiences that are both visually impactful and functionally solid.",
-      "I've shipped production-grade Java software and open source tools with 223,000+ combined downloads, while producing high-impact visual content for commercial brands. Whether it's architecting a Minecraft plugin, crafting a cinematic animation in Davinci Resolve, or leading a team of creators — I approach every project with the same philosophy: clean, intentional, and meaningful.",
+      "I've shipped production-grade Java software and open source tools with 223,000+ combined downloads, while producing high-impact visual content for commercial brands. Whether it's architecting a Minecraft plugin, crafting a cinematic animation in DaVinci Resolve, or leading a team of creators — I approach every project with the same philosophy: clean, intentional, and meaningful.",
       "I'm also the Founder of Meraki Studios, a multi-disciplinary creative studio spanning software development, 3D art, motion design, and media production. Equally fluent in technical stacks and artistic tooling, with a track record of delivering polished, real-world products — independently and within teams."
     ]
   },
@@ -46,7 +46,7 @@ const PORTFOLIO_CONFIG = {
     {
       title: "Motion Graphics & Design",
       list: [
-        { name: "Davinci Resolve", icon: "fa-solid fa-video" },
+        { name: "DaVinci Resolve", icon: "fa-solid fa-video" },
         { name: "Figma", icon: "fa-brands fa-figma" },
         { name: "Microsoft PowerPoint", icon: "fa-solid fa-file-powerpoint" },
         { name: "Pinta & Photopea", icon: "fa-solid fa-palette" },
@@ -63,7 +63,7 @@ const PORTFOLIO_CONFIG = {
       title: "Audio",
       list: [
         { name: "BandLab", icon: "fa-solid fa-music" },
-        { name: "Davinci Resolve (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
+        { name: "DaVinci Resolve (For SFX & Audio Mixing)", icon: "fa-solid fa-volume-high" }
       ]
     },
   ],
@@ -107,7 +107,7 @@ const PORTFOLIO_CONFIG = {
       items: [
         {
           title: "Video Editing",
-          description: "High-quality video editing tailored for YouTube, Shorts, and Promos using Davinci Resolve.",
+          description: "High-quality video editing tailored for YouTube, Shorts, and Promos using DaVinci Resolve.",
           icon: "fa-solid fa-film"
         },
         {
@@ -142,7 +142,7 @@ const PORTFOLIO_CONFIG = {
       items: [
         {
           title: "Sound Design",
-          description: "Mixing AI-generated and free sounds in Davinci Resolve for an original audio experience.",
+          description: "Mixing AI-generated and free sounds in DaVinci Resolve for an original audio experience.",
           icon: "fa-solid fa-volume-high"
         },
         {
